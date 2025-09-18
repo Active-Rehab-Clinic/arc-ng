@@ -1,0 +1,59 @@
+.footer {
+  @apply bg-gray-800 text-white;
+}
+
+.footer-container {
+  @apply max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8;
+}
+
+.footer-grid {
+  @apply grid grid-cols-1 md:grid-cols-4 gap-8;
+}
+
+.footer-brand {
+  @apply col-span-1 md:col-span-2;
+}
+
+.brand-title {
+  @apply text-2xl font-bold text-blue-400 mb-4;
+}
+
+.brand-description {
+  @apply text-gray-300 mb-4;
+}
+
+.contact-info {
+  @apply text-sm text-gray-400;
+  
+  p {
+    @apply mb-1;
+  }
+}
+
+.footer-links {
+  @apply col-span-1;
+}
+
+.footer-hours {
+  @apply col-span-1;
+}
+
+.footer-heading {
+  @apply text-lg font-semibold mb-4;
+}
+
+.links-list {
+  @apply space-y-2 text-sm;
+}
+
+.footer-link {
+  @apply text-gray-300 hover:text-blue-400;
+}
+
+.hours-list {
+  @apply text-sm text-gray-300 space-y-1;
+}
+
+.footer-bottom {
+  @apply mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-400;
+}

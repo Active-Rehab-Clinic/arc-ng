@@ -1,0 +1,262 @@
+// Page Container
+.page-container {
+  @apply min-h-screen;
+}
+
+// Hero Section
+.hero-section {
+  @apply relative bg-gradient-to-br from-teal-600 via-cyan-700 to-blue-800 text-white py-24 overflow-hidden;
+}
+
+.hero-overlay {
+  @apply absolute inset-0 bg-black opacity-10;
+}
+
+.hero-content {
+  @apply relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.hero-text {
+  @apply text-center;
+}
+
+.hero-title {
+  @apply text-5xl md:text-7xl font-bold mb-6 leading-tight;
+}
+
+.hero-accent {
+  @apply text-cyan-200;
+}
+
+.hero-subtitle {
+  @apply text-xl md:text-2xl mb-4 text-cyan-100 max-w-3xl mx-auto;
+}
+
+.hero-trust {
+  @apply text-lg mb-10 text-cyan-200;
+}
+
+.hero-buttons {
+  @apply flex flex-col sm:flex-row gap-4 justify-center;
+}
+
+.btn-primary {
+  @apply bg-green-600 text-white px-10 py-4 rounded-full text-lg font-semibold transition-all transform shadow-lg hover:bg-green-700 hover:scale-105;
+}
+
+.btn-secondary {
+  @apply border-2 border-white text-white px-10 py-4 rounded-full text-lg font-semibold transition-all hover:bg-white hover:text-teal-700;
+}
+
+// Stats Section
+.stats-section {
+  @apply py-12 bg-white border-b;
+}
+
+.container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.stats-grid {
+  @apply grid grid-cols-2 md:grid-cols-4 gap-8 text-center;
+}
+
+.stat-item {
+  @apply text-center;
+}
+
+.stat-number {
+  @apply text-3xl font-bold mb-2;
+}
+
+.stat-blue {
+  @apply text-teal-600;
+}
+
+.stat-green {
+  @apply text-green-600;
+}
+
+.stat-purple {
+  @apply text-purple-600;
+}
+
+.stat-orange {
+  @apply text-orange-600;
+}
+
+.stat-label {
+  @apply text-gray-600;
+}
+
+// Services Section
+.services-section {
+  @apply py-16 bg-gray-50;
+}
+
+.section-header {
+  @apply text-center mb-12;
+}
+
+.section-title {
+  @apply text-4xl font-bold text-gray-900 mb-4;
+}
+
+.section-subtitle {
+  @apply text-lg text-gray-600 max-w-2xl mx-auto;
+}
+
+.services-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
+}
+
+.service-card {
+  @apply bg-white rounded-xl shadow-lg p-8 transition-shadow hover:shadow-xl;
+}
+
+.service-icon {
+  @apply w-16 h-16 rounded-full flex items-center justify-center mb-6;
+  
+  span {
+    @apply text-3xl;
+  }
+}
+
+.service-icon-blue {
+  @apply bg-teal-100;
+}
+
+.service-icon-green {
+  @apply bg-green-100;
+}
+
+.service-icon-purple {
+  @apply bg-purple-100;
+}
+
+.service-title {
+  @apply text-xl font-semibold mb-3;
+}
+
+.service-description {
+  @apply text-gray-600 mb-4;
+}
+
+.service-link {
+  @apply font-medium transition-colors;
+}
+
+.service-link-blue {
+  @apply text-teal-600 hover:text-teal-700;
+}
+
+.service-link-green {
+  @apply text-green-600 hover:text-green-700;
+}
+
+.service-link-purple {
+  @apply text-purple-600 hover:text-purple-700;
+}
+
+// Features Section
+.features-section {
+  @apply py-16 bg-white;
+}
+
+.features-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8;
+}
+
+.feature-item {
+  @apply text-center;
+}
+
+.feature-icon {
+  @apply w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4;
+  
+  span {
+    @apply text-3xl;
+  }
+}
+
+.feature-icon-blue {
+  @apply bg-teal-100;
+}
+
+.feature-icon-green {
+  @apply bg-green-100;
+}
+
+.feature-icon-purple {
+  @apply bg-purple-100;
+}
+
+.feature-icon-orange {
+  @apply bg-orange-100;
+}
+
+.feature-title {
+  @apply text-xl font-semibold mb-2;
+}
+
+.feature-description {
+  @apply text-gray-600;
+}
+
+// Testimonials Section
+.testimonials-section {
+  @apply py-16 bg-teal-50;
+}
+
+.testimonials-grid {
+  @apply grid grid-cols-1 md:grid-cols-3 gap-8;
+}
+
+.testimonial-card {
+  @apply bg-white rounded-xl p-8 shadow-lg;
+}
+
+.testimonial-stars {
+  @apply flex items-center mb-4;
+  
+  span {
+    @apply text-yellow-400;
+  }
+}
+
+.testimonial-text {
+  @apply text-gray-600 mb-6 italic;
+}
+
+.testimonial-author {
+  @apply font-semibold text-gray-900;
+}
+
+// CTA Section
+.cta-section {
+  @apply py-16 bg-gradient-to-r from-teal-600 to-cyan-800 text-white;
+}
+
+.cta-container {
+  @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center;
+}
+
+.cta-title {
+  @apply text-3xl md:text-4xl font-bold mb-6;
+}
+
+.cta-subtitle {
+  @apply text-xl mb-8 text-teal-100;
+}
+
+.cta-buttons {
+  @apply flex flex-col sm:flex-row gap-4 justify-center;
+}
+
+.cta-btn-primary {
+  @apply bg-green-600 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all transform hover:bg-green-700 hover:scale-105;
+}
+
+.cta-btn-secondary {
+  @apply border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold transition-all hover:bg-white hover:text-teal-700;
+}

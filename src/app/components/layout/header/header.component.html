@@ -1,0 +1,35 @@
+<header class="header">
+  <nav class="nav-container">
+    <div class="nav-content">
+      <div class="nav-brand">
+        <a routerLink="/" class="brand-link">
+          <img src="/logo/arc_white_bg_logo.png" alt="ARC Logo" class="brand-logo">
+        </a>
+      </div>
+      
+      <div class="nav-menu">
+        <div class="nav-links">
+          <a routerLink="/" routerLinkActive="nav-link-active" class="nav-link">Home</a>
+          <a routerLink="/services" routerLinkActive="nav-link-active" class="nav-link">Services</a>
+          <a routerLink="/about" routerLinkActive="nav-link-active" class="nav-link">About</a>
+          <a routerLink="/contact" routerLinkActive="nav-link-active" class="nav-link">Contact</a>
+          <a routerLink="/book" class="btn-book">Book Appointment</a>
+        </div>
+      </div>
+      
+      <div class="theme-toggle">
+        <button (click)="toggleTheme()" class="theme-btn">
+          <span *ngIf="isDarkMode$ | async; else lightIcon">☀️</span>
+          <ng-template #lightIcon>🌙</ng-template>
+        </button>
+      </div>
+      
+      <!-- <div class="auth-menu">
+        <div class="auth-links">
+          <a routerLink="/login" class="auth-link">Login</a>
+          <a routerLink="/register" class="btn-register">Register</a>
+        </div>
+      </div> -->
+    </div>
+  </nav>
+</header>

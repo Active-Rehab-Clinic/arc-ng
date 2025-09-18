@@ -1,0 +1,67 @@
+.header {
+  @apply bg-white shadow-sm border-b dark:bg-gray-800 dark:border-gray-700;
+}
+
+.nav-container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.nav-content {
+  @apply flex justify-between items-center h-20;
+}
+
+.nav-brand {
+  @apply flex items-center;
+}
+
+.brand-link {
+  @apply flex items-center;
+}
+
+.brand-logo {
+  @apply h-16 w-auto;
+}
+
+.nav-menu {
+  @apply hidden md:block;
+}
+
+.nav-links {
+  @apply ml-10 flex items-baseline space-x-4;
+}
+
+.nav-link {
+  @apply text-gray-700 px-3 py-2 text-sm font-medium hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400;
+}
+
+.nav-link-active {
+  @apply text-blue-600 dark:text-blue-400;
+}
+
+.btn-book {
+  @apply bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700;
+}
+
+.auth-menu {
+  @apply hidden md:block;
+}
+
+.auth-links {
+  @apply ml-4 flex items-center md:ml-6 space-x-2;
+}
+
+.auth-link {
+  @apply text-gray-700 px-3 py-2 text-sm font-medium hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400;
+}
+
+.btn-register {
+  @apply bg-green-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-700;
+}
+
+.theme-toggle {
+  @apply flex items-center;
+}
+
+.theme-btn {
+  @apply p-2 rounded-full text-xl transition-colors hover:bg-gray-100 dark:hover:bg-gray-700;
+}
