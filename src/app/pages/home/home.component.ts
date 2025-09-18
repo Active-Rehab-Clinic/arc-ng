@@ -3,10 +3,9 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
-  template: `
+    selector: 'app-home',
+    imports: [CommonModule, RouterModule],
+    template: `
     <div class="min-h-screen">
       <!-- Hero Section -->
       <section class="bg-gradient-to-r from-primary-600 to-primary-800 text-white py-20">
