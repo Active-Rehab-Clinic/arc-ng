@@ -1,0 +1,239 @@
+// Page Container
+.page-container {
+  @apply min-h-screen;
+}
+
+// Hero Section
+.hero-section {
+  @apply py-12 sm:py-16 md:py-20 bg-gradient-to-r from-teal-600 to-cyan-700 text-white;
+}
+
+.container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.hero-content {
+  @apply text-center;
+}
+
+.hero-title {
+  @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6;
+}
+
+.hero-subtitle {
+  @apply text-base sm:text-lg md:text-xl text-teal-100 max-w-3xl mx-auto;
+}
+
+// Contact Section
+.contact-section {
+  @apply py-12 sm:py-16 bg-white dark:bg-gray-900;
+}
+
+.contact-grid {
+  @apply grid grid-cols-1 gap-8 sm:gap-12 lg:grid-cols-2;
+}
+
+.contact-info {
+  @apply space-y-6 sm:space-y-8;
+}
+
+.contact-title {
+  @apply text-xl sm:text-2xl md:text-3xl font-bold mb-6 sm:mb-8 text-gray-900 dark:text-gray-100;
+}
+
+.contact-item {
+  @apply flex items-start space-x-4 sm:space-x-6;
+}
+
+.contact-icon {
+  @apply w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center flex-shrink-0;
+  
+  span {
+    @apply text-xl sm:text-2xl;
+  }
+}
+
+.contact-icon-blue {
+  @apply bg-blue-100 dark:bg-blue-900/30;
+}
+
+.contact-icon-green {
+  @apply bg-green-100 dark:bg-green-900/30;
+}
+
+.contact-icon-purple {
+  @apply bg-purple-100 dark:bg-purple-900/30;
+}
+
+.contact-details {
+  @apply flex-1;
+}
+
+.contact-label {
+  @apply text-base sm:text-lg font-semibold mb-1 sm:mb-2 text-gray-900 dark:text-gray-100;
+}
+
+.contact-text {
+  @apply text-sm sm:text-base text-gray-600 dark:text-gray-300;
+}
+
+// Social Media
+.social-section {
+  @apply mt-8 sm:mt-12;
+}
+
+.social-title {
+  @apply text-lg sm:text-xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-gray-100;
+}
+
+.social-links {
+  @apply flex flex-wrap gap-3 sm:gap-4;
+}
+
+.social-link {
+  @apply flex items-center space-x-2 bg-gray-100 px-3 py-2 sm:px-4 sm:py-3 rounded-lg text-sm sm:text-base font-medium text-gray-700 transition-colors hover:bg-teal-100 hover:text-teal-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-teal-900/30 dark:hover:text-teal-300;
+}
+
+// Contact Form
+.contact-form {
+  @apply bg-gray-50 rounded-lg sm:rounded-xl p-6 sm:p-8 dark:bg-gray-800;
+}
+
+.form-title {
+  @apply text-xl sm:text-2xl md:text-3xl font-bold mb-6 sm:mb-8 text-gray-900 dark:text-gray-100;
+}
+
+.form-placeholder {
+  @apply text-center;
+}
+
+.placeholder-icon {
+  @apply w-16 h-16 sm:w-20 sm:h-20 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 dark:bg-teal-900/30;
+  
+  span {
+    @apply text-2xl sm:text-3xl;
+  }
+}
+
+.placeholder-title {
+  @apply text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900 dark:text-gray-100;
+}
+
+.placeholder-text {
+  @apply text-sm sm:text-base text-gray-600 mb-6 sm:mb-8 dark:text-gray-300;
+}
+
+.placeholder-buttons {
+  @apply flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center;
+}
+
+.placeholder-btn-primary {
+  @apply bg-teal-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg font-semibold text-sm sm:text-base transition-colors hover:bg-teal-700;
+}
+
+.placeholder-btn-secondary {
+  @apply border-2 border-teal-600 text-teal-600 px-4 py-2 sm:px-6 sm:py-3 rounded-lg font-semibold text-sm sm:text-base transition-colors hover:bg-teal-600 hover:text-white dark:border-teal-400 dark:text-teal-400 dark:hover:bg-teal-400 dark:hover:text-gray-900;
+}
+
+// Hours Section
+.hours-section {
+  @apply py-12 sm:py-16 bg-gray-50 dark:bg-gray-800;
+}
+
+.section-header {
+  @apply text-center mb-8 sm:mb-12;
+}
+
+.section-title {
+  @apply text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 dark:text-gray-100;
+}
+
+.section-subtitle {
+  @apply text-base sm:text-lg text-gray-600 max-w-2xl mx-auto dark:text-gray-300;
+}
+
+.hours-grid {
+  @apply grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-2 lg:grid-cols-7 max-w-4xl mx-auto;
+}
+
+.hour-item {
+  @apply bg-white rounded-lg p-4 sm:p-6 text-center transition-all hover:shadow-lg dark:bg-gray-700;
+  
+  &.closed {
+    @apply bg-gray-100 dark:bg-gray-600;
+  }
+}
+
+.hour-day {
+  @apply text-sm sm:text-base font-bold mb-2 text-gray-900 dark:text-gray-100;
+}
+
+.hour-time {
+  @apply text-xs sm:text-sm text-teal-600 font-medium dark:text-teal-400;
+  
+  &.closed-text {
+    @apply text-gray-500 dark:text-gray-400;
+  }
+}
+
+// Emergency Section
+.emergency-section {
+  @apply py-12 sm:py-16 bg-red-50 dark:bg-red-900/20;
+}
+
+.emergency-card {
+  @apply bg-white rounded-lg sm:rounded-xl p-6 sm:p-8 flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-6 max-w-4xl mx-auto shadow-lg dark:bg-gray-800;
+}
+
+.emergency-icon {
+  @apply w-16 h-16 sm:w-20 sm:h-20 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0 dark:bg-red-900/30;
+  
+  span {
+    @apply text-2xl sm:text-3xl;
+  }
+}
+
+.emergency-content {
+  @apply text-center sm:text-left flex-1;
+}
+
+.emergency-title {
+  @apply text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-red-600 dark:text-red-400;
+}
+
+.emergency-text {
+  @apply text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 dark:text-gray-300;
+}
+
+.emergency-btn {
+  @apply bg-red-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg font-semibold text-sm sm:text-base transition-colors hover:bg-red-700 inline-block;
+}
+
+// CTA Section
+.cta-section {
+  @apply py-12 sm:py-16 bg-gradient-to-r from-teal-600 to-cyan-800 text-white;
+}
+
+.cta-container {
+  @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center;
+}
+
+.cta-title {
+  @apply text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6;
+}
+
+.cta-subtitle {
+  @apply text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-teal-100;
+}
+
+.cta-buttons {
+  @apply flex flex-col sm:flex-row gap-4 justify-center;
+}
+
+.cta-btn-primary {
+  @apply bg-green-600 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all transform hover:bg-green-700 hover:scale-105;
+}
+
+.cta-btn-secondary {
+  @apply border-2 border-white text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all hover:bg-white hover:text-teal-700;
+}

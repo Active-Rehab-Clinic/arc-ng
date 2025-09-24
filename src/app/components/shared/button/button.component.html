@@ -1,0 +1,11 @@
+<button
+  [type]="type"
+  [disabled]="disabled || loading"
+  [class]="buttonClasses"
+  (click)="onClick($event)"
+>
+  <app-loading-spinner *ngIf="loading" size="sm" class="mr-2">
+  </app-loading-spinner>
+
+  <ng-content></ng-content>
+</button>

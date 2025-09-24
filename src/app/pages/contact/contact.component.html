@@ -1,0 +1,143 @@
+<div class="page-container">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">Contact Us</h1>
+        <p class="hero-subtitle">Get in touch to schedule your appointment or ask any questions</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Information -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-grid">
+        <!-- Contact Details -->
+        <div class="contact-info">
+          <h2 class="contact-title">Get In Touch</h2>
+          
+          <div class="contact-item">
+            <div class="contact-icon contact-icon-blue">
+              <span>📍</span>
+            </div>
+            <div class="contact-details">
+              <h3 class="contact-label">Address</h3>
+              <p class="contact-text">
+                {{ contactInfo.address.street }}<br>
+                {{ contactInfo.address.city }}, {{ contactInfo.address.state }} {{ contactInfo.address.zip }}
+              </p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon contact-icon-green">
+              <span>📞</span>
+            </div>
+            <div class="contact-details">
+              <h3 class="contact-label">Phone</h3>
+              <p class="contact-text">{{ contactInfo.phone }}</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon contact-icon-purple">
+              <span>✉️</span>
+            </div>
+            <div class="contact-details">
+              <h3 class="contact-label">Email</h3>
+              <p class="contact-text">{{ contactInfo.email }}</p>
+            </div>
+          </div>
+
+          <!-- Social Media -->
+          <!-- <div class="social-section">
+            <h3 class="social-title">Follow Us</h3>
+            <div class="social-links">
+              <a *ngFor="let social of contactInfo.socialMedia" 
+                 [href]="social.url" 
+                 target="_blank" 
+                 class="social-link">
+                <span>{{ social.icon }}</span>
+                <span>{{ social.platform }}</span>
+              </a>
+            </div>
+          </div> -->
+        </div>
+
+        <!-- Contact Form Placeholder -->
+        <div class="contact-form">
+          <h2 class="form-title">Send Us a Message</h2>
+          <div class="form-placeholder">
+            <div class="placeholder-icon">
+              <span>📝</span>
+            </div>
+            <h3 class="placeholder-title">Contact Form Coming Soon</h3>
+            <p class="placeholder-text">
+              We're working on an interactive contact form. For now, please call us directly or send an email.
+            </p>
+            <div class="placeholder-buttons">
+              <a [href]="'tel:' + contactInfo.phone" class="placeholder-btn-primary">
+                📞 Call Now
+              </a>
+              <a [href]="'mailto:' + contactInfo.email" class="placeholder-btn-secondary">
+                ✉️ Send Email
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Business Hours -->
+  <section class="hours-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Business Hours</h2>
+        <p class="section-subtitle">We're here when you need us most</p>
+      </div>
+      
+      <div class="hours-grid">
+        <div *ngFor="let hour of contactInfo.hours" 
+             class="hour-item" 
+             [class.closed]="!hour.isOpen">
+          <div class="hour-day">{{ hour.day }}</div>
+          <div class="hour-time" [class.closed-text]="!hour.isOpen">{{ hour.hours }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Emergency Contact -->
+  <section class="emergency-section">
+    <div class="container">
+      <div class="emergency-card">
+        <div class="emergency-icon">
+          <span>🚨</span>
+        </div>
+        <div class="emergency-content">
+          <h3 class="emergency-title">Emergency Consultation</h3>
+          <p class="emergency-text">
+            Need immediate assistance? Our emergency consultation service is available 24/7 for urgent rehabilitation needs.
+          </p>
+          <a [href]="'tel:' + contactInfo.phone" class="emergency-btn">
+            Call Emergency Line
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-container">
+      <h2 class="cta-title">Ready to Schedule Your Appointment?</h2>
+      <p class="cta-subtitle">Take the first step towards your recovery today</p>
+      <div class="cta-buttons">
+        <a routerLink="/book" class="cta-btn-primary">Book Appointment</a>
+        <a [href]="'tel:' + contactInfo.phone" class="cta-btn-secondary">Call Us</a>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,98 @@
+<div class="page-container">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">About Active Rehab Clinic</h1>
+        <p class="hero-subtitle">Dedicated to your recovery and well-being since 2009</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission & Vision -->
+  <section class="mission-section">
+    <div class="container">
+      <div class="mission-grid">
+        <div class="mission-card">
+          <h2 class="mission-title">Our Mission</h2>
+          <p class="mission-text">{{ aboutInfo.mission }}</p>
+        </div>
+        
+        <div class="mission-card">
+          <h2 class="mission-title">Our Vision</h2>
+          <p class="mission-text">{{ aboutInfo.vision }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="values-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Our Core Values</h2>
+        <p class="section-subtitle">The principles that guide everything we do</p>
+      </div>
+      
+      <div class="values-grid">
+        <div *ngFor="let value of aboutInfo.values; let i = index" class="value-item">
+          <div class="value-icon" [class]="'value-icon-' + getValueColor(i)">
+            <span>{{ getValueIcon(i) }}</span>
+          </div>
+          <h3 class="value-title">{{ value }}</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="team-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Meet Our Expert Team</h2>
+        <p class="section-subtitle">Experienced professionals dedicated to your recovery</p>
+      </div>
+      
+      <div class="team-grid">
+        <div *ngFor="let member of aboutInfo.team" class="team-card">
+          <div class="team-avatar">
+            <span>{{ getInitials(member.name) }}</span>
+          </div>
+          <h3 class="team-name">{{ member.name }}</h3>
+          <p class="team-title">{{ member.title }}</p>
+          <p class="team-bio">{{ member.bio }}</p>
+          <div class="team-specialties">
+            <span *ngFor="let specialty of member.specialties" class="specialty-tag">
+              {{ specialty }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div *ngFor="let stat of stats" class="stat-item">
+          <div class="stat-number" [class]="'stat-' + stat.color">{{ stat.value }}</div>
+          <div class="stat-label">{{ stat.label }}</div>
+          <div class="stat-description">{{ stat.description }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-container">
+      <h2 class="cta-title">Ready to Start Your Recovery Journey?</h2>
+      <p class="cta-subtitle">Join thousands of patients who have trusted us with their rehabilitation</p>
+      <div class="cta-buttons">
+        <a routerLink="/book" class="cta-btn-primary">Schedule Consultation</a>
+        <a routerLink="/contact" class="cta-btn-secondary">Contact Us</a>
+      </div>
+    </div>
+  </section>
+</div>

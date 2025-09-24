@@ -1,0 +1,142 @@
+// Page Container
+.page-container {
+  @apply min-h-screen;
+}
+
+// Hero Section
+.hero-section {
+  @apply py-12 sm:py-16 md:py-20 bg-gradient-to-r from-teal-600 to-cyan-700 text-white;
+}
+
+.container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.hero-content {
+  @apply text-center;
+}
+
+.hero-title {
+  @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6;
+}
+
+.hero-subtitle {
+  @apply text-base sm:text-lg md:text-xl text-teal-100 max-w-3xl mx-auto;
+}
+
+// Booking Section
+.booking-section {
+  @apply py-12 sm:py-16 bg-gray-50 dark:bg-gray-900;
+}
+
+.booking-content {
+  @apply space-y-8 sm:space-y-12;
+}
+
+// Instructions
+.booking-instructions {
+  @apply bg-white rounded-lg sm:rounded-xl p-6 sm:p-8 shadow-lg dark:bg-gray-800;
+}
+
+.instructions-title {
+  @apply text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8 text-gray-900 dark:text-gray-100;
+}
+
+.instructions-grid {
+  @apply grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-3;
+}
+
+.instruction-item {
+  @apply text-center;
+}
+
+.instruction-icon {
+  @apply w-16 h-16 sm:w-20 sm:h-20 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4 dark:bg-teal-900/30;
+  
+  span {
+    @apply text-2xl sm:text-3xl;
+  }
+}
+
+.instruction-title {
+  @apply text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-gray-900 dark:text-gray-100;
+}
+
+.instruction-text {
+  @apply text-sm sm:text-base text-gray-600 dark:text-gray-300;
+}
+
+// Form Container
+.form-container {
+  @apply bg-white rounded-lg sm:rounded-xl p-6 sm:p-8 shadow-lg dark:bg-gray-800;
+}
+
+.form-title {
+  @apply text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8 text-gray-900 dark:text-gray-100;
+}
+
+.form-embed {
+  @apply mb-8 sm:mb-12;
+}
+
+.google-form {
+  @apply w-full h-96 sm:h-[600px] md:h-[700px] rounded-lg border border-gray-200 dark:border-gray-600;
+}
+
+// Alternative Contact
+.alternative-contact {
+  @apply bg-gray-50 rounded-lg p-6 sm:p-8 text-center dark:bg-gray-700;
+}
+
+.contact-title {
+  @apply text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-gray-900 dark:text-gray-100;
+}
+
+.contact-text {
+  @apply text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 dark:text-gray-300;
+}
+
+.contact-buttons {
+  @apply flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center;
+}
+
+.contact-btn-primary {
+  @apply bg-teal-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg font-semibold text-sm sm:text-base transition-colors hover:bg-teal-700;
+}
+
+.contact-btn-secondary {
+  @apply border-2 border-teal-600 text-teal-600 px-4 py-2 sm:px-6 sm:py-3 rounded-lg font-semibold text-sm sm:text-base transition-colors hover:bg-teal-600 hover:text-white dark:border-teal-400 dark:text-teal-400 dark:hover:bg-teal-400 dark:hover:text-gray-900;
+}
+
+// Emergency Section
+.emergency-section {
+  @apply py-12 sm:py-16 bg-red-50 dark:bg-red-900/20;
+}
+
+.emergency-card {
+  @apply bg-white rounded-lg sm:rounded-xl p-6 sm:p-8 flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-6 max-w-4xl mx-auto shadow-lg dark:bg-gray-800;
+}
+
+.emergency-icon {
+  @apply w-16 h-16 sm:w-20 sm:h-20 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0 dark:bg-red-900/30;
+  
+  span {
+    @apply text-2xl sm:text-3xl;
+  }
+}
+
+.emergency-content {
+  @apply text-center sm:text-left flex-1;
+}
+
+.emergency-title {
+  @apply text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-red-600 dark:text-red-400;
+}
+
+.emergency-text {
+  @apply text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 dark:text-gray-300;
+}
+
+.emergency-btn {
+  @apply bg-red-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg font-semibold text-sm sm:text-base transition-colors hover:bg-red-700 inline-block;
+}

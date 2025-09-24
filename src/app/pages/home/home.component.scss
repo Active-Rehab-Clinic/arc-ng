@@ -5,7 +5,7 @@
 
 // Hero Section
 .hero-section {
-  @apply relative bg-gradient-to-br from-teal-600 via-cyan-700 to-blue-800 text-white py-24 overflow-hidden;
+  @apply relative bg-gradient-to-br from-teal-600 via-cyan-700 to-blue-800 text-white py-16 sm:py-20 md:py-24 overflow-hidden;
 }
 
 .hero-overlay {
@@ -21,7 +21,7 @@
 }
 
 .hero-title {
-  @apply text-5xl md:text-7xl font-bold mb-6 leading-tight;
+  @apply text-3xl sm:text-5xl md:text-7xl font-bold mb-4 sm:mb-6 leading-tight;
 }
 
 .hero-accent {
@@ -29,11 +29,11 @@
 }
 
 .hero-subtitle {
-  @apply text-xl md:text-2xl mb-4 text-cyan-100 max-w-3xl mx-auto;
+  @apply text-lg sm:text-xl md:text-2xl mb-4 text-cyan-100 max-w-3xl mx-auto;
 }
 
 .hero-trust {
-  @apply text-lg mb-10 text-cyan-200;
+  @apply text-base sm:text-lg mb-8 sm:mb-10 text-cyan-200;
 }
 
 .hero-buttons {
@@ -41,16 +41,16 @@
 }
 
 .btn-primary {
-  @apply bg-green-600 text-white px-10 py-4 rounded-full text-lg font-semibold transition-all transform shadow-lg hover:bg-green-700 hover:scale-105;
+  @apply bg-green-600 text-white px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-4 rounded-full text-base sm:text-lg font-semibold transition-all transform shadow-lg hover:bg-green-700 hover:scale-105;
 }
 
 .btn-secondary {
-  @apply border-2 border-white text-white px-10 py-4 rounded-full text-lg font-semibold transition-all hover:bg-white hover:text-teal-700;
+  @apply border-2 border-white text-white px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-4 rounded-full text-base sm:text-lg font-semibold transition-all hover:bg-white hover:text-teal-700;
 }
 
 // Stats Section
 .stats-section {
-  @apply py-12 bg-white border-b;
+  @apply py-8 sm:py-12 bg-white border-b dark:bg-gray-900 dark:border-gray-700;
 }
 
 .container {
@@ -58,7 +58,7 @@
 }
 
 .stats-grid {
-  @apply grid grid-cols-2 md:grid-cols-4 gap-8 text-center;
+  @apply grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 md:grid-cols-4 text-center;
 }
 
 .stat-item {
@@ -66,7 +66,7 @@
 }
 
 .stat-number {
-  @apply text-3xl font-bold mb-2;
+  @apply text-2xl sm:text-3xl font-bold mb-2;
 }
 
 .stat-blue {
@@ -86,85 +86,85 @@
 }
 
 .stat-label {
-  @apply text-gray-600;
+  @apply text-sm sm:text-base text-gray-600 dark:text-gray-300;
 }
 
 // Services Section
 .services-section {
-  @apply py-16 bg-gray-50;
+  @apply py-12 sm:py-16 bg-gray-50 dark:bg-gray-800;
 }
 
 .section-header {
-  @apply text-center mb-12;
+  @apply text-center mb-8 sm:mb-12;
 }
 
 .section-title {
-  @apply text-4xl font-bold text-gray-900 mb-4;
+  @apply text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 dark:text-gray-100;
 }
 
 .section-subtitle {
-  @apply text-lg text-gray-600 max-w-2xl mx-auto;
+  @apply text-base sm:text-lg text-gray-600 max-w-2xl mx-auto dark:text-gray-300;
 }
 
 .services-grid {
-  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
+  @apply grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3;
 }
 
 .service-card {
-  @apply bg-white rounded-xl shadow-lg p-8 transition-shadow hover:shadow-xl;
+  @apply bg-white rounded-lg sm:rounded-xl shadow-lg p-6 sm:p-8 transition-shadow hover:shadow-xl dark:bg-gray-800 dark:shadow-gray-900/20;
 }
 
 .service-icon {
-  @apply w-16 h-16 rounded-full flex items-center justify-center mb-6;
+  @apply w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mb-4 sm:mb-6;
   
   span {
-    @apply text-3xl;
+    @apply text-2xl sm:text-3xl;
   }
 }
 
 .service-icon-blue {
-  @apply bg-teal-100;
+  @apply bg-teal-100 dark:bg-teal-900/30;
 }
 
 .service-icon-green {
-  @apply bg-green-100;
+  @apply bg-green-100 dark:bg-green-900/30;
 }
 
 .service-icon-purple {
-  @apply bg-purple-100;
+  @apply bg-purple-100 dark:bg-purple-900/30;
 }
 
 .service-title {
-  @apply text-xl font-semibold mb-3;
+  @apply text-lg sm:text-xl font-semibold mb-3 dark:text-gray-100;
 }
 
 .service-description {
-  @apply text-gray-600 mb-4;
+  @apply text-sm sm:text-base text-gray-600 mb-4 dark:text-gray-300;
 }
 
 .service-link {
-  @apply font-medium transition-colors;
+  @apply text-sm sm:text-base font-medium transition-colors;
 }
 
 .service-link-blue {
-  @apply text-teal-600 hover:text-teal-700;
+  @apply text-teal-600 hover:text-teal-700 dark:text-teal-400 dark:hover:text-teal-300;
 }
 
 .service-link-green {
-  @apply text-green-600 hover:text-green-700;
+  @apply text-green-600 hover:text-green-700 dark:text-green-400 dark:hover:text-green-300;
 }
 
 .service-link-purple {
-  @apply text-purple-600 hover:text-purple-700;
+  @apply text-purple-600 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300;
 }
 
 // Features Section
 .features-section {
-  @apply py-16 bg-white;
+  @apply py-12 sm:py-16 bg-white dark:bg-gray-900;
 }
 
 .features-grid {
-  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8;
+  @apply grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-4;
 }
 
 .feature-item {
@@ -172,48 +172,48 @@
 }
 
 .feature-icon {
-  @apply w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4;
+  @apply w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center mx-auto mb-4;
   
   span {
-    @apply text-3xl;
+    @apply text-2xl sm:text-3xl;
   }
 }
 
 .feature-icon-blue {
-  @apply bg-teal-100;
+  @apply bg-teal-100 dark:bg-teal-900/30;
 }
 
 .feature-icon-green {
-  @apply bg-green-100;
+  @apply bg-green-100 dark:bg-green-900/30;
 }
 
 .feature-icon-purple {
-  @apply bg-purple-100;
+  @apply bg-purple-100 dark:bg-purple-900/30;
 }
 
 .feature-icon-orange {
-  @apply bg-orange-100;
+  @apply bg-orange-100 dark:bg-orange-900/30;
 }
 
 .feature-title {
-  @apply text-xl font-semibold mb-2;
+  @apply text-lg sm:text-xl font-semibold mb-2 dark:text-gray-100;
 }
 
 .feature-description {
-  @apply text-gray-600;
+  @apply text-sm sm:text-base text-gray-600 dark:text-gray-300;
 }
 
 // Testimonials Section
 .testimonials-section {
-  @apply py-16 bg-teal-50;
+  @apply py-12 sm:py-16 bg-teal-50 dark:bg-gray-800;
 }
 
 .testimonials-grid {
-  @apply grid grid-cols-1 md:grid-cols-3 gap-8;
+  @apply grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-3;
 }
 
 .testimonial-card {
-  @apply bg-white rounded-xl p-8 shadow-lg;
+  @apply bg-white rounded-lg sm:rounded-xl p-6 sm:p-8 shadow-lg dark:bg-gray-800 dark:shadow-gray-900/20;
 }
 
 .testimonial-stars {
@@ -225,16 +225,16 @@
 }
 
 .testimonial-text {
-  @apply text-gray-600 mb-6 italic;
+  @apply text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 italic dark:text-gray-300;
 }
 
 .testimonial-author {
-  @apply font-semibold text-gray-900;
+  @apply text-sm sm:text-base font-semibold text-gray-900 dark:text-gray-100;
 }
 
 // CTA Section
 .cta-section {
-  @apply py-16 bg-gradient-to-r from-teal-600 to-cyan-800 text-white;
+  @apply py-12 sm:py-16 bg-gradient-to-r from-teal-600 to-cyan-800 text-white;
 }
 
 .cta-container {
@@ -242,11 +242,11 @@
 }
 
 .cta-title {
-  @apply text-3xl md:text-4xl font-bold mb-6;
+  @apply text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6;
 }
 
 .cta-subtitle {
-  @apply text-xl mb-8 text-teal-100;
+  @apply text-lg sm:text-xl mb-6 sm:mb-8 text-teal-100;
 }
 
 .cta-buttons {
@@ -254,9 +254,9 @@
 }
 
 .cta-btn-primary {
-  @apply bg-green-600 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all transform hover:bg-green-700 hover:scale-105;
+  @apply bg-green-600 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all transform hover:bg-green-700 hover:scale-105;
 }
 
 .cta-btn-secondary {
-  @apply border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold transition-all hover:bg-white hover:text-teal-700;
+  @apply border-2 border-white text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all hover:bg-white hover:text-teal-700;
 }

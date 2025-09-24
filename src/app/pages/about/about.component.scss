@@ -1,0 +1,214 @@
+// Page Container
+.page-container {
+  @apply min-h-screen;
+}
+
+// Hero Section
+.hero-section {
+  @apply py-12 sm:py-16 md:py-20 bg-gradient-to-r from-teal-600 to-cyan-700 text-white;
+}
+
+.container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.hero-content {
+  @apply text-center;
+}
+
+.hero-title {
+  @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6;
+}
+
+.hero-subtitle {
+  @apply text-base sm:text-lg md:text-xl text-teal-100 max-w-3xl mx-auto;
+}
+
+// Mission Section
+.mission-section {
+  @apply py-12 sm:py-16 bg-white dark:bg-gray-900;
+}
+
+.mission-grid {
+  @apply grid grid-cols-1 gap-8 md:grid-cols-2;
+}
+
+.mission-card {
+  @apply bg-gray-50 rounded-lg sm:rounded-xl p-6 sm:p-8 dark:bg-gray-800;
+}
+
+.mission-title {
+  @apply text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-teal-600 dark:text-teal-400;
+}
+
+.mission-text {
+  @apply text-sm sm:text-base text-gray-700 leading-relaxed dark:text-gray-300;
+}
+
+// Values Section
+.values-section {
+  @apply py-12 sm:py-16 bg-gray-50 dark:bg-gray-800;
+}
+
+.section-header {
+  @apply text-center mb-8 sm:mb-12;
+}
+
+.section-title {
+  @apply text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 dark:text-gray-100;
+}
+
+.section-subtitle {
+  @apply text-base sm:text-lg text-gray-600 max-w-2xl mx-auto dark:text-gray-300;
+}
+
+.values-grid {
+  @apply grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 md:grid-cols-3 lg:grid-cols-6;
+}
+
+.value-item {
+  @apply text-center;
+}
+
+.value-icon {
+  @apply w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4;
+  
+  span {
+    @apply text-xl sm:text-2xl;
+  }
+}
+
+.value-icon-blue {
+  @apply bg-blue-100 dark:bg-blue-900/30;
+}
+
+.value-icon-green {
+  @apply bg-green-100 dark:bg-green-900/30;
+}
+
+.value-icon-purple {
+  @apply bg-purple-100 dark:bg-purple-900/30;
+}
+
+.value-icon-orange {
+  @apply bg-orange-100 dark:bg-orange-900/30;
+}
+
+.value-icon-pink {
+  @apply bg-pink-100 dark:bg-pink-900/30;
+}
+
+.value-icon-teal {
+  @apply bg-teal-100 dark:bg-teal-900/30;
+}
+
+.value-title {
+  @apply text-xs sm:text-sm font-semibold text-gray-900 dark:text-gray-100;
+}
+
+// Team Section
+.team-section {
+  @apply py-12 sm:py-16 bg-white dark:bg-gray-900;
+}
+
+.team-grid {
+  @apply grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-4;
+}
+
+.team-card {
+  @apply bg-gray-50 rounded-lg sm:rounded-xl p-6 sm:p-8 text-center transition-all hover:shadow-lg dark:bg-gray-800 dark:hover:shadow-gray-900/20;
+}
+
+.team-avatar {
+  @apply w-16 h-16 sm:w-20 sm:h-20 bg-teal-600 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 text-white font-bold text-lg sm:text-xl;
+}
+
+.team-name {
+  @apply text-lg sm:text-xl font-bold mb-2 text-gray-900 dark:text-gray-100;
+}
+
+.team-title {
+  @apply text-sm sm:text-base text-teal-600 font-medium mb-3 sm:mb-4 dark:text-teal-400;
+}
+
+.team-bio {
+  @apply text-xs sm:text-sm text-gray-600 mb-4 sm:mb-6 leading-relaxed dark:text-gray-300;
+}
+
+.team-specialties {
+  @apply flex flex-wrap gap-2 justify-center;
+}
+
+.specialty-tag {
+  @apply bg-teal-100 text-teal-800 px-2 py-1 rounded-full text-xs font-medium dark:bg-teal-900/30 dark:text-teal-300;
+}
+
+// Stats Section
+.stats-section {
+  @apply py-12 sm:py-16 bg-teal-50 dark:bg-gray-800;
+}
+
+.stats-grid {
+  @apply grid grid-cols-2 gap-6 sm:gap-8 md:grid-cols-4;
+}
+
+.stat-item {
+  @apply text-center;
+}
+
+.stat-number {
+  @apply text-2xl sm:text-3xl md:text-4xl font-bold mb-2;
+}
+
+.stat-blue {
+  @apply text-blue-600;
+}
+
+.stat-green {
+  @apply text-green-600;
+}
+
+.stat-purple {
+  @apply text-purple-600;
+}
+
+.stat-orange {
+  @apply text-orange-600;
+}
+
+.stat-label {
+  @apply text-sm sm:text-base font-semibold text-gray-900 mb-1 dark:text-gray-100;
+}
+
+.stat-description {
+  @apply text-xs sm:text-sm text-gray-600 dark:text-gray-300;
+}
+
+// CTA Section
+.cta-section {
+  @apply py-12 sm:py-16 bg-gradient-to-r from-teal-600 to-cyan-800 text-white;
+}
+
+.cta-container {
+  @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center;
+}
+
+.cta-title {
+  @apply text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6;
+}
+
+.cta-subtitle {
+  @apply text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-teal-100;
+}
+
+.cta-buttons {
+  @apply flex flex-col sm:flex-row gap-4 justify-center;
+}
+
+.cta-btn-primary {
+  @apply bg-green-600 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all transform hover:bg-green-700 hover:scale-105;
+}
+
+.cta-btn-secondary {
+  @apply border-2 border-white text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all hover:bg-white hover:text-teal-700;
+}

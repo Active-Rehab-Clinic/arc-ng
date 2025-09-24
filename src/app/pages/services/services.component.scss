@@ -1,0 +1,170 @@
+// Page Container
+.page-container {
+  @apply min-h-screen;
+}
+
+// Hero Section
+.hero-section {
+  @apply py-12 sm:py-16 md:py-20 bg-gradient-to-r from-teal-600 to-cyan-700 text-white;
+}
+
+.container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.hero-content {
+  @apply text-center;
+}
+
+.hero-title {
+  @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6;
+}
+
+.hero-subtitle {
+  @apply text-base sm:text-lg md:text-xl text-teal-100 max-w-3xl mx-auto;
+}
+
+// Services Section
+.services-section {
+  @apply py-12 sm:py-16 bg-gray-50 dark:bg-gray-900;
+}
+
+.services-grid {
+  @apply grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3;
+}
+
+.service-card {
+  @apply bg-white rounded-lg sm:rounded-xl shadow-lg p-6 sm:p-8 transition-all hover:shadow-xl hover:scale-105 dark:bg-gray-800 dark:shadow-gray-900/20;
+}
+
+.service-icon {
+  @apply w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center mb-4 sm:mb-6 mx-auto;
+  
+  span {
+    @apply text-3xl sm:text-4xl;
+  }
+}
+
+.service-icon-blue {
+  @apply bg-teal-100 dark:bg-teal-900/30;
+}
+
+.service-icon-green {
+  @apply bg-green-100 dark:bg-green-900/30;
+}
+
+.service-icon-purple {
+  @apply bg-purple-100 dark:bg-purple-900/30;
+}
+
+.service-icon-orange {
+  @apply bg-orange-100 dark:bg-orange-900/30;
+}
+
+.service-icon-pink {
+  @apply bg-pink-100 dark:bg-pink-900/30;
+}
+
+.service-icon-red {
+  @apply bg-red-100 dark:bg-red-900/30;
+}
+
+.service-title {
+  @apply text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-center dark:text-gray-100;
+}
+
+.service-description {
+  @apply text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 text-center dark:text-gray-300;
+}
+
+.service-features {
+  @apply list-none space-y-2 mb-4 sm:mb-6;
+  
+  li {
+    @apply text-sm sm:text-base text-gray-700 flex items-center dark:text-gray-300;
+    
+    &:before {
+      content: "✓";
+      @apply text-green-500 font-bold mr-2 flex-shrink-0;
+    }
+  }
+}
+
+.service-price {
+  @apply text-xl sm:text-2xl font-bold text-teal-600 text-center mb-4 sm:mb-6 dark:text-teal-400;
+}
+
+.service-btn {
+  @apply w-full bg-teal-600 text-white py-2 sm:py-3 px-4 sm:px-6 rounded-lg font-semibold text-center transition-colors hover:bg-teal-700 dark:bg-teal-500 dark:hover:bg-teal-600;
+}
+
+// Insurance Section
+.insurance-section {
+  @apply py-12 sm:py-16 bg-white dark:bg-gray-800;
+}
+
+.section-header {
+  @apply text-center mb-8 sm:mb-12;
+}
+
+.section-title {
+  @apply text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 dark:text-gray-100;
+}
+
+.section-subtitle {
+  @apply text-base sm:text-lg text-gray-600 max-w-2xl mx-auto dark:text-gray-300;
+}
+
+.insurance-grid {
+  @apply grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 max-w-4xl mx-auto;
+}
+
+.insurance-card {
+  @apply bg-gray-50 rounded-lg sm:rounded-xl p-6 sm:p-8 dark:bg-gray-700;
+}
+
+.insurance-title {
+  @apply text-lg sm:text-xl font-bold mb-4 sm:mb-6 text-center text-gray-900 dark:text-gray-100;
+}
+
+.insurance-list {
+  @apply list-none space-y-2 sm:space-y-3;
+  
+  li {
+    @apply text-sm sm:text-base text-gray-700 flex items-center dark:text-gray-300;
+    
+    &:before {
+      content: "•";
+      @apply text-teal-500 font-bold mr-3 flex-shrink-0;
+    }
+  }
+}
+
+// CTA Section
+.cta-section {
+  @apply py-12 sm:py-16 bg-gradient-to-r from-teal-600 to-cyan-800 text-white;
+}
+
+.cta-container {
+  @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center;
+}
+
+.cta-title {
+  @apply text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6;
+}
+
+.cta-subtitle {
+  @apply text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-teal-100;
+}
+
+.cta-buttons {
+  @apply flex flex-col sm:flex-row gap-4 justify-center;
+}
+
+.cta-btn-primary {
+  @apply bg-green-600 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all transform hover:bg-green-700 hover:scale-105;
+}
+
+.cta-btn-secondary {
+  @apply border-2 border-white text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all hover:bg-white hover:text-teal-700;
+}

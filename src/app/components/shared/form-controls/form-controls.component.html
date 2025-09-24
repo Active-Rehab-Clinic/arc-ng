@@ -1,0 +1,108 @@
+<!-- Input Field -->
+<div class="mb-5" *ngIf="type === 'input'">
+  <label
+    [for]="inputId"
+    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+    [class.text-red-700]="hasError"
+    [class.dark:text-red-500]="hasError"
+  >
+    {{ label }}
+    <span *ngIf="required" class="text-red-500">*</span>
+  </label>
+  <input
+    [type]="inputType"
+    [id]="inputId"
+    [placeholder]="placeholder"
+    [disabled]="disabled"
+    [value]="value"
+    (input)="onInput($event)"
+    (blur)="onBlur()"
+    [class]="inputClasses"
+  />
+  <p
+    *ngIf="hasError && errorMessage"
+    class="mt-2 text-sm text-red-600 dark:text-red-500"
+  >
+    {{ errorMessage }}
+  </p>
+  <p
+    *ngIf="helpText && !hasError"
+    class="mt-2 text-sm text-gray-500 dark:text-gray-400"
+  >
+    {{ helpText }}
+  </p>
+</div>
+
+<!-- Textarea -->
+<div class="mb-5" *ngIf="type === 'textarea'">
+  <label
+    [for]="inputId"
+    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+    [class.text-red-700]="hasError"
+    [class.dark:text-red-500]="hasError"
+  >
+    {{ label }}
+    <span *ngIf="required" class="text-red-500">*</span>
+  </label>
+  <textarea
+    [id]="inputId"
+    [placeholder]="placeholder"
+    [disabled]="disabled"
+    [rows]="rows"
+    [value]="value"
+    (input)="onInput($event)"
+    (blur)="onBlur()"
+    [class]="inputClasses"
+  >
+  </textarea>
+  <p
+    *ngIf="hasError && errorMessage"
+    class="mt-2 text-sm text-red-600 dark:text-red-500"
+  >
+    {{ errorMessage }}
+  </p>
+  <p
+    *ngIf="helpText && !hasError"
+    class="mt-2 text-sm text-gray-500 dark:text-gray-400"
+  >
+    {{ helpText }}
+  </p>
+</div>
+
+<!-- Select -->
+<div class="mb-5" *ngIf="type === 'select'">
+  <label
+    [for]="inputId"
+    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+    [class.text-red-700]="hasError"
+    [class.dark:text-red-500]="hasError"
+  >
+    {{ label }}
+    <span *ngIf="required" class="text-red-500">*</span>
+  </label>
+  <select
+    [id]="inputId"
+    [disabled]="disabled"
+    [value]="value"
+    (change)="onInput($event)"
+    (blur)="onBlur()"
+    [class]="inputClasses"
+  >
+    <option value="" *ngIf="placeholder">{{ placeholder }}</option>
+    <option *ngFor="let option of options" [value]="option.value">
+      {{ option.label }}
+    </option>
+  </select>
+  <p
+    *ngIf="hasError && errorMessage"
+    class="mt-2 text-sm text-red-600 dark:text-red-500"
+  >
+    {{ errorMessage }}
+  </p>
+  <p
+    *ngIf="helpText && !hasError"
+    class="mt-2 text-sm text-gray-500 dark:text-gray-400"
+  >
+    {{ helpText }}
+  </p>
+</div>

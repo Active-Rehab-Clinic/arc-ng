@@ -1,0 +1,13 @@
+/* Card component styles */
+.card-content {
+  @apply text-gray-700 dark:text-gray-300;
+}
+
+/* Ensure proper spacing for nested elements */
+.card-content > *:first-child {
+  @apply mt-0;
+}
+
+.card-content > *:last-child {
+  @apply mb-0;
+}

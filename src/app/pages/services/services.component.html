@@ -1,0 +1,43 @@
+<div class="page-container">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">Our Specialized Services</h1>
+        <p class="hero-subtitle">Comprehensive rehabilitation solutions tailored to your unique needs</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="services-section">
+    <div class="container">
+      <div class="services-grid">
+        <div class="service-card" *ngFor="let service of services">
+          <div class="service-icon" [ngClass]="'service-icon-' + service.iconColor">
+            <span>{{ service.icon }}</span>
+          </div>
+          <h3 class="service-title">{{ service.title }}</h3>
+          <p class="service-description">{{ service.description }}</p>
+          <ul class="service-features">
+            <li *ngFor="let feature of service.features">{{ feature }}</li>
+          </ul>
+          <div class="service-price">{{ service.price }}</div>
+          <a routerLink="/book" class="service-btn">Book Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-container">
+      <h2 class="cta-title">Ready to Begin Your Recovery?</h2>
+      <p class="cta-subtitle">Schedule your initial consultation today and take the first step toward better health</p>
+      <div class="cta-buttons">
+        <a routerLink="/book" class="cta-btn-primary">Schedule Consultation</a>
+        <a routerLink="/contact" class="cta-btn-secondary">Contact Us</a>
+      </div>
+    </div>
+  </section>
+</div>
