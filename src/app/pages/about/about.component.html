@@ -49,22 +49,47 @@
   <section class="team-section">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">Meet Our Expert Team</h2>
-        <p class="section-subtitle">Experienced professionals dedicated to your recovery</p>
+        <h2 class="section-title">Meet Your Therapist</h2>
+        <p class="section-subtitle">Expert care with personalized attention</p>
       </div>
       
-      <div class="team-grid">
-        <div *ngFor="let member of aboutInfo.team" class="team-card">
-          <div class="team-avatar">
-            <span>{{ getInitials(member.name) }}</span>
+      <div class="founder-spotlight" *ngFor="let member of aboutInfo.team">
+        <div class="founder-card">
+          <div class="founder-image">
+            <div class="founder-avatar">
+              <span>{{ getInitials(member.name) }}</span>
+            </div>
+            <div class="founder-badge">Lead Therapist</div>
           </div>
-          <h3 class="team-name">{{ member.name }}</h3>
-          <p class="team-title">{{ member.title }}</p>
-          <p class="team-bio">{{ member.bio }}</p>
-          <div class="team-specialties">
-            <span *ngFor="let specialty of member.specialties" class="specialty-tag">
-              {{ specialty }}
-            </span>
+          
+          <div class="founder-content">
+            <h3 class="founder-name">{{ member.name }}</h3>
+            <p class="founder-title">{{ member.title }}</p>
+            <p class="founder-bio">{{ member.bio }}</p>
+            
+            <div class="founder-highlights">
+              <div class="highlight-item">
+                <span class="highlight-icon">🎓</span>
+                <span class="highlight-text">15+ Years Experience</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon">🏆</span>
+                <span class="highlight-text">Certified Professional</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon">❤️</span>
+                <span class="highlight-text">1000+ Patients Helped</span>
+              </div>
+            </div>
+            
+            <div class="founder-specialties">
+              <h4 class="specialties-title">Areas of Expertise</h4>
+              <div class="specialties-list">
+                <span *ngFor="let specialty of member.specialties" class="specialty-tag">
+                  {{ specialty }}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>

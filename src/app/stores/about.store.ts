@@ -36,31 +36,10 @@ export class AboutStore {
       team: [
         {
           id: '1',
-          name: 'Dr. Emily Johnson',
+          name: 'Dr. Raju Pal',
           title: 'Physical Therapist & Clinic Director',
           bio: '15+ years of experience in orthopedic and sports rehabilitation. Board-certified with advanced training in manual therapy techniques.',
           specialties: ['Orthopedic Rehabilitation', 'Sports Medicine', 'Manual Therapy']
-        },
-        {
-          id: '2',
-          name: 'Dr. Michael Chen',
-          title: 'Neurological Rehabilitation Specialist',
-          bio: 'Expert in stroke recovery and neurological conditions. Advanced certification in balance and coordination therapy with 12 years of experience.',
-          specialties: ['Neurological Therapy', 'Balance Training', 'Stroke Recovery']
-        },
-        {
-          id: '3',
-          name: 'Lisa Rodriguez',
-          title: 'Occupational Therapist',
-          bio: 'Dedicated to helping patients regain independence in daily activities. Specializes in workplace ergonomics and adaptive equipment training.',
-          specialties: ['Occupational Therapy', 'Workplace Ergonomics', 'Adaptive Equipment']
-        },
-        {
-          id: '4',
-          name: 'Dr. James Wilson',
-          title: 'Pain Management Specialist',
-          bio: 'Certified in advanced pain management techniques including dry needling and manual therapy. 10+ years helping patients overcome chronic pain.',
-          specialties: ['Pain Management', 'Dry Needling', 'Chronic Pain Treatment']
         }
       ]
     };
