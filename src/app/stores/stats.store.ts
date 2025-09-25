@@ -1,11 +1,5 @@
 import { Injectable } from '@angular/core';
-
-export interface Stat {
-  label: string;
-  value: string;
-  color: string;
-  description?: string;
-}
+import { Stat } from '@models/stat.model';
 
 @Injectable({
   providedIn: 'root'

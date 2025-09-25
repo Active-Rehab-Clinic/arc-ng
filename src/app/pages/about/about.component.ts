@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { AboutStore, AboutInfo } from '../../stores/about.store';
-import { StatsStore, Stat } from '../../stores/stats.store';
-import { MetaService } from '../../services/meta.service';
+import { AboutStore } from '../../stores/about.store';
+import { StatsStore } from '../../stores/stats.store';
+import { AboutInfo } from '@models/about.model';
+import { Stat } from '@models/stat.model';
+import { MetaService } from '@services/meta.service';
 
 @Component({
   selector: 'app-about',

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { ContactStore, ContactInfo } from '../../stores/contact.store';
-import { MetaService } from '../../services/meta.service';
+import { ContactStore } from '../../stores/contact.store';
+import { ContactInfo } from '@models/contact.model';
+import { MetaService } from '@services/meta.service';
 
 @Component({
   selector: 'app-contact',

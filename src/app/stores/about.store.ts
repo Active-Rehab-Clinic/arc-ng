@@ -1,20 +1,5 @@
 import { Injectable } from '@angular/core';
-
-export interface AboutInfo {
-  mission: string;
-  vision: string;
-  values: string[];
-  team: TeamMember[];
-}
-
-export interface TeamMember {
-  id: string;
-  name: string;
-  title: string;
-  bio: string;
-  image?: string;
-  specialties: string[];
-}
+import { AboutInfo } from '@models/about.model';
 
 @Injectable({
   providedIn: 'root'

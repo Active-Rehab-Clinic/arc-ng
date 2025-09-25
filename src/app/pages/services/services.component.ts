@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { ServicesStore, Service } from '../../stores/services.store';
+import { ServicesStore } from '../../stores/services.store';
+import { Service } from '@models/service.model';
 import { MetaService } from '../../services/meta.service';
 
 @Component({

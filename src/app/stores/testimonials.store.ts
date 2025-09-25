@@ -1,11 +1,5 @@
 import { Injectable } from '@angular/core';
-
-export interface Testimonial {
-  id: string;
-  name: string;
-  text: string;
-  rating: number;
-}
+import { Testimonial } from '@models/testimonial.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,32 +10,32 @@ export class TestimonialsStore {
     return [
       {
         id: '1',
-        name: 'Sarah M.',
-        text: 'The team at ARC helped me recover from my knee surgery faster than I ever imagined. Their personalized approach made all the difference.',
+        name: 'Priya Sharma',
+        text: 'After my accident, I was worried I would never walk properly again. The doctors at Active Rehab gave me hope and helped me recover completely. Very grateful to the entire team.',
         rating: 5
       },
       {
         id: '2',
-        name: 'Mike R.',
-        text: 'Professional, caring, and effective. I\'m back to playing tennis thanks to their excellent sports rehabilitation program.',
+        name: 'Rajesh Kumar',
+        text: 'My back pain was troubling me for months. The physiotherapy sessions here really worked wonders. Now I can play cricket with my children again!',
         rating: 5
       },
       {
         id: '3',
-        name: 'Janet L.',
-        text: 'After my stroke, I thought I\'d never walk normally again. The neurological therapy here gave me my life back.',
+        name: 'Sunita Devi',
+        text: 'The staff is very caring and understanding. They explained everything in Hindi which made me comfortable. My knee is much better now after the treatment.',
         rating: 5
       },
       {
         id: '4',
-        name: 'David K.',
-        text: 'Outstanding occupational therapy services. They helped me return to work after my accident with confidence.',
+        name: 'Amit Singh',
+        text: 'Excellent service and modern equipment. The therapists are well-trained and helped me get back to my office work without any pain. Highly recommend this clinic.',
         rating: 5
       },
       {
         id: '5',
-        name: 'Maria S.',
-        text: 'The pediatric therapy team worked wonders with my son. His progress has been remarkable.',
+        name: 'Meera Gupta',
+        text: 'My son had some developmental issues and the pediatric therapy here has shown amazing results. The doctors are patient and my child loves coming here.',
         rating: 5
       }
     ];

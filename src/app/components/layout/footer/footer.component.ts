@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ContactStore, ContactInfo } from '../../../stores/contact.store';
+import { ContactStore } from '../../../stores/contact.store';
+import { ContactInfo } from '@models/contact.model';
 import { BusinessHoursService, BusinessStatus } from '../../../services/business-hours.service';
 import { AnalyticsService } from '../../../services/analytics.service';
 

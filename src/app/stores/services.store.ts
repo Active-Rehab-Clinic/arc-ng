@@ -1,14 +1,5 @@
 import { Injectable } from '@angular/core';
-
-export interface Service {
-  id: string;
-  title: string;
-  description: string;
-  icon: string;
-  features: string[];
-  price: string;
-  iconColor: string;
-}
+import { Service } from '@models/service.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,86 +11,86 @@ export class ServicesStore {
       {
         id: 'orthopedic',
         title: 'Orthopedic Rehabilitation',
-        description: 'Specialized treatment for bone, joint, and muscle injuries including post-surgical recovery.',
+        description: 'Expert treatment for bone, joint and muscle problems. Helping you recover from surgery and injuries with modern techniques.',
         icon: '🦴',
         iconColor: 'blue',
         features: [
-          'Post-surgical rehabilitation',
-          'Joint replacement recovery',
-          'Fracture rehabilitation',
-          'Arthritis management'
+          'Post-surgery recovery support',
+          'Joint replacement rehabilitation',
+          'Fracture and injury treatment',
+          'Arthritis pain management'
         ],
-        price: '$120/session'
+        price: '₹800/session'
       },
       {
         id: 'neurological',
         title: 'Neurological Therapy',
-        description: 'Expert care for neurological conditions and brain injury recovery programs.',
+        description: 'Specialized care for brain and nerve related conditions. Our experienced therapists help restore your movement and independence.',
         icon: '🧠',
         iconColor: 'green',
         features: [
-          'Stroke rehabilitation',
-          'Parkinson\'s disease therapy',
-          'Multiple sclerosis support',
-          'Balance and coordination training'
+          'Stroke recovery programs',
+          'Parkinson\'s disease management',
+          'Balance and walking training',
+          'Memory and cognitive support'
         ],
-        price: '$150/session'
+        price: '₹1000/session'
       },
       {
         id: 'sports',
         title: 'Sports Medicine',
-        description: 'Performance optimization and injury prevention for athletes of all levels.',
+        description: 'Get back to your favorite sports safely. Whether cricket, football or gym - we help athletes of all levels recover and perform better.',
         icon: '💪',
         iconColor: 'purple',
         features: [
-          'Sports injury treatment',
-          'Performance enhancement',
-          'Injury prevention programs',
-          'Return-to-sport protocols'
+          'Cricket and sports injury care',
+          'Fitness and performance boost',
+          'Injury prevention guidance',
+          'Safe return to sports programs'
         ],
-        price: '$140/session'
+        price: '₹900/session'
       },
       {
         id: 'occupational',
         title: 'Occupational Therapy',
-        description: 'Improve daily living skills and workplace functionality for independent living.',
+        description: 'Learn to manage daily activities with confidence. We help you return to work and home tasks after injury or illness.',
         icon: '🏠',
         iconColor: 'orange',
         features: [
-          'Daily living skills training',
-          'Workplace ergonomics',
-          'Adaptive equipment training',
-          'Cognitive rehabilitation'
+          'Daily routine training',
+          'Office ergonomics guidance',
+          'Assistive device training',
+          'Hand and finger exercises'
         ],
-        price: '$110/session'
+        price: '₹700/session'
       },
       {
         id: 'pediatric',
         title: 'Pediatric Therapy',
-        description: 'Specialized rehabilitation services designed specifically for children and adolescents.',
+        description: 'Gentle, caring treatment for children. Our child-friendly approach helps kids develop properly and reach their milestones.',
         icon: '👶',
         iconColor: 'pink',
         features: [
-          'Developmental delays',
+          'Child development support',
           'Cerebral palsy treatment',
-          'Autism spectrum support',
-          'School-based therapy'
+          'Learning disability help',
+          'School readiness programs'
         ],
-        price: '$130/session'
+        price: '₹850/session'
       },
       {
         id: 'pain',
         title: 'Pain Management',
-        description: 'Comprehensive pain relief strategies using evidence-based treatment approaches.',
+        description: 'Effective relief from chronic pain without heavy medicines. Natural healing methods to help you live comfortably again.',
         icon: '🎯',
         iconColor: 'red',
         features: [
-          'Chronic pain treatment',
+          'Chronic pain relief',
           'Manual therapy techniques',
-          'Dry needling therapy',
-          'Pain education programs'
+          'Dry needling treatment',
+          'Pain education and lifestyle tips'
         ],
-        price: '$125/session'
+        price: '₹750/session'
       }
     ];
   }

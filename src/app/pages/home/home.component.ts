@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MetaService } from '../../services/meta.service';
 import { AnalyticsService } from '../../services/analytics.service';
+import { TestimonialsStore } from '../../stores/testimonials.store';
+import { Testimonial } from '@models/testimonial.model';
 
 @Component({
   selector: 'app-home',
@@ -12,10 +14,15 @@ import { AnalyticsService } from '../../services/analytics.service';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit {
+  testimonials: Testimonial[];
+
   constructor(
     private metaService: MetaService,
-    private analyticsService: AnalyticsService
-  ) {}
+    private analyticsService: AnalyticsService,
+    private testimonialsStore: TestimonialsStore
+  ) {
+    this.testimonials = this.testimonialsStore.getTestimonials().slice(0, 3);
+  }
 
   ngOnInit(): void {
     this.metaService.setPageMeta(

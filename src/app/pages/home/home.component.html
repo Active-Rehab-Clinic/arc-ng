@@ -139,28 +139,12 @@
       </div>
       
       <div class="testimonials-grid">
-        <div class="testimonial-card">
+        <div *ngFor="let testimonial of testimonials" class="testimonial-card">
           <div class="testimonial-stars">
-            <span>⭐⭐⭐⭐⭐</span>
+            <span>{{ '⭐'.repeat(testimonial.rating) }}</span>
           </div>
-          <p class="testimonial-text">"The team at ARC helped me recover from my knee surgery faster than I ever imagined. Their personalized approach made all the difference."</p>
-          <div class="testimonial-author">- Sarah M.</div>
-        </div>
-        
-        <div class="testimonial-card">
-          <div class="testimonial-stars">
-            <span>⭐⭐⭐⭐⭐</span>
-          </div>
-          <p class="testimonial-text">"Professional, caring, and effective. I'm back to playing tennis thanks to their excellent sports rehabilitation program."</p>
-          <div class="testimonial-author">- Mike R.</div>
-        </div>
-        
-        <div class="testimonial-card">
-          <div class="testimonial-stars">
-            <span>⭐⭐⭐⭐⭐</span>
-          </div>
-          <p class="testimonial-text">"After my stroke, I thought I'd never walk normally again. The neurological therapy here gave me my life back."</p>
-          <div class="testimonial-author">- Janet L.</div>
+          <p class="testimonial-text">"{{ testimonial.text }}"</p>
+          <div class="testimonial-author">- {{ testimonial.name }}</div>
         </div>
       </div>
     </div>
