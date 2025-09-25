@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { MetaService } from '../../../services/meta.service';
 
 @Component({
     selector: 'app-register',
@@ -22,4 +23,13 @@ import { RouterModule } from '@angular/router';
     </div>
   `
 })
-export class RegisterComponent {}
+export class RegisterComponent implements OnInit {
+  constructor(private metaService: MetaService) {}
+
+  ngOnInit(): void {
+    this.metaService.setPageMeta(
+      'Register',
+      'Create your patient account to book appointments, access medical records, and manage your physiotherapy treatments online.'
+    );
+  }
+}

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ThemeService } from '../../../services/theme.service';
+import { AnalyticsService } from '../../../services/analytics.service';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +15,10 @@ export class HeaderComponent {
   isDarkMode$;
   isMobileMenuOpen = false;
 
-  constructor(private themeService: ThemeService) {
+  constructor(
+    private themeService: ThemeService,
+    private analyticsService: AnalyticsService
+  ) {
     this.isDarkMode$ = this.themeService.isDarkMode$;
   }
 
@@ -24,5 +28,9 @@ export class HeaderComponent {
 
   toggleMobileMenu(): void {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
+
+  onBookAppointmentClick(): void {
+    this.analyticsService.trackBookAppointment();
   }
 }

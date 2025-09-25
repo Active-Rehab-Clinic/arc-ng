@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { MetaService } from '../../../services/meta.service';
 
 @Component({
     selector: 'app-login',
@@ -25,4 +26,13 @@ import { RouterModule } from '@angular/router';
     </div>
   `
 })
-export class LoginComponent {}
+export class LoginComponent implements OnInit {
+  constructor(private metaService: MetaService) {}
+
+  ngOnInit(): void {
+    this.metaService.setPageMeta(
+      'Patient Login',
+      'Login to your patient account to view appointments, medical records, and manage your physiotherapy treatments.'
+    );
+  }
+}

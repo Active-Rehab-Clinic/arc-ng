@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AboutStore, AboutInfo } from '../../stores/about.store';
 import { StatsStore, Stat } from '../../stores/stats.store';
+import { MetaService } from '../../services/meta.service';
 
 @Component({
   selector: 'app-about',
@@ -11,16 +12,24 @@ import { StatsStore, Stat } from '../../stores/stats.store';
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss'
 })
-export class AboutComponent {
+export class AboutComponent implements OnInit {
   aboutInfo: AboutInfo;
   stats: Stat[];
 
   constructor(
     private aboutStore: AboutStore,
-    private statsStore: StatsStore
+    private statsStore: StatsStore,
+    private metaService: MetaService
   ) {
     this.aboutInfo = this.aboutStore.getAboutInfo();
     this.stats = this.statsStore.getStats();
+  }
+
+  ngOnInit(): void {
+    this.metaService.setPageMeta(
+      'About Us',
+      'Learn about our experienced physiotherapy team, clinic history, and commitment to providing exceptional patient care and rehabilitation services.'
+    );
   }
 
   getInitials(name: string): string {

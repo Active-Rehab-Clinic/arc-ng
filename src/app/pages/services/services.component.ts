@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ServicesStore, Service } from '../../stores/services.store';
+import { MetaService } from '../../services/meta.service';
 
 @Component({
   selector: 'app-services',
@@ -10,10 +11,20 @@ import { ServicesStore, Service } from '../../stores/services.store';
   templateUrl: './services.component.html',
   styleUrl: './services.component.scss'
 })
-export class ServicesComponent {
+export class ServicesComponent implements OnInit {
   services: Service[];
 
-  constructor(private servicesStore: ServicesStore) {
+  constructor(
+    private servicesStore: ServicesStore,
+    private metaService: MetaService
+  ) {
     this.services = this.servicesStore.getServices();
+  }
+
+  ngOnInit(): void {
+    this.metaService.setPageMeta(
+      'Services',
+      'Comprehensive physiotherapy services including sports injury treatment, rehabilitation, manual therapy, and wellness programs.'
+    );
   }
 }

@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { MetaService } from '../../../services/meta.service';
 
 @Component({
     selector: 'app-staff-login',
@@ -22,4 +23,13 @@ import { RouterModule } from '@angular/router';
     </div>
   `
 })
-export class StaffLoginComponent {}
+export class StaffLoginComponent implements OnInit {
+  constructor(private metaService: MetaService) {}
+
+  ngOnInit(): void {
+    this.metaService.setPageMeta(
+      'Staff Login',
+      'Staff portal login for physiotherapists and clinic administrators to access patient records and manage appointments.'
+    );
+  }
+}

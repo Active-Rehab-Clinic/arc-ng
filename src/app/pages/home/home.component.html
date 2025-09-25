@@ -12,10 +12,10 @@
         </p>
         <p class="hero-trust">Trusted by 1000+ patients • Award-winning care</p>
         <div class="hero-buttons">
-          <a routerLink="/book" class="btn-primary">
+          <a routerLink="/book" (click)="onBookAppointmentClick()" class="btn-primary">
             📅 Book Appointment
           </a>
-          <a routerLink="/services" class="btn-secondary">
+          <a routerLink="/services" (click)="onExploreServicesClick()" class="btn-secondary">
             🔍 Explore Services
           </a>
         </div>
@@ -172,10 +172,10 @@
       <h2 class="cta-title">Ready to Start Your Recovery Journey?</h2>
       <p class="cta-subtitle">Take the first step towards a healthier, more active life</p>
       <div class="cta-buttons">
-        <a routerLink="/book" class="cta-btn-primary">
+        <a routerLink="/book" (click)="onScheduleConsultationClick()" class="cta-btn-primary">
           Schedule Consultation
         </a>
-        <a routerLink="/contact" class="cta-btn-secondary">
+        <a routerLink="/contact" (click)="onContactUsClick()" class="cta-btn-secondary">
           Contact Us
         </a>
       </div>

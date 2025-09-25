@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ContactStore, ContactInfo } from '../../../stores/contact.store';
 import { BusinessHoursService, BusinessStatus } from '../../../services/business-hours.service';
+import { AnalyticsService } from '../../../services/analytics.service';
 
 @Component({
   selector: 'app-footer',
@@ -18,9 +19,18 @@ export class FooterComponent {
 
   constructor(
     private contactStore: ContactStore,
-    private businessHoursService: BusinessHoursService
+    private businessHoursService: BusinessHoursService,
+    private analyticsService: AnalyticsService
   ) {
     this.contactInfo = this.contactStore.getContactInfo();
     this.businessStatus$ = this.businessHoursService.businessStatus$;
+  }
+
+  onCallClick(): void {
+    this.analyticsService.trackCallButton();
+  }
+
+  onBookAppointmentClick(): void {
+    this.analyticsService.trackBookAppointment();
   }
 }
