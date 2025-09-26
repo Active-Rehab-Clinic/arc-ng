@@ -4,7 +4,9 @@
     <div class="container">
       <div class="hero-content">
         <h1 class="hero-title">Book Your Appointment</h1>
-        <p class="hero-subtitle">Schedule your rehabilitation session with our expert team</p>
+        <p class="hero-subtitle">
+          Schedule your rehabilitation session with our expert team
+        </p>
       </div>
     </div>
   </section>
@@ -22,49 +24,163 @@
                 <span>📝</span>
               </div>
               <h3 class="instruction-title">Fill the Form</h3>
-              <p class="instruction-text">Complete the appointment form below with your details</p>
+              <p class="instruction-text">
+                Complete the appointment form below with your details
+              </p>
             </div>
             <div class="instruction-item">
               <div class="instruction-icon">
                 <span>📞</span>
               </div>
               <h3 class="instruction-title">We'll Call You</h3>
-              <p class="instruction-text">Our team will contact you within 24 hours to confirm</p>
+              <p class="instruction-text">
+                Our team will contact you within 24 hours to confirm
+              </p>
             </div>
             <div class="instruction-item">
               <div class="instruction-icon">
                 <span>🏥</span>
               </div>
               <h3 class="instruction-title">Visit Our Clinic</h3>
-              <p class="instruction-text">Come to your scheduled appointment for treatment</p>
+              <p class="instruction-text">
+                Come to your scheduled appointment for treatment
+              </p>
             </div>
           </div>
         </div>
 
-        <!-- Google Form Embed -->
+        <!-- Appointment Form -->
         <div class="form-container">
           <h2 class="form-title">Appointment Request Form</h2>
-          <div class="form-embed">
-            <!-- Replace with your actual Google Form embed URL -->
-            <iframe 
-              src="https://docs.google.com/forms/d/e/1FAIpQLSeHUHwAKpZ1lsgygWJKB7556AuWJHkwDMWBomeNQGQC-NcL3w/viewform?embedded=true" 
-              class="google-form"
-              frameborder="0" 
-              marginheight="0" 
-              marginwidth="0">
-              Loading…
-            </iframe>
-          </div>
-          
+          <form
+            [formGroup]="appointmentForm"
+            (ngSubmit)="onSubmit()"
+            class="appointment-form"
+          >
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="name" class="form-label">Full Name *</label>
+                <input
+                  type="text"
+                  id="name"
+                  formControlName="name"
+                  class="form-input placeholder-gray-400"
+                  placeholder="Enter your full name"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="email" class="form-label">Email Address *</label>
+                <input
+                  type="email"
+                  id="email"
+                  formControlName="email"
+                  class="form-input placeholder-gray-400"
+                  placeholder="your.email@example.com"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="phone" class="form-label">Phone Number *</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  formControlName="phone"
+                  class="form-input placeholder-gray-400"
+                  placeholder="+91 99999-99999"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="service" class="form-label"
+                  >Service Required *</label
+                >
+                <select
+                  id="service"
+                  formControlName="service"
+                  class="form-select placeholder-gray-400"
+                >
+                  <option value="">Select a service</option>
+                  <option *ngFor="let service of services" [value]="service.id">
+                    {{ service.title }}
+                  </option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="preferredDate" class="form-label"
+                  >Preferred Date *</label
+                >
+                <input
+                  type="date"
+                  id="preferredDate"
+                  formControlName="preferredDate"
+                  class="form-input placeholder-gray-400"
+                  [min]="minDate()"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="preferredTime" class="form-label"
+                  >Preferred Time *</label
+                >
+                <select
+                  id="preferredTime"
+                  formControlName="preferredTime"
+                  class="form-select placeholder-gray-400"
+                >
+                  <option value="">Select time</option>
+                  <option *ngFor="let slot of timeSlots" [value]="slot.value">
+                    {{ slot.label }}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="message" class="form-label">Additional Message</label>
+              <textarea
+                id="message"
+                formControlName="message"
+                class="form-textarea placeholder-gray-400"
+                rows="4"
+                placeholder="Any specific concerns or requirements..."
+              ></textarea>
+            </div>
+
+            <div class="form-actions">
+              <button
+                type="submit"
+                [disabled]="appointmentForm.invalid || isSubmitting()"
+                class="submit-btn"
+              >
+                <span *ngIf="!isSubmitting()">📅 Book Appointment</span>
+                <span *ngIf="isSubmitting()">⏳ Submitting...</span>
+              </button>
+            </div>
+
+            <div
+              *ngIf="submitMessage()"
+              class="submit-message"
+              [class.success]="submitSuccess()"
+              [class.error]="!submitSuccess()"
+            >
+              {{ submitMessage() }}
+            </div>
+          </form>
+
           <!-- Alternative Contact Methods -->
           <div class="alternative-contact">
             <h3 class="contact-title">Prefer to Call?</h3>
             <p class="contact-text">You can also book by calling us directly</p>
             <div class="contact-buttons">
-              <a href="tel:+918505851951" class="contact-btn-primary">
-                📞 Call Now: +91 85058 51951
+              <a [href]="'tel:' + contactInfo.phone" class="contact-btn-primary">
+                📞 Call Now: {{ contactInfo.phone }}
               </a>
-              <a href="mailto:activerehabc@gmail.com" class="contact-btn-secondary">
+              <a
+                [href]="'mailto:' + contactInfo.email"
+                class="contact-btn-secondary"
+              >
                 ✉️ Email Us
               </a>
             </div>
@@ -84,9 +200,10 @@
         <div class="emergency-content">
           <h3 class="emergency-title">Need Urgent Care?</h3>
           <p class="emergency-text">
-            For urgent rehabilitation needs or emergency consultations, call us immediately.
+            For urgent rehabilitation needs or emergency consultations, call us
+            immediately.
           </p>
-          <a href="tel:+918505851951" class="emergency-btn">
+          <a [href]="'tel:' + contactInfo.phone" class="emergency-btn">
             Call Emergency Line
           </a>
         </div>

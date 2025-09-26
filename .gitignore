@@ -40,3 +40,35 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Environment files
+/src/environments/environment.ts
+/src/environments/environment.prod.ts
+.env
+.env.local
+.env.production
+
+# Firebase
+.firebase
+.firebaserc
+firebase-debug.log
+firestore-debug.log
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# AI Configuration
+.amazonq/
+.cursor/
+.copilot/
+.codeium/
+.tabnine/
+.ai/
+*.ai-config
+.anthropic/
+.openai/
+.gemini/
+.kiro/

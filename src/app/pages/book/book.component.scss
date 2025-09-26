@@ -1,3 +1,32 @@
+// Global placeholder styling
+input::placeholder,
+select::placeholder,
+textarea::placeholder {
+  color: #9ca3af !important;
+  opacity: 1 !important;
+}
+
+input::-webkit-input-placeholder,
+select::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: #9ca3af !important;
+  opacity: 1 !important;
+}
+
+input::-moz-placeholder,
+select::-moz-placeholder,
+textarea::-moz-placeholder {
+  color: #9ca3af !important;
+  opacity: 1 !important;
+}
+
+input:-ms-input-placeholder,
+select:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: #9ca3af !important;
+  opacity: 1 !important;
+}
+
 // Page Container
 .page-container {
   @apply min-h-screen;
@@ -75,12 +104,77 @@
   @apply text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8 text-gray-900 dark:text-gray-100;
 }
 
-.form-embed {
-  @apply mb-8 sm:mb-12;
+// Form Styles
+.appointment-form {
+  @apply space-y-6;
 }
 
-.google-form {
-  @apply w-full h-96 sm:h-[600px] md:h-[700px] rounded-lg border border-gray-200 dark:border-gray-600;
+.form-grid {
+  @apply grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2;
+}
+
+.form-group {
+  @apply space-y-2;
+}
+
+.form-group.full-width {
+  @apply md:col-span-2;
+}
+
+.form-label {
+  @apply block text-sm font-medium text-gray-700 dark:text-gray-300;
+}
+
+.form-input, .form-select {
+  @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 dark:bg-gray-700 dark:border-gray-600;
+  color: #374151 !important;
+  
+  &::placeholder {
+    color: #9ca3af !important;
+    opacity: 0.7 !important;
+  }
+  
+  &:invalid {
+    color: #9ca3af !important;
+  }
+  
+  option {
+    color: #374151 !important;
+    
+    &:first-child {
+      color: #9ca3af !important;
+    }
+  }
+}
+
+.form-textarea {
+  @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 resize-none dark:bg-gray-700 dark:border-gray-600;
+  color: #374151 !important;
+  
+  &::placeholder {
+    color: #9ca3af !important;
+    opacity: 0.7 !important;
+  }
+}
+
+.form-actions {
+  @apply mt-6 sm:mt-8;
+}
+
+.submit-btn {
+  @apply w-full bg-teal-600 text-white py-3 px-6 rounded-lg font-semibold transition-all hover:bg-teal-700 disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.submit-message {
+  @apply mt-4 p-4 rounded-lg text-sm font-medium;
+}
+
+.submit-message.success {
+  @apply bg-green-100 text-green-800 border border-green-200 dark:bg-green-900/20 dark:text-green-400 dark:border-green-800;
+}
+
+.submit-message.error {
+  @apply bg-red-100 text-red-800 border border-red-200 dark:bg-red-900/20 dark:text-red-400 dark:border-red-800;
 }
 
 // Alternative Contact
