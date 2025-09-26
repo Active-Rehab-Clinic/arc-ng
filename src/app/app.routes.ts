@@ -54,6 +54,7 @@ export const routes: Routes = [
           import('./pages/auth/patient-dashboard/patient-dashboard.component').then(
             (m) => m.PatientDashboardComponent
           ),
+        canActivate: [() => import('./guards/auth.guard').then(m => m.roleGuard(['patient']))]
       },
       {
         path: 'staff',
@@ -61,6 +62,7 @@ export const routes: Routes = [
           import('./pages/auth/staff-dashboard/staff-dashboard.component').then(
             (m) => m.StaffDashboardComponent
           ),
+        canActivate: [() => import('./guards/auth.guard').then(m => m.roleGuard(['staff']))]
       },
       {
         path: 'admin',
@@ -68,6 +70,7 @@ export const routes: Routes = [
           import('./pages/auth/admin-dashboard/admin-dashboard.component').then(
             (m) => m.AdminDashboardComponent
           ),
+        canActivate: [() => import('./guards/auth.guard').then(m => m.roleGuard(['admin']))]
       },
       { path: '', redirectTo: 'login', pathMatch: 'full' }
     ]
