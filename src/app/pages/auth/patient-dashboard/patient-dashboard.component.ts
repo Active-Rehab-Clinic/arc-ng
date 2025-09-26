@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-patient-dashboard',
@@ -9,9 +10,5 @@ import { CommonModule } from '@angular/common';
   styleUrl: './patient-dashboard.component.scss'
 })
 export class PatientDashboardComponent {
-  patientData = {
-    name: 'John Doe',
-    nextAppointment: '2024-01-15 10:00 AM',
-    treatmentPlan: 'Orthopedic Rehabilitation'
-  };
+  constructor(public authService: AuthService) {}
 }
