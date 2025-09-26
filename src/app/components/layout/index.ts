@@ -2,4 +2,3 @@
 export { HeaderComponent } from './header/header.component';
 export { FooterComponent } from './footer/footer.component';
 export { SidebarComponent } from './sidebar/sidebar.component';
-export { NavigationComponent } from './navigation/navigation.component';
