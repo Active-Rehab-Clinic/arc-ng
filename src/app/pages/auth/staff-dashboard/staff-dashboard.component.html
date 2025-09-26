@@ -1,0 +1,72 @@
+<div class="min-h-screen bg-gray-50 p-6">
+  <div class="max-w-7xl mx-auto">
+    <h1 class="text-3xl font-bold text-gray-900 mb-8">Staff Dashboard</h1>
+    
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+      <div class="bg-white rounded-lg shadow p-6">
+        <h3 class="text-sm font-medium text-gray-500">Today's Appointments</h3>
+        <p class="text-2xl font-bold text-blue-600">{{ todayAppointments.length }}</p>
+      </div>
+      
+      <div class="bg-white rounded-lg shadow p-6">
+        <h3 class="text-sm font-medium text-gray-500">Pending Reviews</h3>
+        <p class="text-2xl font-bold text-orange-600">5</p>
+      </div>
+      
+      <div class="bg-white rounded-lg shadow p-6">
+        <h3 class="text-sm font-medium text-gray-500">Completed Today</h3>
+        <p class="text-2xl font-bold text-green-600">8</p>
+      </div>
+      
+      <div class="bg-white rounded-lg shadow p-6">
+        <h3 class="text-sm font-medium text-gray-500">Messages</h3>
+        <p class="text-2xl font-bold text-purple-600">3</p>
+      </div>
+    </div>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="bg-white rounded-lg shadow">
+        <div class="p-6 border-b">
+          <h3 class="text-lg font-semibold">Today's Schedule</h3>
+        </div>
+        <div class="p-6">
+          <div class="space-y-4">
+            <div *ngFor="let appointment of todayAppointments" class="flex justify-between items-center p-3 bg-gray-50 rounded">
+              <div>
+                <p class="font-medium">{{ appointment.patient }}</p>
+                <p class="text-sm text-gray-600">{{ appointment.service }}</p>
+              </div>
+              <span class="text-sm font-medium text-blue-600">{{ appointment.time }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="bg-white rounded-lg shadow">
+        <div class="p-6 border-b">
+          <h3 class="text-lg font-semibold">Quick Actions</h3>
+        </div>
+        <div class="p-6">
+          <div class="grid grid-cols-2 gap-4">
+            <button class="p-4 bg-blue-50 hover:bg-blue-100 rounded-lg text-center">
+              <div class="text-2xl mb-2">📅</div>
+              <div class="text-sm font-medium">View Schedule</div>
+            </button>
+            <button class="p-4 bg-green-50 hover:bg-green-100 rounded-lg text-center">
+              <div class="text-2xl mb-2">👥</div>
+              <div class="text-sm font-medium">Patient Records</div>
+            </button>
+            <button class="p-4 bg-purple-50 hover:bg-purple-100 rounded-lg text-center">
+              <div class="text-2xl mb-2">📊</div>
+              <div class="text-sm font-medium">Reports</div>
+            </button>
+            <button class="p-4 bg-orange-50 hover:bg-orange-100 rounded-lg text-center">
+              <div class="text-2xl mb-2">💬</div>
+              <div class="text-sm font-medium">Messages</div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

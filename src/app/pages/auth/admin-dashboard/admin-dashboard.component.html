@@ -1,0 +1,76 @@
+<div class="min-h-screen bg-gray-50 p-6">
+  <div class="max-w-7xl mx-auto">
+    <h1 class="text-3xl font-bold text-gray-900 mb-8">Admin Dashboard</h1>
+    
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+      <div class="bg-white rounded-lg shadow p-6">
+        <h3 class="text-sm font-medium text-gray-500">Total Patients</h3>
+        <p class="text-2xl font-bold text-blue-600">{{ systemStats.totalPatients }}</p>
+      </div>
+      
+      <div class="bg-white rounded-lg shadow p-6">
+        <h3 class="text-sm font-medium text-gray-500">Staff Members</h3>
+        <p class="text-2xl font-bold text-green-600">{{ systemStats.totalStaff }}</p>
+      </div>
+      
+      <div class="bg-white rounded-lg shadow p-6">
+        <h3 class="text-sm font-medium text-gray-500">Monthly Revenue</h3>
+        <p class="text-2xl font-bold text-purple-600">₹{{ systemStats.monthlyRevenue | number }}</p>
+      </div>
+      
+      <div class="bg-white rounded-lg shadow p-6">
+        <h3 class="text-sm font-medium text-gray-500">Today's Appointments</h3>
+        <p class="text-2xl font-bold text-orange-600">{{ systemStats.appointmentsToday }}</p>
+      </div>
+    </div>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div class="lg:col-span-2 bg-white rounded-lg shadow">
+        <div class="p-6 border-b">
+          <h3 class="text-lg font-semibold">System Management</h3>
+        </div>
+        <div class="p-6">
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <button class="p-4 bg-blue-50 hover:bg-blue-100 rounded-lg text-center">
+              <div class="text-2xl mb-2">👥</div>
+              <div class="text-sm font-medium">Manage Users</div>
+            </button>
+            <button class="p-4 bg-green-50 hover:bg-green-100 rounded-lg text-center">
+              <div class="text-2xl mb-2">📊</div>
+              <div class="text-sm font-medium">Analytics</div>
+            </button>
+            <button class="p-4 bg-purple-50 hover:bg-purple-100 rounded-lg text-center">
+              <div class="text-2xl mb-2">💰</div>
+              <div class="text-sm font-medium">Billing</div>
+            </button>
+            <button class="p-4 bg-orange-50 hover:bg-orange-100 rounded-lg text-center">
+              <div class="text-2xl mb-2">⚙️</div>
+              <div class="text-sm font-medium">Settings</div>
+            </button>
+            <button class="p-4 bg-red-50 hover:bg-red-100 rounded-lg text-center">
+              <div class="text-2xl mb-2">🔒</div>
+              <div class="text-sm font-medium">Security</div>
+            </button>
+            <button class="p-4 bg-indigo-50 hover:bg-indigo-100 rounded-lg text-center">
+              <div class="text-2xl mb-2">📋</div>
+              <div class="text-sm font-medium">Reports</div>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="bg-white rounded-lg shadow">
+        <div class="p-6 border-b">
+          <h3 class="text-lg font-semibold">Recent Activities</h3>
+        </div>
+        <div class="p-6">
+          <div class="space-y-3">
+            <div *ngFor="let activity of recentActivities" class="text-sm text-gray-600 p-2 bg-gray-50 rounded">
+              {{ activity }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

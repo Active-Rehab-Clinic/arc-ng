@@ -3,9 +3,14 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   // Public routes
   {
-    path: '',
+    path: 'home',
     loadComponent: () =>
       import('./pages/home/home.component').then((m) => m.HomeComponent),
+  },
+  {
+    path: '',
+    redirectTo: '/home',
+    pathMatch: 'full'
   },
   {
     path: 'services',
@@ -34,27 +39,40 @@ export const routes: Routes = [
 
   // Auth routes
   {
-    path: 'login',
-    loadComponent: () =>
-      import('./pages/auth/login/login.component').then(
-        (m) => m.LoginComponent
-      ),
-  },
-  {
-    path: 'register',
-    loadComponent: () =>
-      import('./pages/auth/register/register.component').then(
-        (m) => m.RegisterComponent
-      ),
-  },
-  {
-    path: 'staff/login',
-    loadComponent: () =>
-      import('./pages/auth/staff-login/staff-login.component').then(
-        (m) => m.StaffLoginComponent
-      ),
+    path: 'auth',
+    children: [
+      {
+        path: 'login',
+        loadComponent: () =>
+          import('./pages/auth/login/login.component').then(
+            (m) => m.LoginComponent
+          ),
+      },
+      {
+        path: 'patient',
+        loadComponent: () =>
+          import('./pages/auth/patient-dashboard/patient-dashboard.component').then(
+            (m) => m.PatientDashboardComponent
+          ),
+      },
+      {
+        path: 'staff',
+        loadComponent: () =>
+          import('./pages/auth/staff-dashboard/staff-dashboard.component').then(
+            (m) => m.StaffDashboardComponent
+          ),
+      },
+      {
+        path: 'admin',
+        loadComponent: () =>
+          import('./pages/auth/admin-dashboard/admin-dashboard.component').then(
+            (m) => m.AdminDashboardComponent
+          ),
+      },
+      { path: '', redirectTo: 'login', pathMatch: 'full' }
+    ]
   },
 
   // Fallback
-  { path: '**', redirectTo: '/' },
+  { path: '**', redirectTo: '/home' },
 ];

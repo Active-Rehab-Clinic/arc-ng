@@ -1,0 +1,42 @@
+<div class="min-h-screen bg-gray-50 p-6">
+  <div class="max-w-7xl mx-auto">
+    <h1 class="text-3xl font-bold text-gray-900 mb-8">Patient Dashboard</h1>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-white rounded-lg shadow p-6">
+        <h2 class="text-xl font-semibold mb-4">Welcome, {{ patientData.name }}</h2>
+        <p class="text-gray-600">Manage your appointments and view treatment progress</p>
+      </div>
+      
+      <div class="bg-white rounded-lg shadow p-6">
+        <h3 class="text-lg font-semibold mb-2">Next Appointment</h3>
+        <p class="text-blue-600">{{ patientData.nextAppointment }}</p>
+      </div>
+      
+      <div class="bg-white rounded-lg shadow p-6">
+        <h3 class="text-lg font-semibold mb-2">Treatment Plan</h3>
+        <p class="text-green-600">{{ patientData.treatmentPlan }}</p>
+      </div>
+    </div>
+    
+    <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-white rounded-lg shadow p-6">
+        <h3 class="text-lg font-semibold mb-4">Quick Actions</h3>
+        <div class="space-y-2">
+          <button class="w-full text-left px-4 py-2 bg-blue-50 hover:bg-blue-100 rounded">Book New Appointment</button>
+          <button class="w-full text-left px-4 py-2 bg-blue-50 hover:bg-blue-100 rounded">View Medical Records</button>
+          <button class="w-full text-left px-4 py-2 bg-blue-50 hover:bg-blue-100 rounded">Update Profile</button>
+        </div>
+      </div>
+      
+      <div class="bg-white rounded-lg shadow p-6">
+        <h3 class="text-lg font-semibold mb-4">Recent Activity</h3>
+        <div class="space-y-2 text-sm text-gray-600">
+          <p>• Appointment completed - Jan 10, 2024</p>
+          <p>• Exercise plan updated - Jan 8, 2024</p>
+          <p>• Payment processed - Jan 5, 2024</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
