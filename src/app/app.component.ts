@@ -11,5 +11,5 @@ import { FooterComponent } from './components/layout/footer/footer.component';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'arc-ng';
+  title = 'Active Rehab Clinic';
 }
