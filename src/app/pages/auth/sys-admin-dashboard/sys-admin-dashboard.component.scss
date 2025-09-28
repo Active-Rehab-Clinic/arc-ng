@@ -7,19 +7,31 @@
 }
 
 .dashboard-header {
-  @apply flex justify-between items-start mb-8;
+  @apply flex justify-between items-center mb-8;
 }
 
 .dashboard-title {
   @apply text-3xl font-bold text-gray-900;
 }
 
-.dashboard-subtitle {
-  @apply text-lg text-gray-600 mt-1;
-}
-
 .logout-btn {
   @apply bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-medium transition-colors;
+}
+
+.admin-actions {
+  @apply mb-6 flex gap-4;
+}
+
+.action-btn {
+  @apply text-white px-4 py-2 rounded-lg font-medium transition-colors;
+}
+
+.action-btn-blue {
+  @apply bg-blue-600 hover:bg-blue-700;
+}
+
+.action-btn-green {
+  @apply bg-green-600 hover:bg-green-700;
 }
 
 .stats-grid {
@@ -62,32 +74,16 @@
   @apply text-lg font-semibold;
 }
 
-.section-subtitle {
-  @apply text-sm text-gray-600 mt-1;
-}
-
 .section-content {
   @apply p-6;
 }
 
 .loading-message {
-  @apply text-center py-8 text-gray-500;
+  @apply text-center py-4 text-gray-500;
 }
 
 .empty-message {
-  @apply text-center py-12;
-}
-
-.empty-icon {
-  @apply text-4xl mb-4;
-}
-
-.empty-title {
-  @apply text-lg font-semibold text-gray-900 mb-2;
-}
-
-.empty-text {
-  @apply text-gray-600;
+  @apply text-center py-8 text-gray-500;
 }
 
 .data-table {
@@ -136,10 +132,54 @@
   @apply inline-flex px-2 py-1 text-xs font-semibold rounded-full;
 }
 
-.message-text {
-  @apply text-sm text-gray-700 max-w-xs truncate block;
+.form-section {
+  @apply bg-white rounded-lg shadow p-6 mb-8;
 }
 
-.no-message {
-  @apply text-sm text-gray-400 italic;
+.form-title {
+  @apply text-lg font-semibold mb-4;
+}
+
+.user-form {
+  @apply space-y-4;
+}
+
+.form-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-4;
+}
+
+.form-label {
+  @apply block text-sm font-medium text-gray-700 mb-1;
+}
+
+.form-input {
+  @apply w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500;
+}
+
+.form-select {
+  @apply w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500;
+}
+
+.form-actions {
+  @apply flex items-center gap-4;
+}
+
+.create-btn {
+  @apply bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-md font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.form-message {
+  @apply text-sm;
+  
+  &.success {
+    @apply text-green-600;
+  }
+  
+  &.error {
+    @apply text-red-600;
+  }
+}
+
+.section-mb {
+  @apply mb-8;
 }

@@ -20,6 +20,11 @@ export class RoleGuard implements CanActivate {
       return false;
     }
     
+    // sys-admin has access to everything
+    if (user.role === 'sys-admin') {
+      return true;
+    }
+    
     if (requiredRoles && !requiredRoles.includes(user.role)) {
       this.router.navigate(['/']);
       return false;

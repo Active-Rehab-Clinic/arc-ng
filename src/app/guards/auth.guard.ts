@@ -26,7 +26,8 @@ export const roleGuard = (allowedRoles: string[]) => {
       return false;
     }
 
-    if (allowedRoles.includes(user.role)) {
+    // sys-admin has access to everything
+    if (user.role === 'sys-admin' || allowedRoles.includes(user.role)) {
       return true;
     }
 

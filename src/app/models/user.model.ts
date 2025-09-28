@@ -2,7 +2,7 @@ export interface User {
   id: string;
   email: string;
   name: string;
-  role: 'patient' | 'staff' | 'admin';
+  role: 'patient' | 'staff' | 'admin' | 'sys-admin';
   createdAt?: Date;
 }
 

@@ -66,7 +66,7 @@ export class AuthService {
     return await this.getUserData(userCredential.user.uid);
   }
 
-  async register(email: string, password: string, name: string, role: 'patient' | 'staff' | 'admin'): Promise<User> {
+  async register(email: string, password: string, name: string, role: 'patient' | 'staff' | 'admin' | 'sys-admin'): Promise<User> {
     const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
     
     const user: User = {

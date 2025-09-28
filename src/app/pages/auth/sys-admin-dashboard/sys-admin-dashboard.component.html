@@ -1,0 +1,205 @@
+<div class="page-container">
+  <div class="container">
+    <div class="dashboard-header">
+      <div>
+        <h1 class="dashboard-title">
+          Hi {{ authService.authState().user?.name }}, Welcome to System Admin Dashboard
+        </h1>
+      </div>
+      <button (click)="logout()" class="logout-btn">Logout</button>
+    </div>
+
+    <!-- Admin Actions -->
+    <div class="admin-actions">
+      <button (click)="toggleCreateUser()" class="action-btn action-btn-blue">
+        {{ showCreateUser() ? "Cancel" : "+ Create New User" }}
+      </button>
+
+      <button (click)="toggleUserList()" class="action-btn action-btn-green">
+        {{ showUserList() ? "Hide Users" : "View All Users" }}
+      </button>
+    </div>
+
+    <!-- Create User Form -->
+    <div *ngIf="showCreateUser()" class="form-section">
+      <h3 class="form-title">Create New User</h3>
+
+      <form [formGroup]="userForm" (ngSubmit)="createUser()" class="user-form">
+        <div class="form-grid">
+          <div>
+            <label for="name" class="form-label">Full Name *</label>
+            <input
+              type="text"
+              id="name"
+              formControlName="name"
+              class="form-input"
+              placeholder="Enter full name"
+            />
+          </div>
+
+          <div>
+            <label for="email" class="form-label">Email Address *</label>
+            <input
+              type="email"
+              id="email"
+              formControlName="email"
+              class="form-input"
+              placeholder="Enter email address"
+            />
+          </div>
+
+          <div>
+            <label for="password" class="form-label">Password *</label>
+            <input
+              type="password"
+              id="password"
+              formControlName="password"
+              class="form-input"
+              placeholder="Minimum 6 characters"
+            />
+          </div>
+
+          <div>
+            <label for="role" class="form-label">User Role *</label>
+            <select id="role" formControlName="role" class="form-select">
+              <option value="patient">Patient</option>
+              <option value="staff">Staff</option>
+              <option value="admin">Admin</option>
+              <option value="sys-admin">System Admin</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button
+            type="submit"
+            [disabled]="userForm.invalid || isCreatingUser()"
+            class="create-btn"
+          >
+            <span *ngIf="!isCreatingUser()">Create User</span>
+            <span *ngIf="isCreatingUser()">Creating...</span>
+          </button>
+
+          <div *ngIf="userMessage()" class="form-message" [class.success]="userSuccess()" [class.error]="!userSuccess()">
+            {{ userMessage() }}
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- User List -->
+    <div *ngIf="showUserList()" class="section-card section-mb">
+      <div class="section-header">
+        <h3 class="section-title">All Users</h3>
+      </div>
+      <div class="section-content">
+        <div *ngIf="loadingUsers()" class="loading-message">
+          <p>Loading users...</p>
+        </div>
+
+        <div *ngIf="!loadingUsers() && users.length === 0" class="empty-message">
+          <p>No users found</p>
+        </div>
+
+        <div *ngIf="!loadingUsers() && users.length > 0" class="data-table">
+          <table class="table">
+            <thead class="table-header">
+              <tr>
+                <th class="table-header-cell">Name</th>
+                <th class="table-header-cell">Email</th>
+                <th class="table-header-cell">Role</th>
+                <th class="table-header-cell">Created</th>
+              </tr>
+            </thead>
+            <tbody class="table-body">
+              <tr *ngFor="let user of users; let i = index" class="table-row" [class.striped]="i % 2 === 1">
+                <td class="table-cell cell-primary">{{ user.name }}</td>
+                <td class="table-cell cell-normal">{{ user.email }}</td>
+                <td class="table-cell">
+                  <span class="status-badge" [class]="getRoleColor(user.role)">
+                    {{ user.role }}
+                  </span>
+                </td>
+                <td class="table-cell cell-secondary">{{ formatDate(user.createdAt) }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Appointment Statistics -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h3 class="stat-label">Total Appointments</h3>
+        <p class="stat-value stat-blue">{{ getAppointmentCount() }}</p>
+      </div>
+
+      <div class="stat-card">
+        <h3 class="stat-label">Pending</h3>
+        <p class="stat-value stat-yellow">{{ getPendingCount() }}</p>
+      </div>
+
+      <div class="stat-card">
+        <h3 class="stat-label">Confirmed</h3>
+        <p class="stat-value stat-green">{{ getConfirmedCount() }}</p>
+      </div>
+
+      <div class="stat-card">
+        <h3 class="stat-label">Completed</h3>
+        <p class="stat-value stat-blue">{{ getCompletedCount() }}</p>
+      </div>
+    </div>
+
+    <!-- Appointment Bookings Section -->
+    <div class="section-card">
+      <div class="section-header">
+        <h3 class="section-title">Recent Appointment Bookings</h3>
+      </div>
+      <div class="section-content">
+        <div *ngIf="loading" class="loading-message">
+          <p>Loading appointments...</p>
+        </div>
+
+        <div *ngIf="!loading && appointments.length === 0" class="empty-message">
+          <p>No appointments found</p>
+        </div>
+
+        <div *ngIf="!loading && appointments.length > 0" class="data-table">
+          <table class="table">
+            <thead class="table-header">
+              <tr>
+                <th class="table-header-cell">Patient</th>
+                <th class="table-header-cell">Service</th>
+                <th class="table-header-cell">Date & Time</th>
+                <th class="table-header-cell">Contact</th>
+                <th class="table-header-cell">Status</th>
+                <th class="table-header-cell">Booked</th>
+              </tr>
+            </thead>
+            <tbody class="table-body">
+              <tr *ngFor="let appointment of appointments; let i = index" class="table-row" [class.striped]="i % 2 === 1">
+                <td class="table-cell">
+                  <div class="cell-primary">{{ appointment.name }}</div>
+                  <div class="cell-secondary">{{ appointment.email }}</div>
+                </td>
+                <td class="table-cell cell-normal">{{ appointment.service }}</td>
+                <td class="table-cell cell-normal">
+                  <div>{{ appointment.preferredDate }}</div>
+                  <div class="cell-secondary">{{ formatTime(appointment.preferredTime) }}</div>
+                </td>
+                <td class="table-cell cell-normal">{{ appointment.phone }}</td>
+                <td class="table-cell">
+                  <span class="status-badge" [class]="getStatusColor(appointment.status || 'pending')">
+                    {{ appointment.status || "pending" }}
+                  </span>
+                </td>
+                <td class="table-cell cell-secondary">{{ formatDateTime(appointment.createdAt) }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

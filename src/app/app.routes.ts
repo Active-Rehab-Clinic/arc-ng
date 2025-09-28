@@ -70,7 +70,15 @@ export const routes: Routes = [
           import('./pages/auth/admin-dashboard/admin-dashboard.component').then(
             (m) => m.AdminDashboardComponent
           ),
-        canActivate: [() => import('./guards/auth.guard').then(m => m.roleGuard(['admin']))]
+        canActivate: [() => import('./guards/auth.guard').then(m => m.roleGuard(['admin', 'sys-admin']))]
+      },
+      {
+        path: 'sys-admin',
+        loadComponent: () =>
+          import('./pages/auth/sys-admin-dashboard/sys-admin-dashboard.component').then(
+            (m) => m.SysAdminDashboardComponent
+          ),
+        canActivate: [() => import('./guards/auth.guard').then(m => m.roleGuard(['sys-admin']))]
       },
       { path: '', redirectTo: 'login', pathMatch: 'full' }
     ]

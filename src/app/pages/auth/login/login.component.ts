@@ -48,6 +48,9 @@ export class LoginComponent {
         case 'admin':
           this.router.navigate(['/auth/admin']);
           break;
+        case 'sys-admin':
+          this.router.navigate(['/auth/sys-admin']);
+          break;
       }
     } catch (error: any) {
       this.errorMessage.set(error.message || 'Login failed. Please try again.');
