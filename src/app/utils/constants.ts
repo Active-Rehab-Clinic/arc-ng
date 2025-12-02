@@ -24,6 +24,7 @@ export const USER_ROLES = {
   PATIENT: 'patient',
   STAFF: 'staff',
   ADMIN: 'admin',
+  SYS_ADMIN: 'sys-admin',
 } as const;
 
 export const APPOINTMENT_STATUS = {

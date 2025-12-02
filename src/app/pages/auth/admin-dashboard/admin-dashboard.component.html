@@ -1,0 +1,234 @@
+<div class="dashboard-page">
+  <!-- Header -->
+  <div class="dashboard-header">
+    <div class="header-content">
+      <div class="header-left">
+        <div class="header-icon">
+          <span>👨‍💼</span>
+        </div>
+        <div class="header-text">
+          <h1 class="header-title">Admin Dashboard</h1>
+          <p class="header-subtitle">
+            Welcome back, {{ authService.authState().user?.name || "Admin" }}
+          </p>
+        </div>
+      </div>
+      <button (click)="logout()" class="logout-btn">
+        <span class="logout-icon">🚪</span>
+        <span class="logout-text">Logout</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="dashboard-container">
+    <!-- Stats Grid -->
+    <div class="stats-section">
+      <div class="stats-grid">
+        <div class="stat-card stat-card-blue">
+          <div class="stat-icon">📊</div>
+          <div class="stat-content">
+            <p class="stat-label">Total Appointments</p>
+            <p class="stat-value">{{ getAppointmentCount() }}</p>
+          </div>
+        </div>
+
+        <div class="stat-card stat-card-yellow">
+          <div class="stat-icon">⏳</div>
+          <div class="stat-content">
+            <p class="stat-label">Pending</p>
+            <p class="stat-value">{{ getPendingCount() }}</p>
+          </div>
+        </div>
+
+        <div class="stat-card stat-card-green">
+          <div class="stat-icon">✅</div>
+          <div class="stat-content">
+            <p class="stat-label">Confirmed</p>
+            <p class="stat-value">{{ getConfirmedCount() }}</p>
+          </div>
+        </div>
+
+        <div class="stat-card stat-card-purple">
+          <div class="stat-icon">🎯</div>
+          <div class="stat-content">
+            <p class="stat-label">Completed</p>
+            <p class="stat-value">{{ getCompletedCount() }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Appointments Section -->
+    <div class="appointments-section">
+      <div class="section-header">
+        <div class="section-header-content">
+          <h2 class="section-title">Appointment History</h2>
+          <p class="section-subtitle">Manage all patient appointments</p>
+        </div>
+      </div>
+
+      <!-- Loading State -->
+      <div *ngIf="loading" class="loading-state">
+        <div class="loading-spinner">⏳</div>
+        <p class="loading-text">Loading appointments...</p>
+      </div>
+
+      <!-- Empty State -->
+      <div *ngIf="!loading && appointments.length === 0" class="empty-state">
+        <div class="empty-icon">📅</div>
+        <h3 class="empty-title">No Appointments Yet</h3>
+        <p class="empty-text">
+          There are no appointments in the system. New appointments will appear
+          here.
+        </p>
+      </div>
+
+      <!-- Desktop Table View -->
+      <div *ngIf="!loading && appointments.length > 0" class="table-container">
+        <div class="table-wrapper">
+          <table class="appointments-table">
+            <thead class="table-head">
+              <tr>
+                <th class="table-header">Patient</th>
+                <th class="table-header">Contact</th>
+                <th class="table-header">Service</th>
+                <th class="table-header">Date & Time</th>
+                <th class="table-header">Status</th>
+                <th class="table-header">Message</th>
+                <th class="table-header">Booked On</th>
+              </tr>
+            </thead>
+            <tbody class="table-body">
+              <tr
+                *ngFor="let appointment of appointments; let i = index"
+                class="table-row"
+              >
+                <td class="table-cell">
+                  <div class="cell-patient-no-avatar">
+                    <div class="patient-name-sm">{{ appointment.name }}</div>
+                    <div class="patient-email-sm">{{ appointment.email }}</div>
+                  </div>
+                </td>
+                <td class="table-cell">
+                  <div class="cell-contact">{{ appointment.phone }}</div>
+                </td>
+                <td class="table-cell">
+                  <div class="cell-service">{{ appointment.service }}</div>
+                </td>
+                <td class="table-cell">
+                  <div class="cell-datetime">
+                    <div class="cell-date">{{ appointment.preferredDate }}</div>
+                    <div class="cell-time">
+                      {{ formatTime(appointment.preferredTime) }}
+                    </div>
+                  </div>
+                </td>
+                <td class="table-cell">
+                  <select
+                    [value]="appointment.status || 'pending'"
+                    (change)="
+                      updateStatus(appointment.id!, $any($event.target).value)
+                    "
+                    class="status-select"
+                    [class]="getStatusClass(appointment.status || 'pending')"
+                  >
+                    <option value="pending">Pending</option>
+                    <option value="confirmed">Confirmed</option>
+                    <option value="completed">Completed</option>
+                    <option value="cancelled">Cancelled</option>
+                  </select>
+                </td>
+                <td class="table-cell">
+                  <div
+                    class="cell-message"
+                    *ngIf="appointment.message"
+                    [title]="appointment.message"
+                  >
+                    {{ appointment.message }}
+                  </div>
+                  <div class="cell-no-message" *ngIf="!appointment.message">
+                    —
+                  </div>
+                </td>
+                <td class="table-cell">
+                  <div class="cell-booked">
+                    {{ formatDateTime(appointment.createdAt) }}
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Mobile Card View -->
+      <div *ngIf="!loading && appointments.length > 0" class="mobile-cards">
+        <div *ngFor="let appointment of appointments" class="appointment-card">
+          <div class="appointment-header">
+            <div class="appointment-patient-no-avatar">
+              <h3 class="patient-name">{{ appointment.name }}</h3>
+              <p class="patient-email">{{ appointment.email }}</p>
+            </div>
+            <select
+              [value]="appointment.status || 'pending'"
+              (change)="
+                updateStatus(appointment.id!, $any($event.target).value)
+              "
+              class="status-select-mobile"
+              [class]="getStatusClass(appointment.status || 'pending')"
+            >
+              <option value="pending">Pending</option>
+              <option value="confirmed">Confirmed</option>
+              <option value="completed">Completed</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+          </div>
+
+          <div class="appointment-details">
+            <div class="detail-row">
+              <span class="detail-icon">📞</span>
+              <span class="detail-label">Phone:</span>
+              <span class="detail-value">{{ appointment.phone }}</span>
+            </div>
+
+            <div class="detail-row">
+              <span class="detail-icon">🏥</span>
+              <span class="detail-label">Service:</span>
+              <span class="detail-value">{{ appointment.service }}</span>
+            </div>
+
+            <div class="detail-row">
+              <span class="detail-icon">📅</span>
+              <span class="detail-label">Date:</span>
+              <span class="detail-value">{{ appointment.preferredDate }}</span>
+            </div>
+
+            <div class="detail-row">
+              <span class="detail-icon">🕐</span>
+              <span class="detail-label">Time:</span>
+              <span class="detail-value">{{
+                formatTime(appointment.preferredTime)
+              }}</span>
+            </div>
+
+            <div class="detail-row" *ngIf="appointment.message">
+              <span class="detail-icon">💬</span>
+              <span class="detail-label">Message:</span>
+              <span class="detail-value detail-message">{{
+                appointment.message
+              }}</span>
+            </div>
+
+            <div class="detail-row detail-meta">
+              <span class="detail-icon">🕒</span>
+              <span class="detail-label">Booked:</span>
+              <span class="detail-value">{{
+                formatDateTime(appointment.createdAt)
+              }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

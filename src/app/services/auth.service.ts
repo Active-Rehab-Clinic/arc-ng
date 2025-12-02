@@ -1,87 +1,111 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
-import { User, AuthResponse, LoginRequest, RegisterRequest } from '../models/user.model';
+import { Injectable, signal } from '@angular/core';
+import { initializeApp } from 'firebase/app';
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged, User as FirebaseUser } from 'firebase/auth';
+import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore';
+import { environment } from '../../environments/environment';
+import { User, AuthState } from '@models/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private currentUserSubject = new BehaviorSubject<User | null>(null);
-  public currentUser$ = this.currentUserSubject.asObservable();
+  private app = initializeApp(environment.firebase);
+  private auth = getAuth(this.app);
+  private db = getFirestore(this.app);
+  
+  authState = signal<AuthState>({
+    user: null,
+    isAuthenticated: false,
+    loading: true
+  });
 
   constructor() {
-    this.loadUserFromStorage();
+    this.initializeAuth();
   }
 
-  login(credentials: LoginRequest): Observable<AuthResponse> {
-    // Mock login - replace with actual API call
-    const mockUser: User = {
-      id: '1',
-      email: credentials.email,
-      firstName: 'John',
-      lastName: 'Doe',
-      role: 'patient'
-    };
-    
-    const response: AuthResponse = {
-      user: mockUser,
-      token: 'mock-jwt-token'
-    };
-    
-    this.setCurrentUser(mockUser, response.token);
-    return of(response);
-  }
-
-  register(userData: RegisterRequest): Observable<AuthResponse> {
-    // Mock registration - replace with actual API call
-    const mockUser: User = {
-      id: '2',
-      email: userData.email,
-      firstName: userData.firstName,
-      lastName: userData.lastName,
-      role: 'patient'
-    };
-    
-    const response: AuthResponse = {
-      user: mockUser,
-      token: 'mock-jwt-token'
-    };
-    
-    this.setCurrentUser(mockUser, response.token);
-    return of(response);
-  }
-
-  logout(): void {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    this.currentUserSubject.next(null);
-  }
-
-  isAuthenticated(): boolean {
-    return !!this.currentUserSubject.value;
-  }
-
-  getCurrentUser(): User | null {
-    return this.currentUserSubject.value;
-  }
-
-  private setCurrentUser(user: User, token: string): void {
-    localStorage.setItem('token', token);
-    localStorage.setItem('user', JSON.stringify(user));
-    this.currentUserSubject.next(user);
-  }
-
-  private loadUserFromStorage(): void {
-    const token = localStorage.getItem('token');
-    const userStr = localStorage.getItem('user');
-    
-    if (token && userStr) {
-      try {
-        const user = JSON.parse(userStr);
-        this.currentUserSubject.next(user);
-      } catch (error) {
-        this.logout();
-      }
+  private async initializeAuth() {
+    // Check for stored auth data
+    const storedAuth = this.getStoredAuth();
+    if (storedAuth && this.isAuthValid(storedAuth)) {
+      this.authState.set({
+        user: storedAuth.user,
+        isAuthenticated: true,
+        loading: false
+      });
     }
+
+    onAuthStateChanged(this.auth, async (firebaseUser) => {
+      if (firebaseUser) {
+        const user = await this.getUserData(firebaseUser.uid);
+        const authData = {
+          user,
+          timestamp: Date.now()
+        };
+        
+        // Store auth data
+        localStorage.setItem('arc_auth', JSON.stringify(authData));
+        
+        this.authState.set({
+          user,
+          isAuthenticated: true,
+          loading: false
+        });
+      } else {
+        localStorage.removeItem('arc_auth');
+        this.authState.set({
+          user: null,
+          isAuthenticated: false,
+          loading: false
+        });
+      }
+    });
+  }
+
+  async login(email: string, password: string): Promise<User> {
+    const userCredential = await signInWithEmailAndPassword(this.auth, email, password);
+    return await this.getUserData(userCredential.user.uid);
+  }
+
+  async register(email: string, password: string, name: string, role: 'patient' | 'staff' | 'admin' | 'sys-admin'): Promise<User> {
+    const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
+    
+    const user: User = {
+      id: userCredential.user.uid,
+      email,
+      name,
+      role,
+      createdAt: new Date()
+    };
+
+    await setDoc(doc(this.db, 'users', user.id), user);
+    return user;
+  }
+
+  async logout(): Promise<void> {
+    localStorage.removeItem('arc_auth');
+    await signOut(this.auth);
+  }
+
+  private getStoredAuth(): { user: User; timestamp: number } | null {
+    try {
+      const stored = localStorage.getItem('arc_auth');
+      return stored ? JSON.parse(stored) : null;
+    } catch {
+      return null;
+    }
+  }
+
+  private isAuthValid(authData: { user: User; timestamp: number }): boolean {
+    const now = Date.now();
+    const oneDay = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+    return (now - authData.timestamp) < oneDay;
+  }
+
+  private async getUserData(uid: string): Promise<User> {
+    const userDoc = await getDoc(doc(this.db, 'users', uid));
+    if (userDoc.exists()) {
+      return userDoc.data() as User;
+    }
+    throw new Error('User data not found');
   }
 }

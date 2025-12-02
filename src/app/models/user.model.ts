@@ -1,25 +1,13 @@
 export interface User {
   id: string;
   email: string;
-  firstName: string;
-  lastName: string;
-  role: 'patient' | 'staff' | 'admin';
+  name: string;
+  role: 'patient' | 'staff' | 'admin' | 'sys-admin';
+  createdAt?: Date;
 }
 
-export interface AuthResponse {
-  user: User;
-  token: string;
-}
-
-export interface LoginRequest {
-  email: string;
-  password: string;
-}
-
-export interface RegisterRequest {
-  email: string;
-  password: string;
-  firstName: string;
-  lastName: string;
-  phone: string;
+export interface AuthState {
+  user: User | null;
+  isAuthenticated: boolean;
+  loading: boolean;
 }

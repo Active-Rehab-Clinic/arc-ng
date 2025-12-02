@@ -1,0 +1,480 @@
+<div class="dashboard-page">
+  <!-- Header -->
+  <div class="dashboard-header">
+    <div class="header-content">
+      <div class="header-left">
+        <div class="header-icon">
+          <span>⚙️</span>
+        </div>
+        <div class="header-text">
+          <h1 class="header-title">System Admin Dashboard</h1>
+          <p class="header-subtitle">
+            Welcome back, {{ authService.authState().user?.name || "Admin" }}
+          </p>
+        </div>
+      </div>
+      <button (click)="logout()" class="logout-btn">
+        <span class="logout-icon">🚪</span>
+        <span class="logout-text">Logout</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="dashboard-container">
+    <!-- Action Buttons -->
+    <div class="action-section">
+      <button
+        (click)="toggleCreateUser()"
+        class="action-btn action-btn-primary"
+      >
+        <span class="action-icon">{{ showCreateUser() ? "✕" : "+" }}</span>
+        <span>{{ showCreateUser() ? "Cancel" : "Create New User" }}</span>
+      </button>
+
+      <button
+        (click)="toggleUserList()"
+        class="action-btn action-btn-secondary"
+      >
+        <span class="action-icon">👥</span>
+        <span>{{ showUserList() ? "Hide Users" : "View All Users" }}</span>
+      </button>
+    </div>
+
+    <!-- Create User Form -->
+    <div *ngIf="showCreateUser()" class="form-card-improved">
+      <div class="form-header-improved">
+        <div class="form-icon">👤</div>
+        <div>
+          <h3 class="form-title-improved">Create New User</h3>
+          <p class="form-subtitle-improved">
+            Add a new user account to the system
+          </p>
+        </div>
+      </div>
+
+      <form
+        [formGroup]="userForm"
+        (ngSubmit)="createUser()"
+        class="user-form-improved"
+      >
+        <div class="form-grid-improved">
+          <div class="form-field">
+            <label for="name" class="field-label">
+              <span class="label-icon">👤</span>
+              <span>Full Name</span>
+              <span class="required">*</span>
+            </label>
+            <input
+              type="text"
+              id="name"
+              formControlName="name"
+              class="field-input"
+              [class.input-error]="
+                userForm.get('name')?.invalid && userForm.get('name')?.touched
+              "
+              placeholder="John Doe"
+            />
+            <div
+              *ngIf="
+                userForm.get('name')?.invalid && userForm.get('name')?.touched
+              "
+              class="field-error-msg"
+            >
+              <span class="error-icon">⚠️</span>
+              <span>Full name is required</span>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="email" class="field-label">
+              <span class="label-icon">📧</span>
+              <span>Email Address</span>
+              <span class="required">*</span>
+            </label>
+            <input
+              type="email"
+              id="email"
+              formControlName="email"
+              class="field-input"
+              [class.input-error]="
+                userForm.get('email')?.invalid && userForm.get('email')?.touched
+              "
+              placeholder="user@example.com"
+            />
+            <div
+              *ngIf="
+                userForm.get('email')?.invalid && userForm.get('email')?.touched
+              "
+              class="field-error-msg"
+            >
+              <span class="error-icon">⚠️</span>
+              <span>Please enter a valid email address</span>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="password" class="field-label">
+              <span class="label-icon">🔒</span>
+              <span>Password</span>
+              <span class="required">*</span>
+            </label>
+            <div class="password-input-wrapper">
+              <input
+                [type]="showPasswordField() ? 'text' : 'password'"
+                id="password"
+                formControlName="password"
+                class="field-input"
+                [class.input-error]="
+                  userForm.get('password')?.invalid &&
+                  userForm.get('password')?.touched
+                "
+                placeholder="Minimum 6 characters"
+              />
+              <button
+                type="button"
+                class="password-toggle-btn"
+                (click)="togglePasswordField()"
+              >
+                <span *ngIf="!showPasswordField()">👁️</span>
+                <span *ngIf="showPasswordField()">🙈</span>
+              </button>
+            </div>
+            <div
+              *ngIf="
+                userForm.get('password')?.invalid &&
+                userForm.get('password')?.touched
+              "
+              class="field-error-msg"
+            >
+              <span class="error-icon">⚠️</span>
+              <span>Password must be at least 6 characters</span>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="role" class="field-label">
+              <span class="label-icon">🎭</span>
+              <span>User Role</span>
+              <span class="required">*</span>
+            </label>
+            <select
+              id="role"
+              formControlName="role"
+              class="field-select"
+              [class.input-error]="
+                userForm.get('role')?.invalid && userForm.get('role')?.touched
+              "
+            >
+              <option value="" disabled>Select a role</option>
+              <option value="patient">👤 Patient</option>
+              <option value="staff">👨‍⚕️ Staff</option>
+              <option value="admin">👨‍💼 Admin</option>
+              <option value="sys-admin">⚙️ System Admin</option>
+            </select>
+            <div class="field-hint">
+              Choose the appropriate access level for this user
+            </div>
+          </div>
+        </div>
+
+        <div class="form-actions-improved">
+          <button
+            type="button"
+            (click)="toggleCreateUser()"
+            class="cancel-btn"
+            [disabled]="isCreatingUser()"
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            [disabled]="userForm.invalid || isCreatingUser()"
+            class="submit-btn-improved"
+          >
+            <span *ngIf="!isCreatingUser()" class="btn-content">
+              <span class="btn-icon">✓</span>
+              <span>Create User</span>
+            </span>
+            <span *ngIf="isCreatingUser()" class="btn-content">
+              <span class="btn-spinner">⏳</span>
+              <span>Creating...</span>
+            </span>
+          </button>
+        </div>
+
+        <div
+          *ngIf="userMessage()"
+          class="form-alert"
+          [class.alert-success]="userSuccess()"
+          [class.alert-error]="!userSuccess()"
+        >
+          <span class="alert-icon">{{ userSuccess() ? "✓" : "⚠️" }}</span>
+          <span class="alert-text">{{ userMessage() }}</span>
+        </div>
+      </form>
+    </div>
+
+    <!-- User List -->
+    <div *ngIf="showUserList()" class="users-section">
+      <div class="section-header">
+        <h3 class="section-title">All Users</h3>
+        <p class="section-subtitle">System user management</p>
+      </div>
+
+      <div *ngIf="loadingUsers()" class="loading-state">
+        <div class="loading-spinner">⏳</div>
+        <p class="loading-text">Loading users...</p>
+      </div>
+
+      <div *ngIf="!loadingUsers() && users.length === 0" class="empty-state">
+        <div class="empty-icon">👥</div>
+        <h4 class="empty-title">No Users Found</h4>
+        <p class="empty-text">There are no users in the system yet.</p>
+      </div>
+
+      <!-- Desktop Table -->
+      <div *ngIf="!loadingUsers() && users.length > 0" class="table-container">
+        <div class="table-wrapper">
+          <table class="users-table">
+            <thead class="table-head">
+              <tr>
+                <th class="table-header">User</th>
+                <th class="table-header">Email</th>
+                <th class="table-header">Role</th>
+                <th class="table-header">Created Date</th>
+              </tr>
+            </thead>
+            <tbody class="table-body">
+              <tr *ngFor="let user of users" class="table-row">
+                <td class="table-cell">
+                  <div class="cell-user-info">
+                    <div class="user-avatar-table">
+                      {{ getInitials(user.name) }}
+                    </div>
+                    <div class="user-name-table">{{ user.name }}</div>
+                  </div>
+                </td>
+                <td class="table-cell">
+                  <div class="cell-email-text">{{ user.email }}</div>
+                </td>
+                <td class="table-cell">
+                  <span class="role-badge" [class]="getRoleClass(user.role)">
+                    {{ user.role }}
+                  </span>
+                </td>
+                <td class="table-cell">
+                  <div class="cell-date-text">
+                    {{ formatDate(user.createdAt) }}
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Mobile Cards -->
+      <div *ngIf="!loadingUsers() && users.length > 0" class="mobile-cards">
+        <div *ngFor="let user of users" class="user-card-redesign">
+          <div class="user-card-top">
+            <div class="user-avatar-mobile">{{ getInitials(user.name) }}</div>
+            <div class="user-main-info">
+              <h4 class="user-name-card">{{ user.name }}</h4>
+              <p class="user-email-card">{{ user.email }}</p>
+            </div>
+            <span class="role-badge" [class]="getRoleClass(user.role)">
+              {{ user.role }}
+            </span>
+          </div>
+          <div class="user-card-bottom">
+            <div class="user-meta">
+              <span class="meta-icon">📅</span>
+              <span class="meta-label">Created:</span>
+              <span class="meta-value">{{ formatDate(user.createdAt) }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats Grid -->
+    <div class="stats-section">
+      <h3 class="stats-title">Appointment Statistics</h3>
+      <div class="stats-grid">
+        <div class="stat-card stat-card-blue">
+          <div class="stat-icon">📊</div>
+          <div class="stat-content">
+            <p class="stat-label">Total Appointments</p>
+            <p class="stat-value">{{ getAppointmentCount() }}</p>
+          </div>
+        </div>
+
+        <div class="stat-card stat-card-yellow">
+          <div class="stat-icon">⏳</div>
+          <div class="stat-content">
+            <p class="stat-label">Pending</p>
+            <p class="stat-value">{{ getPendingCount() }}</p>
+          </div>
+        </div>
+
+        <div class="stat-card stat-card-green">
+          <div class="stat-icon">✅</div>
+          <div class="stat-content">
+            <p class="stat-label">Confirmed</p>
+            <p class="stat-value">{{ getConfirmedCount() }}</p>
+          </div>
+        </div>
+
+        <div class="stat-card stat-card-purple">
+          <div class="stat-icon">🎯</div>
+          <div class="stat-content">
+            <p class="stat-label">Completed</p>
+            <p class="stat-value">{{ getCompletedCount() }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Appointments Section -->
+    <div class="appointments-section">
+      <div class="section-header">
+        <h3 class="section-title">Recent Appointments</h3>
+        <p class="section-subtitle">Latest appointment bookings</p>
+      </div>
+
+      <div *ngIf="loading" class="loading-state">
+        <div class="loading-spinner">⏳</div>
+        <p class="loading-text">Loading appointments...</p>
+      </div>
+
+      <div *ngIf="!loading && appointments.length === 0" class="empty-state">
+        <div class="empty-icon">📅</div>
+        <h4 class="empty-title">No Appointments Yet</h4>
+        <p class="empty-text">There are no appointments in the system.</p>
+      </div>
+
+      <!-- Desktop Table -->
+      <div *ngIf="!loading && appointments.length > 0" class="table-container">
+        <div class="table-wrapper">
+          <table class="appointments-table">
+            <thead class="table-head">
+              <tr>
+                <th class="table-header">Patient</th>
+                <th class="table-header">Contact</th>
+                <th class="table-header">Service</th>
+                <th class="table-header">Date & Time</th>
+                <th class="table-header">Status</th>
+                <th class="table-header">Booked On</th>
+              </tr>
+            </thead>
+            <tbody class="table-body">
+              <tr *ngFor="let appointment of appointments" class="table-row">
+                <td class="table-cell">
+                  <div class="cell-patient-no-avatar">
+                    <div class="patient-name-sm">{{ appointment.name }}</div>
+                    <div class="patient-email-sm">{{ appointment.email }}</div>
+                  </div>
+                </td>
+                <td class="table-cell">
+                  <div class="cell-contact">{{ appointment.phone }}</div>
+                </td>
+                <td class="table-cell">
+                  <div class="cell-service">{{ appointment.service }}</div>
+                </td>
+                <td class="table-cell">
+                  <div class="cell-datetime">
+                    <div class="cell-date">{{ appointment.preferredDate }}</div>
+                    <div class="cell-time">
+                      {{ formatTime(appointment.preferredTime) }}
+                    </div>
+                  </div>
+                </td>
+                <td class="table-cell">
+                  <select
+                    [value]="appointment.status || 'pending'"
+                    (change)="
+                      updateStatus(appointment.id!, $any($event.target).value)
+                    "
+                    class="status-select"
+                    [class]="getStatusClass(appointment.status || 'pending')"
+                  >
+                    <option value="pending">Pending</option>
+                    <option value="confirmed">Confirmed</option>
+                    <option value="completed">Completed</option>
+                    <option value="cancelled">Cancelled</option>
+                  </select>
+                </td>
+                <td class="table-cell">
+                  <div class="cell-booked">
+                    {{ formatDateTime(appointment.createdAt) }}
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Mobile Cards -->
+      <div *ngIf="!loading && appointments.length > 0" class="mobile-cards">
+        <div *ngFor="let appointment of appointments" class="appointment-card">
+          <div class="appointment-header">
+            <div class="appointment-patient-no-avatar">
+              <h3 class="patient-name">{{ appointment.name }}</h3>
+              <p class="patient-email">{{ appointment.email }}</p>
+            </div>
+            <select
+              [value]="appointment.status || 'pending'"
+              (change)="
+                updateStatus(appointment.id!, $any($event.target).value)
+              "
+              class="status-select-mobile"
+              [class]="getStatusClass(appointment.status || 'pending')"
+            >
+              <option value="pending">Pending</option>
+              <option value="confirmed">Confirmed</option>
+              <option value="completed">Completed</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+          </div>
+
+          <div class="appointment-details">
+            <div class="detail-row">
+              <span class="detail-icon">📞</span>
+              <span class="detail-label">Phone:</span>
+              <span class="detail-value">{{ appointment.phone }}</span>
+            </div>
+
+            <div class="detail-row">
+              <span class="detail-icon">🏥</span>
+              <span class="detail-label">Service:</span>
+              <span class="detail-value">{{ appointment.service }}</span>
+            </div>
+
+            <div class="detail-row">
+              <span class="detail-icon">📅</span>
+              <span class="detail-label">Date:</span>
+              <span class="detail-value">{{ appointment.preferredDate }}</span>
+            </div>
+
+            <div class="detail-row">
+              <span class="detail-icon">🕐</span>
+              <span class="detail-label">Time:</span>
+              <span class="detail-value">{{
+                formatTime(appointment.preferredTime)
+              }}</span>
+            </div>
+
+            <div class="detail-row detail-meta">
+              <span class="detail-icon">🕒</span>
+              <span class="detail-label">Booked:</span>
+              <span class="detail-value">{{
+                formatDateTime(appointment.createdAt)
+              }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

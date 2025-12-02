@@ -1,0 +1,82 @@
+<div class="dashboard-page">
+  <!-- Header -->
+  <div class="dashboard-header">
+    <div class="header-content">
+      <div class="header-left">
+        <div class="header-icon">
+          <span>👤</span>
+        </div>
+        <div class="header-text">
+          <h1 class="header-title">Patient Portal</h1>
+          <p class="header-subtitle">
+            Welcome, {{ authService.authState().user?.name || "Patient" }}
+          </p>
+        </div>
+      </div>
+      <button (click)="goBack()" class="back-btn">
+        <span class="back-icon">←</span>
+        <span class="back-text">Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="dashboard-container">
+    <!-- Coming Soon Card -->
+    <div class="coming-soon-card">
+      <div class="coming-soon-icon">🚀</div>
+      <h2 class="coming-soon-title">Portal Under Development</h2>
+      <p class="coming-soon-text">
+        We're building an amazing patient portal for you. Soon you'll be able
+        to:
+      </p>
+
+      <div class="features-grid">
+        <div class="feature-item">
+          <span class="feature-icon">📅</span>
+          <span class="feature-text">View your appointments</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">📋</span>
+          <span class="feature-text">Access medical records</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">💬</span>
+          <span class="feature-text">Message your therapist</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">📊</span>
+          <span class="feature-text">Track your progress</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Card -->
+    <div class="contact-card">
+      <div class="contact-header">
+        <h3 class="contact-title">Need Assistance?</h3>
+        <p class="contact-subtitle">We're here to help you</p>
+      </div>
+
+      <div class="contact-methods">
+        <a href="tel:+918505851951" class="contact-method contact-method-phone">
+          <div class="method-icon">📞</div>
+          <div class="method-content">
+            <div class="method-label">Call Us</div>
+            <div class="method-value">+91 85058 51951</div>
+          </div>
+        </a>
+
+        <a
+          href="mailto:activerehabc@gmail.com"
+          class="contact-method contact-method-email"
+        >
+          <div class="method-icon">✉️</div>
+          <div class="method-content">
+            <div class="method-label">Email Us</div>
+            <div class="method-value">activerehabc@gmail.com</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

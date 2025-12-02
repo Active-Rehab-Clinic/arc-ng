@@ -1,0 +1,369 @@
+// Import admin dashboard styles as base
+@import "../admin-dashboard/admin-dashboard.component.scss";
+
+// Override header icon color for sys-admin
+.header-icon {
+  @apply bg-gradient-to-br from-purple-500 to-pink-600;
+}
+
+// Action Section
+.action-section {
+  @apply flex flex-col sm:flex-row gap-3;
+}
+
+.action-btn {
+  @apply flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-medium transition-all shadow-md hover:shadow-lg;
+}
+
+.action-btn-primary {
+  @apply bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800 text-white;
+}
+
+.action-btn-secondary {
+  @apply bg-green-600 hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-800 text-white;
+}
+
+.action-icon {
+  @apply text-lg;
+}
+
+// Form Card
+.form-card {
+  @apply bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-100 dark:border-gray-700 p-6;
+}
+
+.form-header {
+  @apply mb-6;
+}
+
+.form-title {
+  @apply text-xl font-bold text-gray-900 dark:text-gray-100 mb-1;
+}
+
+.form-subtitle {
+  @apply text-sm text-gray-600 dark:text-gray-400;
+}
+
+.user-form {
+  @apply space-y-6;
+}
+
+.form-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 gap-4;
+}
+
+.form-group {
+  @apply flex flex-col;
+}
+
+.form-label {
+  @apply text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2;
+}
+
+.form-input,
+.form-select {
+  @apply w-full px-4 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 transition-all;
+  @apply focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-800;
+}
+
+.form-actions {
+  @apply flex flex-col sm:flex-row items-start sm:items-center gap-4;
+}
+
+.submit-btn {
+  @apply bg-green-600 hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-800 text-white px-6 py-3 rounded-lg font-semibold transition-all shadow-md hover:shadow-lg;
+  @apply disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-md;
+}
+
+.form-message {
+  @apply text-sm font-medium px-4 py-2 rounded-lg;
+
+  &.success {
+    @apply bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400;
+  }
+
+  &.error {
+    @apply bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400;
+  }
+}
+
+// Users Section
+.users-section {
+  @apply bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-100 dark:border-gray-700;
+}
+
+// User Table Styles (Desktop)
+.cell-user-info {
+  @apply flex items-center gap-3;
+}
+
+.user-avatar-table {
+  @apply w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0 shadow-md;
+}
+
+.user-name-table {
+  @apply font-semibold text-gray-900 dark:text-gray-100;
+}
+
+.cell-email-text {
+  @apply text-gray-700 dark:text-gray-300;
+}
+
+.cell-date-text {
+  @apply text-sm text-gray-600 dark:text-gray-400;
+}
+
+// User Card Styles (Mobile)
+.user-card-redesign {
+  @apply bg-gray-50 dark:bg-gray-900/50 rounded-lg border border-gray-200 dark:border-gray-700 p-4 transition-all hover:shadow-md;
+}
+
+.user-card-top {
+  @apply flex items-start gap-3 mb-3 pb-3 border-b border-gray-200 dark:border-gray-700;
+}
+
+.user-avatar-mobile {
+  @apply w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center text-white font-bold text-base flex-shrink-0 shadow-md;
+}
+
+.user-main-info {
+  @apply flex-1 min-w-0;
+}
+
+.user-name-card {
+  @apply text-base font-bold text-gray-900 dark:text-gray-100 mb-1 truncate;
+}
+
+.user-email-card {
+  @apply text-sm text-gray-600 dark:text-gray-400 truncate;
+}
+
+.user-card-bottom {
+  @apply space-y-2;
+}
+
+.user-meta {
+  @apply flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400;
+}
+
+.meta-icon {
+  @apply text-base;
+}
+
+.meta-label {
+  @apply font-medium;
+}
+
+.meta-value {
+  @apply text-gray-900 dark:text-gray-100;
+}
+
+// Role Badges
+.role-badge {
+  @apply px-3 py-1 rounded-full text-xs sm:text-sm font-semibold uppercase tracking-wide;
+}
+
+.role-sys-admin {
+  @apply bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400;
+}
+
+.role-admin {
+  @apply bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400;
+}
+
+.role-staff {
+  @apply bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400;
+}
+
+.role-patient {
+  @apply bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400;
+}
+
+// Stats Section
+.stats-section {
+  @apply space-y-4;
+}
+
+.stats-title {
+  @apply text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100;
+}
+
+// Cell styles for user table
+.cell-user {
+  @apply flex items-center gap-3;
+}
+
+.user-name {
+  @apply font-semibold text-gray-900 dark:text-gray-100;
+}
+
+.cell-email {
+  @apply text-gray-900 dark:text-gray-100;
+}
+
+.cell-date {
+  @apply text-xs text-gray-600 dark:text-gray-400;
+}
+
+// No avatar styles for appointments
+.cell-patient-no-avatar {
+  @apply flex flex-col min-w-0;
+}
+
+.appointment-patient-no-avatar {
+  @apply flex flex-col;
+}
+
+// Status Select Dropdown
+.status-select,
+.status-select-mobile {
+  @apply px-3 py-1 rounded-full text-xs sm:text-sm font-semibold uppercase tracking-wide cursor-pointer border-2 transition-all;
+  @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+
+  &.status-pending {
+    @apply bg-yellow-100 text-yellow-800 border-yellow-300 dark:bg-yellow-900/30 dark:text-yellow-400 dark:border-yellow-700;
+    @apply focus:ring-yellow-500;
+  }
+
+  &.status-confirmed {
+    @apply bg-green-100 text-green-800 border-green-300 dark:bg-green-900/30 dark:text-green-400 dark:border-green-700;
+    @apply focus:ring-green-500;
+  }
+
+  &.status-completed {
+    @apply bg-blue-100 text-blue-800 border-blue-300 dark:bg-blue-900/30 dark:text-blue-400 dark:border-blue-700;
+    @apply focus:ring-blue-500;
+  }
+
+  &.status-cancelled {
+    @apply bg-red-100 text-red-800 border-red-300 dark:bg-red-900/30 dark:text-red-400 dark:border-red-700;
+    @apply focus:ring-red-500;
+  }
+}
+
+.status-select-mobile {
+  @apply text-xs;
+}
+
+// Improved Form Card
+.form-card-improved {
+  @apply bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden;
+}
+
+.form-header-improved {
+  @apply flex items-center gap-4 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 p-6 border-b border-gray-200 dark:border-gray-700;
+}
+
+.form-icon {
+  @apply w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center text-2xl shadow-md;
+}
+
+.form-title-improved {
+  @apply text-xl sm:text-2xl font-bold text-gray-900 dark:text-gray-100;
+}
+
+.form-subtitle-improved {
+  @apply text-sm text-gray-600 dark:text-gray-400 mt-1;
+}
+
+.user-form-improved {
+  @apply p-6 space-y-6;
+}
+
+.form-grid-improved {
+  @apply grid grid-cols-1 sm:grid-cols-2 gap-6;
+}
+
+.form-field {
+  @apply flex flex-col;
+}
+
+.field-label {
+  @apply flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2;
+}
+
+.label-icon {
+  @apply text-base;
+}
+
+.required {
+  @apply text-red-500;
+}
+
+.field-input,
+.field-select {
+  @apply w-full px-4 py-3 border-2 border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 transition-all;
+  @apply focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-200 dark:focus:ring-purple-800;
+  @apply placeholder:text-gray-400 dark:placeholder:text-gray-500;
+
+  &.input-error {
+    @apply border-red-500 focus:border-red-500 focus:ring-red-200 dark:focus:ring-red-800;
+  }
+}
+
+.password-input-wrapper {
+  @apply relative;
+}
+
+.password-toggle-btn {
+  @apply absolute right-3 top-1/2 -translate-y-1/2 text-xl cursor-pointer hover:scale-110 transition-transform;
+}
+
+.field-error-msg {
+  @apply flex items-center gap-2 text-sm text-red-600 dark:text-red-400 mt-1;
+}
+
+.error-icon {
+  @apply text-base;
+}
+
+.field-hint {
+  @apply text-xs text-gray-500 dark:text-gray-400 mt-1;
+}
+
+.form-actions-improved {
+  @apply flex flex-col-reverse sm:flex-row justify-end gap-3 pt-4 border-t border-gray-200 dark:border-gray-700;
+}
+
+.cancel-btn {
+  @apply px-6 py-3 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg font-semibold transition-all hover:bg-gray-50 dark:hover:bg-gray-700;
+  @apply disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.submit-btn-improved {
+  @apply bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-6 py-3 rounded-lg font-semibold transition-all shadow-md hover:shadow-lg;
+  @apply disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-md;
+}
+
+.btn-content {
+  @apply flex items-center justify-center gap-2;
+}
+
+.btn-icon,
+.btn-spinner {
+  @apply text-lg;
+}
+
+.btn-spinner {
+  @apply animate-pulse;
+}
+
+.form-alert {
+  @apply flex items-center gap-3 px-4 py-3 rounded-lg border-2;
+
+  &.alert-success {
+    @apply bg-green-50 border-green-300 text-green-800 dark:bg-green-900/20 dark:border-green-700 dark:text-green-400;
+  }
+
+  &.alert-error {
+    @apply bg-red-50 border-red-300 text-red-800 dark:bg-red-900/20 dark:border-red-700 dark:text-red-400;
+  }
+}
+
+.alert-icon {
+  @apply text-xl;
+}
+
+.alert-text {
+  @apply text-sm font-medium;
+}

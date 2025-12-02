@@ -6,6 +6,7 @@ export const routes: Routes = [
     path: '',
     loadComponent: () =>
       import('./pages/home/home.component').then((m) => m.HomeComponent),
+    pathMatch: 'full',
   },
   {
     path: 'services',
@@ -34,27 +35,67 @@ export const routes: Routes = [
 
   // Auth routes
   {
-    path: 'login',
-    loadComponent: () =>
-      import('./pages/auth/login/login.component').then(
-        (m) => m.LoginComponent
-      ),
-  },
-  {
-    path: 'register',
-    loadComponent: () =>
-      import('./pages/auth/register/register.component').then(
-        (m) => m.RegisterComponent
-      ),
-  },
-  {
-    path: 'staff/login',
-    loadComponent: () =>
-      import('./pages/auth/staff-login/staff-login.component').then(
-        (m) => m.StaffLoginComponent
-      ),
+    path: 'auth',
+    children: [
+      {
+        path: 'login',
+        loadComponent: () =>
+          import('./pages/auth/login/login.component').then(
+            (m) => m.LoginComponent
+          ),
+      },
+      {
+        path: 'patient',
+        loadComponent: () =>
+          import(
+            './pages/auth/patient-dashboard/patient-dashboard.component'
+          ).then((m) => m.PatientDashboardComponent),
+        canActivate: [
+          () =>
+            import('./guards/auth.guard').then((m) => m.roleGuard(['patient'])),
+        ],
+      },
+      {
+        path: 'staff',
+        loadComponent: () =>
+          import('./pages/auth/staff-dashboard/staff-dashboard.component').then(
+            (m) => m.StaffDashboardComponent
+          ),
+        canActivate: [
+          () =>
+            import('./guards/auth.guard').then((m) => m.roleGuard(['staff'])),
+        ],
+      },
+      {
+        path: 'admin',
+        loadComponent: () =>
+          import('./pages/auth/admin-dashboard/admin-dashboard.component').then(
+            (m) => m.AdminDashboardComponent
+          ),
+        canActivate: [
+          () =>
+            import('./guards/auth.guard').then((m) =>
+              m.roleGuard(['admin', 'sys-admin'])
+            ),
+        ],
+      },
+      {
+        path: 'sys-admin',
+        loadComponent: () =>
+          import(
+            './pages/auth/sys-admin-dashboard/sys-admin-dashboard.component'
+          ).then((m) => m.SysAdminDashboardComponent),
+        canActivate: [
+          () =>
+            import('./guards/auth.guard').then((m) =>
+              m.roleGuard(['sys-admin'])
+            ),
+        ],
+      },
+      { path: '', redirectTo: 'login', pathMatch: 'full' },
+    ],
   },
 
   // Fallback
-  { path: '**', redirectTo: '/' },
+  { path: '**', redirectTo: '' },
 ];
