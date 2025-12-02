@@ -174,7 +174,10 @@
             <h3 class="contact-title">Prefer to Call?</h3>
             <p class="contact-text">You can also book by calling us directly</p>
             <div class="contact-buttons">
-              <a [href]="'tel:' + contactInfo.phone" class="contact-btn-primary">
+              <a
+                [href]="'tel:' + contactInfo.phone"
+                class="contact-btn-primary"
+              >
                 📞 Call Now: {{ contactInfo.phone }}
               </a>
               <a
@@ -185,27 +188,6 @@
               </a>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Emergency Contact -->
-  <section class="emergency-section">
-    <div class="container">
-      <div class="emergency-card">
-        <div class="emergency-icon">
-          <span>🚨</span>
-        </div>
-        <div class="emergency-content">
-          <h3 class="emergency-title">Need Urgent Care?</h3>
-          <p class="emergency-text">
-            For urgent rehabilitation needs or emergency consultations, call us
-            immediately.
-          </p>
-          <a [href]="'tel:' + contactInfo.phone" class="emergency-btn">
-            Call Emergency Line
-          </a>
         </div>
       </div>
     </div>

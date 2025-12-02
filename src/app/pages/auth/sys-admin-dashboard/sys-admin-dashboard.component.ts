@@ -25,6 +25,7 @@ export class SysAdminDashboardComponent implements OnInit {
   loading = true;
   showCreateUser = signal(false);
   showUserList = signal(false);
+  showPasswordField = signal(false);
   userForm: FormGroup;
   isCreatingUser = signal(false);
   userMessage = signal('');
@@ -63,14 +64,43 @@ export class SysAdminDashboardComponent implements OnInit {
     }
   }
 
-  getStatusColor(status: string): string {
-    switch (status) {
-      case 'pending': return 'text-yellow-600 bg-yellow-100';
-      case 'confirmed': return 'text-green-600 bg-green-100';
-      case 'cancelled': return 'text-red-600 bg-red-100';
-      case 'completed': return 'text-blue-600 bg-blue-100';
-      default: return 'text-gray-600 bg-gray-100';
+  getStatusClass(status: string): string {
+    switch (status.toLowerCase()) {
+      case 'pending':
+        return 'status-pending';
+      case 'confirmed':
+        return 'status-confirmed';
+      case 'cancelled':
+        return 'status-cancelled';
+      case 'completed':
+        return 'status-completed';
+      default:
+        return 'status-pending';
     }
+  }
+
+  getRoleClass(role: string): string {
+    switch (role.toLowerCase()) {
+      case 'sys-admin':
+        return 'role-sys-admin';
+      case 'admin':
+        return 'role-admin';
+      case 'staff':
+        return 'role-staff';
+      case 'patient':
+        return 'role-patient';
+      default:
+        return 'role-patient';
+    }
+  }
+
+  getInitials(name: string): string {
+    if (!name) return '?';
+    const parts = name.split(' ');
+    if (parts.length >= 2) {
+      return (parts[0][0] + parts[1][0]).toUpperCase();
+    }
+    return name.substring(0, 2).toUpperCase();
   }
 
   formatDate(date: any): string {
@@ -88,14 +118,26 @@ export class SysAdminDashboardComponent implements OnInit {
     if (!date) return 'N/A';
     if (date.toDate && typeof date.toDate === 'function') {
       const jsDate = date.toDate();
-      return jsDate.toLocaleDateString() + ' ' + jsDate.toLocaleTimeString('en-US', {
-        hour: '2-digit', minute: '2-digit', hour12: true,
-      });
+      return (
+        jsDate.toLocaleDateString() +
+        ' ' +
+        jsDate.toLocaleTimeString('en-US', {
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: true,
+        })
+      );
     }
     if (date instanceof Date) {
-      return date.toLocaleDateString() + ' ' + date.toLocaleTimeString('en-US', {
-        hour: '2-digit', minute: '2-digit', hour12: true,
-      });
+      return (
+        date.toLocaleDateString() +
+        ' ' +
+        date.toLocaleTimeString('en-US', {
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: true,
+        })
+      );
     }
     return 'N/A';
   }
@@ -109,16 +151,31 @@ export class SysAdminDashboardComponent implements OnInit {
     return `${displayHour}:${minutes} ${ampm}`;
   }
 
-  getAppointmentCount(): number { return this.appointments.length; }
-  getPendingCount(): number { return this.appointments.filter(apt => (apt.status || 'pending') === 'pending').length; }
-  getConfirmedCount(): number { return this.appointments.filter(apt => apt.status === 'confirmed').length; }
-  getCompletedCount(): number { return this.appointments.filter(apt => apt.status === 'completed').length; }
+  getAppointmentCount(): number {
+    return this.appointments.length;
+  }
+  getPendingCount(): number {
+    return this.appointments.filter(
+      (apt) => (apt.status || 'pending') === 'pending'
+    ).length;
+  }
+  getConfirmedCount(): number {
+    return this.appointments.filter((apt) => apt.status === 'confirmed').length;
+  }
+  getCompletedCount(): number {
+    return this.appointments.filter((apt) => apt.status === 'completed').length;
+  }
 
   toggleCreateUser() {
     this.showCreateUser.set(!this.showCreateUser());
     this.userMessage.set('');
+    this.showPasswordField.set(false);
     this.userForm.reset();
-    this.userForm.patchValue({ role: 'patient' });
+    this.userForm.patchValue({ role: '' });
+  }
+
+  togglePasswordField() {
+    this.showPasswordField.set(!this.showPasswordField());
   }
 
   async createUser() {
@@ -130,12 +187,18 @@ export class SysAdminDashboardComponent implements OnInit {
       const { name, email, password, role } = this.userForm.value;
       await this.authService.register(email, password, name, role);
       this.userSuccess.set(true);
-      this.userMessage.set(`${role.charAt(0).toUpperCase() + role.slice(1)} user created successfully!`);
+      this.userMessage.set(
+        `${
+          role.charAt(0).toUpperCase() + role.slice(1)
+        } user created successfully!`
+      );
       this.userForm.reset();
       this.userForm.patchValue({ role: 'patient' });
     } catch (error: any) {
       this.userSuccess.set(false);
-      this.userMessage.set(error.message || 'Failed to create user. Please try again.');
+      this.userMessage.set(
+        error.message || 'Failed to create user. Please try again.'
+      );
     } finally {
       this.isCreatingUser.set(false);
     }
@@ -161,11 +224,39 @@ export class SysAdminDashboardComponent implements OnInit {
 
   getRoleColor(role: string): string {
     switch (role) {
-      case 'sys-admin': return 'text-purple-600 bg-purple-100';
-      case 'admin': return 'text-red-600 bg-red-100';
-      case 'staff': return 'text-blue-600 bg-blue-100';
-      case 'patient': return 'text-green-600 bg-green-100';
-      default: return 'text-gray-600 bg-gray-100';
+      case 'sys-admin':
+        return 'text-purple-600 bg-purple-100';
+      case 'admin':
+        return 'text-red-600 bg-red-100';
+      case 'staff':
+        return 'text-blue-600 bg-blue-100';
+      case 'patient':
+        return 'text-green-600 bg-green-100';
+      default:
+        return 'text-gray-600 bg-gray-100';
+    }
+  }
+
+  async updateStatus(
+    appointmentId: string,
+    newStatus: 'pending' | 'confirmed' | 'completed' | 'cancelled'
+  ) {
+    try {
+      await this.appointmentService.updateAppointmentStatus(
+        appointmentId,
+        newStatus
+      );
+
+      // Update local state
+      const appointment = this.appointments.find(
+        (apt) => apt.id === appointmentId
+      );
+      if (appointment) {
+        appointment.status = newStatus;
+      }
+    } catch (error) {
+      console.error('Error updating status:', error);
+      alert('Failed to update appointment status. Please try again.');
     }
   }
 

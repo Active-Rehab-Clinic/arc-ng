@@ -1,47 +1,138 @@
-<div class="login-container">
-  <div class="login-card">
-    <div>
-      <h2 class="login-title">Sign in to your account</h2>
+<div class="login-page">
+  <!-- Left Side - Branding -->
+  <div class="branding-section">
+    <div class="branding-content">
+      <div class="logo-section">
+        <div class="logo-icon">
+          <span>🏥</span>
+        </div>
+        <h1 class="brand-name">Active Rehab Clinic</h1>
+      </div>
+      <p class="brand-tagline">
+        Expert rehabilitation services to restore your mobility and improve your
+        quality of life
+      </p>
+      <div class="brand-features">
+        <div class="feature-item">
+          <span class="feature-icon">✓</span>
+          <span class="feature-text">Secure & Private</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">✓</span>
+          <span class="feature-text">Easy Access</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">✓</span>
+          <span class="feature-text">24/7 Support</span>
+        </div>
+      </div>
     </div>
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
-      <div class="form-fields">
-        <div>
-          <label for="email" class="field-label">Email</label>
+  </div>
+
+  <!-- Right Side - Login Form -->
+  <div class="form-section">
+    <div class="form-container">
+      <div class="form-header">
+        <h2 class="form-title">Welcome Back</h2>
+        <p class="form-subtitle">Sign in to access your account</p>
+      </div>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+        <div class="form-group">
+          <label for="email" class="form-label">
+            <span class="label-icon">📧</span>
+            Email Address
+          </label>
           <input
             id="email"
             type="email"
             formControlName="email"
-            class="field-input"
-            placeholder="Enter your email"
+            class="form-input"
+            placeholder="your.email@example.com"
+            [class.input-error]="
+              loginForm.get('email')?.invalid && loginForm.get('email')?.touched
+            "
           />
+          <div
+            *ngIf="
+              loginForm.get('email')?.invalid && loginForm.get('email')?.touched
+            "
+            class="field-error"
+          >
+            Please enter a valid email address
+          </div>
         </div>
 
-        <div>
-          <label for="password" class="field-label">Password</label>
+        <div class="form-group">
+          <label for="password" class="form-label">
+            <span class="label-icon">🔒</span>
+            Password
+          </label>
           <input
             id="password"
-            type="password"
+            [type]="showPassword() ? 'text' : 'password'"
             formControlName="password"
-            class="field-input"
+            class="form-input"
             placeholder="Enter your password"
+            [class.input-error]="
+              loginForm.get('password')?.invalid &&
+              loginForm.get('password')?.touched
+            "
           />
+          <button
+            type="button"
+            class="password-toggle"
+            (click)="togglePassword()"
+          >
+            <span *ngIf="!showPassword()">👁️</span>
+            <span *ngIf="showPassword()">🙈</span>
+          </button>
+          <div
+            *ngIf="
+              loginForm.get('password')?.invalid &&
+              loginForm.get('password')?.touched
+            "
+            class="field-error"
+          >
+            Password is required
+          </div>
         </div>
-      </div>
 
-      <div *ngIf="errorMessage()" class="error-message">
-        {{ errorMessage() }}
-      </div>
+        <div *ngIf="errorMessage()" class="error-alert">
+          <span class="error-icon">⚠️</span>
+          <span>{{ errorMessage() }}</span>
+        </div>
 
-      <div>
         <button
           type="submit"
           [disabled]="loginForm.invalid || isLoading()"
-          class="submit-button"
+          class="submit-btn"
         >
-          <span *ngIf="!isLoading()">Sign in</span>
-          <span *ngIf="isLoading()">Signing in...</span>
+          <span *ngIf="!isLoading()" class="btn-content">
+            <span class="btn-icon">🔓</span>
+            <span>Sign In</span>
+          </span>
+          <span *ngIf="isLoading()" class="btn-content">
+            <span class="btn-spinner">⏳</span>
+            <span>Signing in...</span>
+          </span>
         </button>
+
+        <div class="form-footer">
+          <a href="#" class="footer-link">Forgot password?</a>
+          <span class="footer-divider">•</span>
+          <a href="/" class="footer-link">Back to Home</a>
+        </div>
+      </form>
+
+      <div class="help-section">
+        <p class="help-text">
+          Need help? Contact us at
+          <a [href]="'tel:' + contactInfo.phone" class="help-link">{{
+            contactInfo.phone
+          }}</a>
+        </p>
       </div>
-    </form>
+    </div>
   </div>
 </div>

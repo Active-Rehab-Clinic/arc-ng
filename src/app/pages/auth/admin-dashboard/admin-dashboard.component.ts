@@ -38,19 +38,28 @@ export class AdminDashboardComponent implements OnInit {
     }
   }
 
-  getStatusColor(status: string): string {
-    switch (status) {
+  getStatusClass(status: string): string {
+    switch (status.toLowerCase()) {
       case 'pending':
-        return 'text-yellow-600 bg-yellow-100';
+        return 'status-pending';
       case 'confirmed':
-        return 'text-green-600 bg-green-100';
+        return 'status-confirmed';
       case 'cancelled':
-        return 'text-red-600 bg-red-100';
+        return 'status-cancelled';
       case 'completed':
-        return 'text-blue-600 bg-blue-100';
+        return 'status-completed';
       default:
-        return 'text-gray-600 bg-gray-100';
+        return 'status-pending';
     }
+  }
+
+  getInitials(name: string): string {
+    if (!name) return '?';
+    const parts = name.split(' ');
+    if (parts.length >= 2) {
+      return (parts[0][0] + parts[1][0]).toUpperCase();
+    }
+    return name.substring(0, 2).toUpperCase();
   }
 
   formatDate(date: any): string {
@@ -114,10 +123,43 @@ export class AdminDashboardComponent implements OnInit {
     return `${displayHour}:${minutes} ${ampm}`;
   }
 
-  getAppointmentCount(): number { return this.appointments.length; }
-  getPendingCount(): number { return this.appointments.filter(apt => (apt.status || 'pending') === 'pending').length; }
-  getConfirmedCount(): number { return this.appointments.filter(apt => apt.status === 'confirmed').length; }
-  getCompletedCount(): number { return this.appointments.filter(apt => apt.status === 'completed').length; }
+  getAppointmentCount(): number {
+    return this.appointments.length;
+  }
+  getPendingCount(): number {
+    return this.appointments.filter(
+      (apt) => (apt.status || 'pending') === 'pending'
+    ).length;
+  }
+  getConfirmedCount(): number {
+    return this.appointments.filter((apt) => apt.status === 'confirmed').length;
+  }
+  getCompletedCount(): number {
+    return this.appointments.filter((apt) => apt.status === 'completed').length;
+  }
+
+  async updateStatus(
+    appointmentId: string,
+    newStatus: 'pending' | 'confirmed' | 'completed' | 'cancelled'
+  ) {
+    try {
+      await this.appointmentService.updateAppointmentStatus(
+        appointmentId,
+        newStatus
+      );
+
+      // Update local state
+      const appointment = this.appointments.find(
+        (apt) => apt.id === appointmentId
+      );
+      if (appointment) {
+        appointment.status = newStatus;
+      }
+    } catch (error) {
+      console.error('Error updating status:', error);
+      alert('Failed to update appointment status. Please try again.');
+    }
+  }
 
   async logout() {
     try {

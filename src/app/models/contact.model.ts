@@ -6,6 +6,7 @@ export interface ContactInfo {
     zip: string;
   };
   phone: string;
+  alternatePhone: string;
   email: string;
   hours: BusinessHours[];
   socialMedia: SocialMedia[];

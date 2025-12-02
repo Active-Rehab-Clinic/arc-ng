@@ -2,36 +2,29 @@ import { Injectable } from '@angular/core';
 import { Stat } from '@models/stat.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class StatsStore {
-  
   getStats(): Stat[] {
     return [
-      { 
-        label: 'Patients Treated', 
-        value: '1000+', 
+      {
+        label: 'Patients Treated',
+        value: '1000+',
         color: 'blue',
-        description: 'Successfully treated patients across all specialties'
+        description: 'Successfully treated patients across all specialties',
       },
-      { 
-        label: 'Years Experience', 
-        value: '15+', 
+      {
+        label: 'Years Experience',
+        value: '13+',
         color: 'green',
-        description: 'Combined years of professional rehabilitation experience'
+        description: 'Combined years of professional rehabilitation experience',
       },
-      { 
-        label: 'Success Rate', 
-        value: '98%', 
+      {
+        label: 'Success Rate',
+        value: '98%',
         color: 'purple',
-        description: 'Patient satisfaction and treatment success rate'
+        description: 'Patient satisfaction and treatment success rate',
       },
-      { 
-        label: 'Support Available', 
-        value: '24/7', 
-        color: 'orange',
-        description: 'Emergency consultation and support services'
-      }
     ];
   }
 }

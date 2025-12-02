@@ -4,7 +4,9 @@
     <div class="container">
       <div class="hero-content">
         <h1 class="hero-title">Contact Us</h1>
-        <p class="hero-subtitle">Get in touch to schedule your appointment or ask any questions</p>
+        <p class="hero-subtitle">
+          Get in touch to schedule your appointment or ask any questions
+        </p>
       </div>
     </div>
   </section>
@@ -16,7 +18,7 @@
         <!-- Contact Details -->
         <div class="contact-info">
           <h2 class="contact-title">Get In Touch</h2>
-          
+
           <div class="contact-item">
             <div class="contact-icon contact-icon-blue">
               <span>📍</span>
@@ -24,8 +26,9 @@
             <div class="contact-details">
               <h3 class="contact-label">Address</h3>
               <p class="contact-text">
-                {{ contactInfo.address.street }}<br>
-                {{ contactInfo.address.city }}, {{ contactInfo.address.state }} {{ contactInfo.address.zip }}
+                {{ contactInfo.address.street }}<br />
+                {{ contactInfo.address.city }}, {{ contactInfo.address.state }}
+                {{ contactInfo.address.zip }}
               </p>
             </div>
           </div>
@@ -74,13 +77,20 @@
             </div>
             <h3 class="placeholder-title">Contact Form Coming Soon</h3>
             <p class="placeholder-text">
-              We're working on an interactive contact form. For now, please call us directly or send an email.
+              We're working on an interactive contact form. For now, please call
+              us directly or send an email.
             </p>
             <div class="placeholder-buttons">
-              <a [href]="'tel:' + contactInfo.phone" class="placeholder-btn-primary">
+              <a
+                [href]="'tel:' + contactInfo.phone"
+                class="placeholder-btn-primary"
+              >
                 📞 Call Now
               </a>
-              <a [href]="'mailto:' + contactInfo.email" class="placeholder-btn-secondary">
+              <a
+                [href]="'mailto:' + contactInfo.email"
+                class="placeholder-btn-secondary"
+              >
                 ✉️ Send Email
               </a>
             </div>
@@ -97,33 +107,17 @@
         <h2 class="section-title">Business Hours</h2>
         <p class="section-subtitle">We're here when you need us most</p>
       </div>
-      
-      <div class="hours-grid">
-        <div *ngFor="let hour of contactInfo.hours" 
-             class="hour-item" 
-             [class.closed]="!hour.isOpen">
-          <div class="hour-day">{{ hour.day }}</div>
-          <div class="hour-time" [class.closed-text]="!hour.isOpen">{{ hour.hours }}</div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Emergency Contact -->
-  <section class="emergency-section">
-    <div class="container">
-      <div class="emergency-card">
-        <div class="emergency-icon">
-          <span>🚨</span>
-        </div>
-        <div class="emergency-content">
-          <h3 class="emergency-title">Emergency Consultation</h3>
-          <p class="emergency-text">
-            Need immediate assistance? Our emergency consultation service is available 24/7 for urgent rehabilitation needs.
-          </p>
-          <a [href]="'tel:' + contactInfo.phone" class="emergency-btn">
-            Call Emergency Line
-          </a>
+      <div class="hours-grid">
+        <div
+          *ngFor="let hour of contactInfo.hours"
+          class="hour-item"
+          [class.closed]="!hour.isOpen"
+        >
+          <div class="hour-day">{{ hour.day }}</div>
+          <div class="hour-time" [class.closed-text]="!hour.isOpen">
+            {{ hour.hours }}
+          </div>
         </div>
       </div>
     </div>
@@ -133,10 +127,14 @@
   <section class="cta-section">
     <div class="cta-container">
       <h2 class="cta-title">Ready to Schedule Your Appointment?</h2>
-      <p class="cta-subtitle">Take the first step towards your recovery today</p>
+      <p class="cta-subtitle">
+        Take the first step towards your recovery today
+      </p>
       <div class="cta-buttons">
         <a routerLink="/book" class="cta-btn-primary">Book Appointment</a>
-        <a [href]="'tel:' + contactInfo.phone" class="cta-btn-secondary">Call Us</a>
+        <a [href]="'tel:' + contactInfo.phone" class="cta-btn-secondary"
+          >Call Us</a
+        >
       </div>
     </div>
   </section>
