@@ -1,12 +1,11 @@
-// Import admin dashboard styles as base
-@import "../admin-dashboard/admin-dashboard.component.scss";
+@use "../shared-dashboard.scss";
 
-// Override header icon color for sys-admin
+/* // Sys-Admin specific header icon */
 .header-icon {
   @apply bg-gradient-to-br from-purple-500 to-pink-600;
 }
 
-// Action Section
+/* // Action Section */
 .action-section {
   @apply flex flex-col sm:flex-row gap-3;
 }
@@ -27,72 +26,16 @@
   @apply text-lg;
 }
 
-// Form Card
-.form-card {
-  @apply bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-100 dark:border-gray-700 p-6;
-}
-
-.form-header {
-  @apply mb-6;
-}
-
-.form-title {
-  @apply text-xl font-bold text-gray-900 dark:text-gray-100 mb-1;
-}
-
-.form-subtitle {
-  @apply text-sm text-gray-600 dark:text-gray-400;
-}
-
-.user-form {
-  @apply space-y-6;
-}
-
-.form-grid {
-  @apply grid grid-cols-1 sm:grid-cols-2 gap-4;
-}
-
-.form-group {
-  @apply flex flex-col;
-}
-
-.form-label {
-  @apply text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2;
-}
-
-.form-input,
-.form-select {
-  @apply w-full px-4 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 transition-all;
-  @apply focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-800;
-}
-
-.form-actions {
-  @apply flex flex-col sm:flex-row items-start sm:items-center gap-4;
-}
-
-.submit-btn {
-  @apply bg-green-600 hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-800 text-white px-6 py-3 rounded-lg font-semibold transition-all shadow-md hover:shadow-lg;
-  @apply disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-md;
-}
-
-.form-message {
-  @apply text-sm font-medium px-4 py-2 rounded-lg;
-
-  &.success {
-    @apply bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400;
-  }
-
-  &.error {
-    @apply bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400;
-  }
-}
-
-// Users Section
+/* // Users Section */
 .users-section {
   @apply bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-100 dark:border-gray-700;
 }
 
-// User Table Styles (Desktop)
+.users-table {
+  @apply w-full;
+}
+
+/* // User Table Styles */
 .cell-user-info {
   @apply flex items-center gap-3;
 }
@@ -113,7 +56,7 @@
   @apply text-sm text-gray-600 dark:text-gray-400;
 }
 
-// User Card Styles (Mobile)
+/* // User Card Styles (Mobile) */
 .user-card-redesign {
   @apply bg-gray-50 dark:bg-gray-900/50 rounded-lg border border-gray-200 dark:border-gray-700 p-4 transition-all hover:shadow-md;
 }
@@ -158,7 +101,7 @@
   @apply text-gray-900 dark:text-gray-100;
 }
 
-// Role Badges
+/* // Role Badges */
 .role-badge {
   @apply px-3 py-1 rounded-full text-xs sm:text-sm font-semibold uppercase tracking-wide;
 }
@@ -179,73 +122,7 @@
   @apply bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400;
 }
 
-// Stats Section
-.stats-section {
-  @apply space-y-4;
-}
-
-.stats-title {
-  @apply text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100;
-}
-
-// Cell styles for user table
-.cell-user {
-  @apply flex items-center gap-3;
-}
-
-.user-name {
-  @apply font-semibold text-gray-900 dark:text-gray-100;
-}
-
-.cell-email {
-  @apply text-gray-900 dark:text-gray-100;
-}
-
-.cell-date {
-  @apply text-xs text-gray-600 dark:text-gray-400;
-}
-
-// No avatar styles for appointments
-.cell-patient-no-avatar {
-  @apply flex flex-col min-w-0;
-}
-
-.appointment-patient-no-avatar {
-  @apply flex flex-col;
-}
-
-// Status Select Dropdown
-.status-select,
-.status-select-mobile {
-  @apply px-3 py-1 rounded-full text-xs sm:text-sm font-semibold uppercase tracking-wide cursor-pointer border-2 transition-all;
-  @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
-
-  &.status-pending {
-    @apply bg-yellow-100 text-yellow-800 border-yellow-300 dark:bg-yellow-900/30 dark:text-yellow-400 dark:border-yellow-700;
-    @apply focus:ring-yellow-500;
-  }
-
-  &.status-confirmed {
-    @apply bg-green-100 text-green-800 border-green-300 dark:bg-green-900/30 dark:text-green-400 dark:border-green-700;
-    @apply focus:ring-green-500;
-  }
-
-  &.status-completed {
-    @apply bg-blue-100 text-blue-800 border-blue-300 dark:bg-blue-900/30 dark:text-blue-400 dark:border-blue-700;
-    @apply focus:ring-blue-500;
-  }
-
-  &.status-cancelled {
-    @apply bg-red-100 text-red-800 border-red-300 dark:bg-red-900/30 dark:text-red-400 dark:border-red-700;
-    @apply focus:ring-red-500;
-  }
-}
-
-.status-select-mobile {
-  @apply text-xs;
-}
-
-// Improved Form Card
+/* // Improved Form Card */
 .form-card-improved {
   @apply bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden;
 }
@@ -366,4 +243,8 @@
 
 .alert-text {
   @apply text-sm font-medium;
+}
+
+.stats-title {
+  @apply text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100;
 }
