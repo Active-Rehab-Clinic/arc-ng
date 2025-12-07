@@ -27,11 +27,10 @@ A modern Angular 20.3.1 web application for Active Rehab Clinic featuring compre
 
 #### Services (`/services`) - ✅ Implemented
 
-- Complete service catalog with 7 specialties:
-  - Orthopedic Rehabilitation
+- Complete service catalog with 6 specialties:
+  - Musculoskeletal Therapy
   - Neurological Therapy
   - Sports Medicine
-  - Occupational Therapy
   - Pediatric Therapy
   - Pain Management
   - Home Visit Services (NEW)
@@ -53,7 +52,6 @@ A modern Angular 20.3.1 web application for Active Rehab Clinic featuring compre
 - Email: activerehabc@gmail.com
 - Address: C-8, opp. Delhi International School, Pocket-8, Sector 17 Dwarka, New Delhi 110078
 - Business hours: Mon-Fri 8AM-6PM, Sat 9AM-4PM, Sun Closed
-- Emergency consultation available 24/7
 
 #### Book Appointment (`/book`) - ✅ Implemented
 

@@ -8,16 +8,16 @@ export class ServicesStore {
   getServices(): Service[] {
     return [
       {
-        id: 'orthopedic',
-        title: 'Orthopedic Rehabilitation',
+        id: 'musculoskeletal',
+        title: 'Musculoskeletal Therapy',
         description:
-          'Expert treatment for bone, joint and muscle problems. Helping you recover from surgery and injuries with modern techniques.',
+          'Expert treatment for bone, joint and muscle problems. Helping you recover from injuries with modern techniques.',
         icon: '🦴',
         iconColor: 'blue',
         features: [
-          'Post-surgery recovery support',
-          'Joint replacement rehabilitation',
-          'Fracture and injury treatment',
+          'Joint pain relief',
+          'Muscle injury treatment',
+          'Fracture recovery support',
           'Arthritis pain management',
         ],
       },
@@ -47,20 +47,6 @@ export class ServicesStore {
           'Fitness and performance boost',
           'Injury prevention guidance',
           'Safe return to sports programs',
-        ],
-      },
-      {
-        id: 'occupational',
-        title: 'Occupational Therapy',
-        description:
-          'Learn to manage daily activities with confidence. We help you return to work and home tasks after injury or illness.',
-        icon: '🏠',
-        iconColor: 'orange',
-        features: [
-          'Daily routine training',
-          'Office ergonomics guidance',
-          'Assistive device training',
-          'Hand and finger exercises',
         ],
       },
       {
