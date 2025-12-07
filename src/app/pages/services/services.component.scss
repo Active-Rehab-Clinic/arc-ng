@@ -39,7 +39,7 @@
 
 .service-icon {
   @apply w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center mb-4 sm:mb-6 mx-auto;
-  
+
   span {
     @apply text-3xl sm:text-4xl;
   }
@@ -79,19 +79,15 @@
 
 .service-features {
   @apply list-none space-y-2 mb-4 sm:mb-6;
-  
+
   li {
     @apply text-sm sm:text-base text-gray-700 flex items-center dark:text-gray-300;
-    
+
     &:before {
       content: "✓";
       @apply text-green-500 font-bold mr-2 flex-shrink-0;
     }
   }
-}
-
-.service-price {
-  @apply text-xl sm:text-2xl font-bold text-teal-600 text-center mb-4 sm:mb-6 dark:text-teal-400;
 }
 
 .service-btn {
@@ -129,10 +125,10 @@
 
 .insurance-list {
   @apply list-none space-y-2 sm:space-y-3;
-  
+
   li {
     @apply text-sm sm:text-base text-gray-700 flex items-center dark:text-gray-300;
-    
+
     &:before {
       content: "•";
       @apply text-teal-500 font-bold mr-3 flex-shrink-0;

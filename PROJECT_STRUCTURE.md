@@ -1,9 +1,11 @@
 # Active Rehab Clinic (ARC) - Web Application Structure
 
 ## Project Overview
+
 A modern Angular 20.3.1 web application for Active Rehab Clinic featuring comprehensive physiotherapy services, online appointment booking, patient management, and staff administration with Firebase backend integration.
 
 ## Current Tech Stack
+
 - **Frontend**: Angular 20.3.1 with SSR (Server-Side Rendering)
 - **Styling**: Tailwind CSS + SCSS with Flowbite components
 - **Backend**: Firebase (Auth, Firestore) - Fully configured
@@ -16,6 +18,7 @@ A modern Angular 20.3.1 web application for Active Rehab Clinic featuring compre
 ### Implemented Public Routes
 
 #### Home (`/home`) - ✅ Implemented
+
 - Hero section with clinic overview
 - Featured services showcase (6 services)
 - Testimonials section (3 testimonials)
@@ -23,23 +26,27 @@ A modern Angular 20.3.1 web application for Active Rehab Clinic featuring compre
 - SEO optimized with meta tags
 
 #### Services (`/services`) - ✅ Implemented
-- Complete service catalog with 6 specialties:
-  - Orthopedic Rehabilitation (₹800/session)
-  - Neurological Therapy (₹1000/session)
-  - Sports Medicine (₹900/session)
-  - Occupational Therapy (₹700/session)
-  - Pediatric Therapy (₹850/session)
-  - Pain Management (₹750/session)
-- Service cards with features and pricing
-- Direct booking integration
+
+- Complete service catalog with 7 specialties:
+  - Orthopedic Rehabilitation
+  - Neurological Therapy
+  - Sports Medicine
+  - Occupational Therapy
+  - Pediatric Therapy
+  - Pain Management
+  - Home Visit Services (NEW)
+- Service cards with features
+- Direct booking integration with home visit option
 
 #### About (`/about`) - ✅ Implemented
+
 - Clinic information and mission
 - Team profiles and certifications
 - Facility details
 - Contact information
 
 #### Contact (`/contact`) - ✅ Implemented
+
 - Contact form placeholder (coming soon)
 - Complete clinic location and hours
 - Phone: +91 85058 51951
@@ -49,6 +56,7 @@ A modern Angular 20.3.1 web application for Active Rehab Clinic featuring compre
 - Emergency consultation available 24/7
 
 #### Book Appointment (`/book`) - ✅ Implemented
+
 - Service selection dropdown
 - Date and time slot picker (9AM-4PM slots)
 - Patient information form
@@ -57,6 +65,7 @@ A modern Angular 20.3.1 web application for Active Rehab Clinic featuring compre
 ### Authentication System (`/auth/*`) - ✅ Implemented
 
 #### Login (`/auth/login`) - ✅ Implemented
+
 - Firebase Authentication integration
 - Email/password login
 - Role-based redirection (patient/staff/admin)
@@ -64,16 +73,19 @@ A modern Angular 20.3.1 web application for Active Rehab Clinic featuring compre
 - 24-hour token validity
 
 #### Patient Dashboard (`/auth/patient`) - ✅ Implemented
+
 - Protected route with role guard
 - Patient-specific dashboard
 - Appointment management interface
 
 #### Staff Dashboard (`/auth/staff`) - ✅ Implemented
+
 - Staff-specific dashboard
 - Schedule management
 - Patient overview
 
 #### Admin Dashboard (`/auth/admin`) - ✅ Implemented
+
 - Administrative controls
 - System management
 - User and appointment oversight
@@ -81,6 +93,7 @@ A modern Angular 20.3.1 web application for Active Rehab Clinic featuring compre
 ### Current Features Status
 
 #### ✅ Fully Implemented
+
 - **Firebase Integration**: Complete setup with Auth and Firestore
 - **Authentication System**: Login, registration, role-based access
 - **Route Guards**: Auth guard and role-based guards
@@ -94,11 +107,13 @@ A modern Angular 20.3.1 web application for Active Rehab Clinic featuring compre
 - **Responsive Design**: Mobile-first with Tailwind CSS
 
 #### 🔄 Partially Implemented
+
 - **Dashboard Systems**: Basic structure exists, needs content
 - **User Management**: Auth works, profile management needed
 - **Appointment Management**: Booking works, viewing/editing needed
 
 #### ⏳ Planned Features
+
 - **Patient Portal**: Appointment history, profile management
 - **Staff Portal**: Schedule management, patient records
 - **Admin Portal**: User management, reporting, analytics
@@ -109,6 +124,7 @@ A modern Angular 20.3.1 web application for Active Rehab Clinic featuring compre
 ## Actual Technical Architecture
 
 ### Current Component Structure
+
 ```
 src/app/
 ├── components/
@@ -164,6 +180,7 @@ src/app/
 ```
 
 ### Implemented Services
+
 - **AuthService**: Firebase Auth with Angular signals, 24h session management
 - **FirebaseService**: Firestore integration for appointments
 - **ThemeService**: Dark/light mode with system detection
@@ -173,6 +190,7 @@ src/app/
 - **Store Services**: Static data management for services, testimonials, etc.
 
 ### Route Protection
+
 - **authGuard**: Functional guard for authentication
 - **roleGuard**: Factory function for role-based access
 - **RoleGuard**: Class-based guard (legacy, both implemented)
@@ -180,13 +198,14 @@ src/app/
 ### Current Data Models
 
 #### Implemented Interfaces
+
 ```typescript
 // User Management
 interface User {
   id: string;
   email: string;
   name: string;
-  role: 'patient' | 'staff' | 'admin';
+  role: "patient" | "staff" | "admin";
   createdAt?: Date;
 }
 
@@ -206,7 +225,7 @@ interface Appointment {
   preferredDate: string;
   preferredTime: string;
   message?: string;
-  status?: 'pending' | 'confirmed' | 'cancelled' | 'completed';
+  status?: "pending" | "confirmed" | "cancelled" | "completed";
   createdAt?: Date;
 }
 
@@ -215,10 +234,9 @@ interface Service {
   id: string;
   title: string;
   description: string;
-  icon: string;           // Emoji icons
-  features: string[];     // Service features list
-  price: string;          // Display price (e.g., "₹800/session")
-  iconColor: string;      // Color theme
+  icon: string; // Emoji icons
+  features: string[]; // Service features list
+  iconColor: string; // Color theme
 }
 
 // Content Models
@@ -242,40 +260,42 @@ interface TeamMember {
 ```
 
 #### Constants and Configuration
+
 ```typescript
 // App Configuration
 const APP_CONFIG = {
-  name: 'Active Rehab Clinic',
+  name: "Active Rehab Clinic",
   contact: {
-    phone: '+91 85058 51951',
-    email: 'activerehabc@gmail.com',
-    address: 'C-8, opp. Delhi International School, Pocket-8, Sector 17 Dwarka, New Delhi 110078'
+    phone: "+91 85058 51951",
+    email: "activerehabc@gmail.com",
+    address: "C-8, opp. Delhi International School, Pocket-8, Sector 17 Dwarka, New Delhi 110078",
   },
   businessHours: {
-    monday: { open: '08:00', close: '18:00' },
-    tuesday: { open: '08:00', close: '18:00' },
-    wednesday: { open: '08:00', close: '18:00' },
-    thursday: { open: '08:00', close: '18:00' },
-    friday: { open: '08:00', close: '18:00' },
-    saturday: { open: '09:00', close: '16:00' },
-    sunday: { open: null, close: null } // Closed
-  }
+    monday: { open: "08:00", close: "18:00" },
+    tuesday: { open: "08:00", close: "18:00" },
+    wednesday: { open: "08:00", close: "18:00" },
+    thursday: { open: "08:00", close: "18:00" },
+    friday: { open: "08:00", close: "18:00" },
+    saturday: { open: "09:00", close: "16:00" },
+    sunday: { open: null, close: null }, // Closed
+  },
 };
 
 // Available time slots
 const TIME_SLOTS = [
-  { value: '09:00', label: '9:00 AM' },
-  { value: '10:00', label: '10:00 AM' },
-  { value: '11:00', label: '11:00 AM' },
-  { value: '14:00', label: '2:00 PM' },
-  { value: '15:00', label: '3:00 PM' },
-  { value: '16:00', label: '4:00 PM' }
+  { value: "09:00", label: "9:00 AM" },
+  { value: "10:00", label: "10:00 AM" },
+  { value: "11:00", label: "11:00 AM" },
+  { value: "14:00", label: "2:00 PM" },
+  { value: "15:00", label: "3:00 PM" },
+  { value: "16:00", label: "4:00 PM" },
 ];
 ```
 
 ## Current Development Status
 
 ### ✅ Phase 1: Foundation & Authentication - COMPLETED
+
 - [x] Angular 20.3.1 setup with SSR
 - [x] Tailwind CSS with Flowbite configuration
 - [x] Firebase integration (Auth + Firestore)
@@ -286,6 +306,7 @@ const TIME_SLOTS = [
 - [x] SEO and analytics services
 
 ### ✅ Phase 2: Public Interface - COMPLETED
+
 - [x] Home page with hero, services, testimonials
 - [x] Services catalog (6 specialties with pricing)
 - [x] About page with clinic information
@@ -295,6 +316,7 @@ const TIME_SLOTS = [
 - [x] Layout components (header, footer, sidebar)
 
 ### 🔄 Phase 3: User Portals - IN PROGRESS
+
 - [x] Authentication routing structure
 - [x] Dashboard components (basic structure)
 - [x] Role-based access control
@@ -304,6 +326,7 @@ const TIME_SLOTS = [
 - [ ] Profile management interfaces
 
 ### ⏳ Phase 4: Advanced Features - PLANNED
+
 - [ ] Email notifications for appointments
 - [ ] SMS reminders integration
 - [ ] Payment processing (Razorpay/Stripe)
@@ -313,6 +336,7 @@ const TIME_SLOTS = [
 - [ ] Patient medical records system
 
 ### 🎯 Phase 5: Optimization - FUTURE
+
 - [ ] PWA implementation
 - [ ] Advanced caching strategies
 - [ ] Performance monitoring
@@ -323,18 +347,21 @@ const TIME_SLOTS = [
 ## Current Design System
 
 ### Color Palette (Tailwind Config)
+
 - **Primary**: Teal variants (50-900) - `#14b8a6` (teal-500)
 - **Secondary**: Green variants (50-900) - `#22c55e` (green-500)
 - **Dark Mode**: Full support with `class` strategy
 - **Flowbite Integration**: Custom theme with clinic branding
 
 ### Typography & Spacing
+
 - **Responsive Design**: Mobile-first approach
 - **Font System**: System fonts with fallbacks
 - **Spacing Scale**: Tailwind's consistent spacing (4, 6, 8, 12, 16, 20, 24)
 - **Breakpoints**: sm (640px), md (768px), lg (1024px), xl (1280px)
 
 ### Component Library
+
 - **Layout**: Header with navigation, footer, responsive sidebar
 - **Forms**: Reactive forms with validation
 - **Cards**: Service cards, testimonial cards
@@ -344,6 +371,7 @@ const TIME_SLOTS = [
 ## Quality & Security Implementation
 
 ### Current Performance Features
+
 - ✅ Lazy loading for all routes (`loadComponent`)
 - ✅ Standalone components (tree-shakable)
 - ✅ SSR for SEO optimization
@@ -351,6 +379,7 @@ const TIME_SLOTS = [
 - ✅ Responsive images and assets
 
 ### Security Implementation
+
 - ✅ Firebase Authentication with secure tokens
 - ✅ Role-based route guards
 - ✅ Input validation on forms
@@ -359,12 +388,14 @@ const TIME_SLOTS = [
 - ✅ 24-hour token expiration
 
 ### SEO & Analytics
+
 - ✅ Meta tags service for all pages
 - ✅ Structured data for clinic information
 - ✅ Analytics tracking for user interactions
 - ✅ Server-side rendering for search engines
 
 ### Testing Status
+
 - ✅ Basic Angular testing setup (Karma/Jasmine)
 - ⏳ Component unit tests (planned)
 - ⏳ E2E testing setup (planned)
@@ -373,6 +404,7 @@ const TIME_SLOTS = [
 ## Firebase Configuration
 
 ### Current Setup
+
 ```typescript
 // Environment configuration
 export const environment = {
@@ -383,12 +415,13 @@ export const environment = {
     projectId: "activerehabclinic-web",
     storageBucket: "activerehabclinic-web.firebasestorage.app",
     messagingSenderId: "10780531383",
-    appId: "1:10780531383:web:82be6e23666dbacaf6cb32"
-  }
+    appId: "1:10780531383:web:82be6e23666dbacaf6cb32",
+  },
 };
 ```
 
 ### Firebase Services Used
+
 - **Authentication**: Email/password auth with role management
 - **Firestore**: Appointment storage and user data
 - **Hosting**: Production deployment ready
@@ -397,6 +430,7 @@ export const environment = {
 ## Project Maturity Assessment
 
 ### 🎯 Production Ready Features (80% Complete)
+
 - ✅ **Public Website**: Fully functional with all pages
 - ✅ **Appointment Booking**: Complete booking flow
 - ✅ **Authentication**: Secure login/registration system
@@ -406,12 +440,14 @@ export const environment = {
 - ✅ **Theme System**: Dark/light mode
 
 ### 🔧 Development Ready Features (40% Complete)
+
 - 🔄 **User Dashboards**: Structure exists, content needed
 - 🔄 **Appointment Management**: Booking works, viewing needed
 - 🔄 **User Profiles**: Auth works, profile editing needed
 - 🔄 **Admin Panel**: Basic structure, functionality needed
 
 ### 📋 Planned Features (0% Complete)
+
 - ⏳ **Notifications**: Email/SMS system
 - ⏳ **Payments**: Online payment processing
 - ⏳ **Advanced Analytics**: Detailed reporting
@@ -419,6 +455,7 @@ export const environment = {
 - ⏳ **Staff Scheduling**: Availability management
 
 ### 🚀 Deployment Status
+
 - **Environment**: Production Firebase project configured
 - **Hosting**: Ready for Firebase Hosting deployment
 - **Domain**: Can be configured for custom domain

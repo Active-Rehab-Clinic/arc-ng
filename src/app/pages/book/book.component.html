@@ -41,9 +41,9 @@
               <div class="instruction-icon">
                 <span>🏥</span>
               </div>
-              <h3 class="instruction-title">Visit Our Clinic</h3>
+              <h3 class="instruction-title">Visit Clinic or Home</h3>
               <p class="instruction-text">
-                Come to your scheduled appointment for treatment
+                Choose clinic visit or home visit service for your convenience
               </p>
             </div>
           </div>
@@ -108,6 +108,25 @@
               </div>
 
               <div class="form-group">
+                <label for="visitType" class="form-label">Visit Type *</label>
+                <select
+                  id="visitType"
+                  formControlName="visitType"
+                  class="form-select placeholder-gray-400"
+                >
+                  <option value="clinic">Clinic Visit</option>
+                  <option value="home">🏡 Home Visit (Delhi NCR Only)</option>
+                </select>
+                <p
+                  class="form-hint"
+                  *ngIf="appointmentForm.get('visitType')?.value === 'home'"
+                >
+                  📍 Home visit service is currently available only in Delhi NCR
+                  region
+                </p>
+              </div>
+
+              <div class="form-group">
                 <label for="preferredDate" class="form-label"
                   >Preferred Date *</label
                 >
@@ -135,6 +154,22 @@
                   </option>
                 </select>
               </div>
+            </div>
+
+            <div
+              class="form-group full-width"
+              *ngIf="appointmentForm.get('visitType')?.value === 'home'"
+            >
+              <label for="address" class="form-label"
+                >Home Address (Delhi NCR) *</label
+              >
+              <textarea
+                id="address"
+                formControlName="address"
+                class="form-textarea placeholder-gray-400"
+                rows="3"
+                placeholder="Enter your complete address in Delhi NCR for home visit..."
+              ></textarea>
             </div>
 
             <div class="form-group full-width">
@@ -171,14 +206,24 @@
 
           <!-- Alternative Contact Methods -->
           <div class="alternative-contact">
-            <h3 class="contact-title">Prefer to Call?</h3>
-            <p class="contact-text">You can also book by calling us directly</p>
+            <h3 class="contact-title">Need Help Booking?</h3>
+            <p class="contact-text">
+              You can also reach us through these channels
+            </p>
             <div class="contact-buttons">
+              <a
+                [href]="getWhatsAppUrl()"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact-btn-whatsapp"
+              >
+                💬 WhatsApp Enquiry
+              </a>
               <a
                 [href]="'tel:' + contactInfo.phone"
                 class="contact-btn-primary"
               >
-                📞 Call Now: {{ contactInfo.phone }}
+                📞 Call: {{ contactInfo.phone }}
               </a>
               <a
                 [href]="'mailto:' + contactInfo.email"

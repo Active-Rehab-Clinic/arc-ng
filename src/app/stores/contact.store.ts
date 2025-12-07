@@ -26,6 +26,7 @@ export class ContactStore {
         { day: 'Saturday', hours: '9:00 AM - 4:00 PM', isOpen: true },
         { day: 'Sunday', hours: 'Closed', isOpen: false },
       ],
+      whatsapp: '+919910885929',
       socialMedia: [
         {
           platform: 'Facebook',
@@ -41,6 +42,11 @@ export class ContactStore {
           platform: 'LinkedIn',
           url: 'https://linkedin.com/company/activerehab',
           icon: '💼',
+        },
+        {
+          platform: 'WhatsApp',
+          url: 'https://wa.me/919910885929',
+          icon: '💬',
         },
       ],
     };

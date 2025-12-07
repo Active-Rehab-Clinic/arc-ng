@@ -4,6 +4,5 @@ export interface Service {
   description: string;
   icon: string;
   features: string[];
-  price: string;
   iconColor: string;
 }
