@@ -50,7 +50,7 @@ export class BookComponent implements OnInit {
 
     this.appointmentForm = this.fb.group({
       name: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.email]],
       phone: ['', [Validators.required]],
       service: ['', [Validators.required]],
       visitType: ['clinic', [Validators.required]],

@@ -1,0 +1,52 @@
+{
+  "name": "vercel-locked-branches",
+  "target": {
+    "type": "branch",
+    "include": [
+      "vercel-preview*",
+      "vercel-production*"
+    ]
+  },
+  "enforcement": "active",
+  "rules": [
+    {
+      "type": "restrict_creations",
+      "enabled": true
+    },
+    {
+      "type": "restrict_updates",
+      "enabled": true
+    },
+    {
+      "type": "restrict_deletions",
+      "enabled": true
+    },
+    {
+      "type": "require_pull_request_before_merge",
+      "enabled": true,
+      "settings": {
+        "required_approving_review_count": 1,
+        "dismiss_stale_reviews_on_push": true,
+        "require_review_from_code_owners": false,
+        "require_approval_from_outside_contributors": false,
+        "require_all_comments_resolved": false,
+        "allow_author_approval": false
+      }
+    },
+    {
+      "type": "required_status_checks",
+      "enabled": true,
+      "settings": {
+        "strict": true,
+        "contexts": []
+      }
+    },
+    {
+      "type": "block_force_pushes",
+      "enabled": true
+    }
+  ],
+  "metadata": {
+    "description": "Lock vercel-preview* and vercel-production* branches: block direct creates/updates/deletes and require PRs with at least 1 approving review before merge."
+  }
+}
