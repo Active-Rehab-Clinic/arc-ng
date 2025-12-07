@@ -4,12 +4,19 @@ import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs/operators';
 import { HeaderComponent } from './components/layout/header/header.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
+import { WhatsappButtonComponent } from './components/whatsapp-button/whatsapp-button.component';
 import { LayoutService } from './services/layout.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, HeaderComponent, FooterComponent],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    HeaderComponent,
+    FooterComponent,
+    WhatsappButtonComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

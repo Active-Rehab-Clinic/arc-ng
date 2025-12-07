@@ -6,6 +6,8 @@ export interface Appointment {
   service: string;
   preferredDate: string;
   preferredTime: string;
+  visitType?: 'clinic' | 'home';
+  address?: string;
   message?: string;
   status?: 'pending' | 'confirmed' | 'cancelled' | 'completed';
   createdAt?: Date;

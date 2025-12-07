@@ -1,6 +1,11 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  ReactiveFormsModule,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { MetaService } from '../../services/meta.service';
 import { FirebaseService } from '../../services/firebase.service';
 import { ContactStore } from '../../stores/contact.store';
@@ -14,7 +19,7 @@ import { Service } from '@models/service.model';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './book.component.html',
-  styleUrl: './book.component.scss'
+  styleUrl: './book.component.scss',
 })
 export class BookComponent implements OnInit {
   appointmentForm: FormGroup;
@@ -36,22 +41,40 @@ export class BookComponent implements OnInit {
     this.contactInfo = this.contactStore.getContactInfo();
     this.services = this.servicesStore.getServices();
     this.timeSlots = this.servicesStore.getTimeSlots();
-    
+
     const today = new Date();
     const tomorrow = new Date(today);
     tomorrow.setDate(today.getDate() + 1);
-    
+
     this.minDate.set(today.toISOString().split('T')[0]);
-    
+
     this.appointmentForm = this.fb.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required]],
       service: ['', [Validators.required]],
-      preferredDate: [tomorrow.toISOString().split('T')[0], [Validators.required]],
+      visitType: ['clinic', [Validators.required]],
+      address: [''],
+      preferredDate: [
+        tomorrow.toISOString().split('T')[0],
+        [Validators.required],
+      ],
       preferredTime: ['10:00', [Validators.required]],
-      message: ['']
+      message: [''],
     });
+
+    // Add conditional validation for address when home visit is selected
+    this.appointmentForm
+      .get('visitType')
+      ?.valueChanges.subscribe((visitType) => {
+        const addressControl = this.appointmentForm.get('address');
+        if (visitType === 'home') {
+          addressControl?.setValidators([Validators.required]);
+        } else {
+          addressControl?.clearValidators();
+        }
+        addressControl?.updateValueAndValidity();
+      });
   }
 
   ngOnInit(): void {
@@ -61,21 +84,32 @@ export class BookComponent implements OnInit {
     );
   }
 
+  getWhatsAppUrl(): string {
+    const message = encodeURIComponent(
+      'Hello! I would like to book an appointment for physiotherapy services.'
+    );
+    return `https://wa.me/${this.contactInfo.whatsapp}?text=${message}`;
+  }
+
   async onSubmit(): Promise<void> {
     if (this.isSubmitting() || this.appointmentForm.invalid) return;
-    
+
     this.isSubmitting.set(true);
     this.submitMessage.set('');
-    
+
     try {
       const appointment: Appointment = this.appointmentForm.value;
       await this.firebaseService.saveAppointment(appointment);
       this.submitSuccess.set(true);
-      this.submitMessage.set('Appointment request submitted successfully! We will contact you within 24 hours.');
+      this.submitMessage.set(
+        'Appointment request submitted successfully! We will contact you within 24 hours.'
+      );
       this.appointmentForm.reset();
     } catch (error) {
       this.submitSuccess.set(false);
-      this.submitMessage.set('Failed to submit appointment. Please try again or call us directly.');
+      this.submitMessage.set(
+        'Failed to submit appointment. Please try again or call us directly.'
+      );
       console.error('Error submitting appointment:', error);
     } finally {
       this.isSubmitting.set(false);
