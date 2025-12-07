@@ -72,7 +72,7 @@
 
 .value-icon {
   @apply w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4;
-  
+
   span {
     @apply text-xl sm:text-2xl;
   }
@@ -111,73 +111,160 @@
   @apply py-12 sm:py-16 bg-white dark:bg-gray-900;
 }
 
-.founder-spotlight {
-  @apply max-w-5xl mx-auto;
+.therapist-profile {
+  @apply max-w-6xl mx-auto;
 }
 
-.founder-card {
-  @apply bg-gradient-to-br from-teal-50 to-cyan-50 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 shadow-xl transition-all hover:shadow-2xl dark:from-gray-800 dark:to-gray-700;
-  @apply grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12 items-center;
+.profile-card {
+  @apply bg-gradient-to-br from-teal-50 via-cyan-50 to-blue-50 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl dark:from-gray-800 dark:via-gray-800 dark:to-gray-700;
+  @apply grid grid-cols-1 lg:grid-cols-5 gap-0;
 }
 
-.founder-image {
-  @apply text-center md:text-left relative;
+// Photo Section
+.profile-photo-section {
+  @apply lg:col-span-2 bg-gradient-to-br from-teal-600 to-cyan-700 p-6 sm:p-8;
 }
 
-.founder-avatar {
-  @apply w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 bg-gradient-to-br from-teal-600 to-cyan-700 rounded-full flex items-center justify-center mx-auto md:mx-0 text-white font-bold text-2xl sm:text-3xl md:text-4xl shadow-lg;
+.profile-photo-wrapper {
+  @apply relative mb-6;
 }
 
-.founder-badge {
-  @apply inline-block bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold mt-4 shadow-md;
+.profile-photo {
+  @apply w-full aspect-square object-cover rounded-2xl shadow-xl border-4 border-white/20;
 }
 
-.founder-content {
-  @apply text-center md:text-left;
+.photo-overlay {
+  @apply absolute bottom-4 left-4 right-4;
 }
 
-.founder-name {
-  @apply text-2xl sm:text-3xl md:text-4xl font-bold mb-2 text-gray-900 dark:text-gray-100;
+.overlay-badge {
+  @apply bg-white/95 backdrop-blur-sm rounded-full px-4 py-2 flex items-center gap-2 shadow-lg;
 }
 
-.founder-title {
-  @apply text-lg sm:text-xl text-teal-600 font-semibold mb-4 sm:mb-6 dark:text-teal-400;
+.badge-icon {
+  @apply text-lg;
 }
 
-.founder-bio {
-  @apply text-base sm:text-lg text-gray-700 mb-6 sm:mb-8 leading-relaxed dark:text-gray-300;
+.badge-text {
+  @apply text-sm font-bold text-teal-700;
 }
 
-.founder-highlights {
-  @apply grid grid-cols-1 gap-3 sm:gap-4 mb-6 sm:mb-8;
+.profile-stats {
+  @apply grid grid-cols-3 gap-3 sm:gap-4;
 }
 
-.highlight-item {
-  @apply flex items-center gap-3 bg-white rounded-lg p-3 sm:p-4 shadow-sm dark:bg-gray-800;
+.stat-box {
+  @apply bg-white/20 backdrop-blur-sm rounded-xl p-3 sm:p-4 text-center border border-white/30;
 }
 
-.highlight-icon {
-  @apply text-xl sm:text-2xl;
+.stat-value {
+  @apply text-xl sm:text-2xl font-bold text-white mb-1;
 }
 
-.highlight-text {
-  @apply text-sm sm:text-base font-medium text-gray-800 dark:text-gray-200;
+.stat-label {
+  @apply text-xs sm:text-sm text-teal-100 font-medium;
 }
 
-.founder-specialties {
+// Content Section
+.profile-content {
+  @apply lg:col-span-3 p-6 sm:p-8 md:p-10 space-y-6 sm:space-y-8;
+}
+
+.profile-header {
+  @apply flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 pb-6 border-b border-gray-200 dark:border-gray-600;
+}
+
+.profile-name {
+  @apply text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100;
+}
+
+.profile-title {
+  @apply text-base sm:text-lg text-teal-600 font-semibold dark:text-teal-400;
+}
+
+.profile-credentials {
+  @apply flex gap-2 flex-wrap;
+}
+
+.credential-badge {
+  @apply bg-teal-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-md;
+}
+
+.profile-bio {
+  @apply text-sm sm:text-base text-gray-700 leading-relaxed dark:text-gray-300;
+}
+
+.profile-section {
   @apply space-y-3 sm:space-y-4;
 }
 
-.specialties-title {
-  @apply text-lg sm:text-xl font-semibold text-gray-900 mb-3 dark:text-gray-100;
+.section-heading {
+  @apply flex items-center gap-2 text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4 dark:text-gray-100;
 }
 
-.specialties-list {
-  @apply flex flex-wrap gap-2 sm:gap-3;
+.heading-icon {
+  @apply text-xl sm:text-2xl;
 }
 
-.specialty-tag {
-  @apply bg-teal-100 text-teal-800 px-3 py-2 rounded-full text-sm font-medium transition-all hover:bg-teal-200 dark:bg-teal-900/30 dark:text-teal-300 dark:hover:bg-teal-900/50;
+.qualification-list {
+  @apply space-y-2 list-none;
+
+  li {
+    @apply text-sm sm:text-base text-gray-700 flex items-start gap-2 dark:text-gray-300;
+
+    &:before {
+      content: "✓";
+      @apply text-green-600 font-bold mt-0.5 flex-shrink-0;
+    }
+  }
+}
+
+.specialties-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 gap-3;
+}
+
+.specialty-card {
+  @apply bg-white rounded-lg p-3 sm:p-4 flex items-center gap-3 shadow-sm transition-all hover:shadow-md hover:scale-105 dark:bg-gray-700;
+}
+
+.specialty-icon {
+  @apply w-6 h-6 flex items-center justify-center bg-green-100 text-green-600 rounded-full font-bold text-sm flex-shrink-0 dark:bg-green-900/30 dark:text-green-400;
+}
+
+.specialty-name {
+  @apply text-sm sm:text-base font-medium text-gray-800 dark:text-gray-200;
+}
+
+.achievements-list {
+  @apply grid grid-cols-1 sm:grid-cols-2 gap-3;
+}
+
+.achievement-item {
+  @apply flex items-start gap-2 text-sm sm:text-base text-gray-700 dark:text-gray-300;
+}
+
+.achievement-icon {
+  @apply text-yellow-500 flex-shrink-0 mt-0.5;
+}
+
+.achievement-text {
+  @apply leading-relaxed;
+}
+
+.profile-cta {
+  @apply pt-6 border-t border-gray-200 dark:border-gray-600;
+}
+
+.cta-button {
+  @apply w-full bg-gradient-to-r from-teal-600 to-cyan-600 text-white px-6 py-4 rounded-xl font-bold text-base sm:text-lg flex items-center justify-center gap-3 shadow-lg transition-all hover:from-teal-700 hover:to-cyan-700 hover:scale-105 hover:shadow-xl;
+}
+
+.button-icon {
+  @apply text-xl sm:text-2xl;
+}
+
+.button-text {
+  @apply text-base sm:text-lg;
 }
 
 // Stats Section

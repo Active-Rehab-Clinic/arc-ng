@@ -57,48 +57,135 @@
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">Meet Your Therapist</h2>
-        <p class="section-subtitle">Expert care with personalized attention</p>
+        <p class="section-subtitle">
+          Expert care from a dedicated professional committed to your recovery
+        </p>
       </div>
 
-      <div class="founder-spotlight" *ngFor="let member of aboutInfo.team">
-        <div class="founder-card">
-          <div class="founder-image">
-            <div class="founder-avatar">
-              <span>{{ getInitials(member.name) }}</span>
+      <div class="therapist-profile" *ngFor="let member of aboutInfo.team">
+        <div class="profile-card">
+          <!-- Photo Section -->
+          <div class="profile-photo-section">
+            <div class="profile-photo-wrapper">
+              <img
+                src="/assets/raju-pal.jpg"
+                [alt]="member.name"
+                class="profile-photo"
+              />
+              <div class="photo-overlay">
+                <div class="overlay-badge">
+                  <span class="badge-icon">🏆</span>
+                  <span class="badge-text">Lead Therapist</span>
+                </div>
+              </div>
             </div>
-            <div class="founder-badge">Lead Therapist</div>
+
+            <!-- Quick Stats -->
+            <div class="profile-stats">
+              <div class="stat-box">
+                <div class="stat-value">13+</div>
+                <div class="stat-label">Years</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value">1000+</div>
+                <div class="stat-label">Patients</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value">98%</div>
+                <div class="stat-label">Success</div>
+              </div>
+            </div>
           </div>
 
-          <div class="founder-content">
-            <h3 class="founder-name">{{ member.name }}</h3>
-            <p class="founder-title">{{ member.title }}</p>
-            <p class="founder-bio">{{ member.bio }}</p>
-
-            <div class="founder-highlights">
-              <div class="highlight-item">
-                <span class="highlight-icon">🎓</span>
-                <span class="highlight-text">13+ Years Experience</span>
+          <!-- Content Section -->
+          <div class="profile-content">
+            <div class="profile-header">
+              <div>
+                <h3 class="profile-name">{{ member.name }}</h3>
+                <p class="profile-title">{{ member.title }}</p>
               </div>
-              <div class="highlight-item">
-                <span class="highlight-icon">🏆</span>
-                <span class="highlight-text">Certified Professional</span>
-              </div>
-              <div class="highlight-item">
-                <span class="highlight-icon">❤️</span>
-                <span class="highlight-text">1000+ Patients Helped</span>
+              <div class="profile-credentials">
+                <span class="credential-badge">BPT</span>
+                <span class="credential-badge">MPT</span>
               </div>
             </div>
 
-            <div class="founder-specialties">
-              <h4 class="specialties-title">Areas of Expertise</h4>
-              <div class="specialties-list">
-                <span
+            <p class="profile-bio">{{ member.bio }}</p>
+
+            <!-- Qualifications -->
+            <div class="profile-section">
+              <h4 class="section-heading">
+                <span class="heading-icon">🎓</span>
+                Qualifications & Certifications
+              </h4>
+              <ul class="qualification-list">
+                <li>Bachelor of Physiotherapy (BPT)</li>
+                <li>Master of Physiotherapy (MPT)</li>
+                <li>Advanced Manual Therapy Certification</li>
+                <li>Sports Injury Rehabilitation Specialist</li>
+                <li>Dry Needling Therapy Certified</li>
+                <li>Chiropractic Care Specialist</li>
+                <li>Cupping & Taping Therapy Certified</li>
+              </ul>
+            </div>
+
+            <!-- Specialties -->
+            <div class="profile-section">
+              <h4 class="section-heading">
+                <span class="heading-icon">💪</span>
+                Areas of Expertise
+              </h4>
+              <div class="specialties-grid">
+                <div
                   *ngFor="let specialty of member.specialties"
-                  class="specialty-tag"
+                  class="specialty-card"
                 >
-                  {{ specialty }}
-                </span>
+                  <span class="specialty-icon">✓</span>
+                  <span class="specialty-name">{{ specialty }}</span>
+                </div>
               </div>
+            </div>
+
+            <!-- Achievements -->
+            <div class="profile-section">
+              <h4 class="section-heading">
+                <span class="heading-icon">🏅</span>
+                Professional Achievements
+              </h4>
+              <div class="achievements-list">
+                <div class="achievement-item">
+                  <span class="achievement-icon">⭐</span>
+                  <span class="achievement-text"
+                    >Successfully treated over 1000 patients</span
+                  >
+                </div>
+                <div class="achievement-item">
+                  <span class="achievement-icon">⭐</span>
+                  <span class="achievement-text"
+                    >98% patient satisfaction rate</span
+                  >
+                </div>
+                <div class="achievement-item">
+                  <span class="achievement-icon">⭐</span>
+                  <span class="achievement-text"
+                    >Specialized in sports injury recovery</span
+                  >
+                </div>
+                <div class="achievement-item">
+                  <span class="achievement-icon">⭐</span>
+                  <span class="achievement-text"
+                    >Expert in sports injury recovery</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="profile-cta">
+              <a routerLink="/book" class="cta-button">
+                <span class="button-icon">📅</span>
+                <span class="button-text">Book Appointment with Dr. Raju</span>
+              </a>
             </div>
           </div>
         </div>
