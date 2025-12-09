@@ -5,30 +5,39 @@ A modern Angular 20.3.1 web application for Active Rehab Clinic featuring compre
 ## 🚀 Features
 
 ### Public Interface
-- **Home**: Hero section with clinic branding and quick booking
-- **Services**: Categorized service catalog with filtering and direct booking
-- **About**: Team profiles, certifications, and facility information
+
+- **Home**: Hero section with clinic branding, quick booking, and internal links to services
+- **Services**: Categorized service catalog with "Learn More" links to detailed pages
+- **Service Detail Pages**: Individual pages for each specialty with SEO optimization:
+  - Musculoskeletal Therapy (back pain, knee pain, joint problems)
+  - Neurological Therapy (stroke recovery, Parkinson's treatment)
+  - Sports Medicine (sports injuries, athletic performance)
+  - Pediatric Therapy (child development, cerebral palsy)
+  - Pain Management (chronic pain relief)
+  - Home Visit Services (at-home physiotherapy in Delhi NCR)
+- **About**: Detailed team profiles, certifications, and facility information
 - **Contact**: Multi-step contact form with interactive map
 - **Booking**: Wizard-style appointment booking with staff selection
 
 ### Patient Portal (`/patient/*`)
+
 - **Dashboard**: Appointment timeline, treatment progress, health metrics
 - **Appointments**: History with filters, reschedule/cancel functionality
 - **Profile**: Personal info, medical history, insurance, emergency contacts
 - **Authentication**: Secure login/register with medical intake
 
 ### Staff Portal (`/staff/*`)
+
 - **Dashboard**: Daily schedule, patient alerts, performance metrics
 - **Schedule**: Personal calendar, availability settings, time-off requests
 - **Authentication**: Role-based access with multi-factor support
 
 ### Admin Portal (`/admin/*`)
+
 - **Dashboard**: Appointment history and statistics
 - **Appointments**: View all appointments with status tracking
 - **Statistics**: Pending, confirmed, completed appointment counts
 - **Focused Role**: Appointment management only
-
-
 
 ## 🛠️ Tech Stack
 
@@ -129,6 +138,7 @@ npm run lint       # Code linting and formatting
 ```
 
 ### Quality Assurance
+
 - Unit tests for components and services
 - Integration tests for critical user flows
 - Performance monitoring and optimization
@@ -143,6 +153,7 @@ npm run serve:ssr:arc-ng   # Serve SSR build locally
 ```
 
 ### Production Considerations
+
 - Enable Firebase Security Rules
 - Configure environment variables
 - Set up SSL certificates
@@ -152,11 +163,13 @@ npm run serve:ssr:arc-ng   # Serve SSR build locally
 ## 📋 Development Guidelines
 
 ### Code Standards
+
 - Component organization with separate `.ts`, `.html`, `.scss` files
 - Tailwind CSS and SCSS guidelines
 - Conventional commit format
 
 ### Development Workflow
+
 1. Follow mobile-first responsive design
 2. Use standalone components with lazy loading
 3. Implement proper error handling and loading states
@@ -177,6 +190,7 @@ npm run serve:ssr:arc-ng   # Serve SSR build locally
 ## 📊 Current Status
 
 ### ✅ Completed Features (Production Ready)
+
 - **Angular 20.3.1** setup with SSR
 - **Firebase Integration** (Auth + Firestore)
 - **Public Website** - Home, Services, About, Contact, Book
@@ -188,11 +202,13 @@ npm run serve:ssr:arc-ng   # Serve SSR build locally
 - **Responsive Design** - Mobile-first with Tailwind CSS
 
 ### 🔄 In Progress
+
 - Dashboard content enhancement
 - Profile management interfaces
 - Advanced appointment features
 
 ### ⏳ Planned Features
+
 - Email/SMS notifications
 - Payment integration
 - Advanced reporting
@@ -205,4 +221,5 @@ Private project for Active Rehab Clinic
 ## 📞 Support
 
 For technical support or questions about the codebase:
+
 - Contact the development team for assistance

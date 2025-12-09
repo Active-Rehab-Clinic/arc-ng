@@ -1,0 +1,299 @@
+<div class="min-h-screen bg-white dark:bg-gray-900">
+  <!-- Hero Section -->
+  <section
+    class="bg-gradient-to-r from-teal-600 to-teal-700 dark:from-teal-800 dark:to-teal-900 text-white py-16"
+  >
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="text-6xl mb-4">{{ service?.icon }}</div>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">
+          {{ service?.title }}
+        </h1>
+        <p class="text-xl md:text-2xl text-teal-100 mb-8">
+          {{ service?.subtitle }}
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a
+            routerLink="/book"
+            (click)="onBookAppointment()"
+            class="bg-white text-teal-600 px-8 py-3 rounded-lg font-semibold hover:bg-teal-50 transition-colors"
+          >
+            Book Appointment
+          </a>
+          <a
+            href="https://wa.me/919910885929?text=Hi, I want to know more about {{
+              service?.title
+            }}"
+            target="_blank"
+            (click)="onWhatsAppClick()"
+            class="bg-green-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors flex items-center gap-2"
+          >
+            <span>💬</span> WhatsApp Enquiry
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <nav class="bg-gray-50 dark:bg-gray-800 py-4">
+    <div class="container mx-auto px-4">
+      <ol
+        class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400"
+      >
+        <li>
+          <a routerLink="/" class="hover:text-teal-600 dark:hover:text-teal-400"
+            >Home</a
+          >
+        </li>
+        <li>/</li>
+        <li>
+          <a
+            routerLink="/services"
+            class="hover:text-teal-600 dark:hover:text-teal-400"
+            >Services</a
+          >
+        </li>
+        <li>/</li>
+        <li class="text-gray-900 dark:text-white font-medium">
+          {{ service?.title }}
+        </li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Overview Section -->
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+          What is {{ service?.title }}?
+        </h2>
+        <p
+          class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-8"
+        >
+          {{ service?.overview }}
+        </p>
+
+        <!-- Quick Contact -->
+        <div
+          class="bg-teal-50 dark:bg-teal-900/20 border-l-4 border-teal-600 p-6 rounded-r-lg"
+        >
+          <p class="text-gray-900 dark:text-white font-semibold mb-2">
+            Ready to start your recovery?
+          </p>
+          <p class="text-gray-700 dark:text-gray-300 mb-4">
+            Call us at
+            <a
+              href="tel:+919910885929"
+              class="text-teal-600 dark:text-teal-400 font-bold hover:underline"
+              >+91 99108 85929</a
+            >
+            or book online
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <a
+              routerLink="/book"
+              class="text-teal-600 dark:text-teal-400 font-semibold hover:underline"
+              >Book Appointment →</a
+            >
+            <a
+              routerLink="/contact"
+              class="text-teal-600 dark:text-teal-400 font-semibold hover:underline"
+              >Contact Us →</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-16 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2
+          class="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center"
+        >
+          Benefits of {{ service?.title }}
+        </h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div
+            *ngFor="let benefit of service?.benefits"
+            class="flex items-start gap-3 bg-white dark:bg-gray-900 p-4 rounded-lg shadow-sm"
+          >
+            <span class="text-2xl text-teal-600">✓</span>
+            <p class="text-gray-700 dark:text-gray-300">{{ benefit }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conditions Treated -->
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2
+          class="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center"
+        >
+          Conditions We Treat
+        </h2>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div
+            *ngFor="let condition of service?.conditions"
+            class="flex items-center gap-3 p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-teal-500 dark:hover:border-teal-500 transition-colors"
+          >
+            <span class="text-teal-600 dark:text-teal-400">•</span>
+            <p class="text-gray-700 dark:text-gray-300">{{ condition }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Treatment Approaches -->
+  <section class="py-16 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2
+          class="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center"
+        >
+          Our Treatment Approaches
+        </h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div
+            *ngFor="let treatment of service?.treatments"
+            class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-sm border-l-4 border-teal-600"
+          >
+            <h3 class="font-semibold text-gray-900 dark:text-white mb-2">
+              {{ treatment }}
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2
+          class="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center"
+        >
+          Why Choose Active Rehab Clinic?
+        </h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div
+            *ngFor="let reason of service?.whyChooseUs"
+            class="text-center p-6 bg-gradient-to-br from-teal-50 to-green-50 dark:from-teal-900/20 dark:to-green-900/20 rounded-lg"
+          >
+            <div class="text-3xl mb-3">⭐</div>
+            <p class="text-gray-700 dark:text-gray-300 font-medium">
+              {{ reason }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2
+          class="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center"
+        >
+          Frequently Asked Questions
+        </h2>
+        <div class="space-y-6">
+          <div
+            *ngFor="let faq of service?.faqs"
+            class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-sm"
+          >
+            <h3
+              class="text-xl font-semibold text-gray-900 dark:text-white mb-3"
+            >
+              {{ faq.question }}
+            </h3>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+              {{ faq.answer }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Services -->
+  <section class="py-16" *ngIf="relatedServices.length > 0">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2
+          class="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center"
+        >
+          Related Services
+        </h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <a
+            *ngFor="let related of relatedServices"
+            [routerLink]="['/services', related.id]"
+            class="block bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow border border-gray-200 dark:border-gray-700 hover:border-teal-500 dark:hover:border-teal-500"
+          >
+            <div class="text-4xl mb-4">{{ related.icon }}</div>
+            <h3
+              class="text-xl font-semibold text-gray-900 dark:text-white mb-2"
+            >
+              {{ related.title }}
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+              {{ related.description }}
+            </p>
+            <span class="text-teal-600 dark:text-teal-400 font-semibold"
+              >Learn More →</span
+            >
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section
+    class="py-16 bg-gradient-to-r from-teal-600 to-green-600 dark:from-teal-800 dark:to-green-800 text-white"
+  >
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          Ready to Start Your Recovery Journey?
+        </h2>
+        <p class="text-xl text-teal-100 mb-8">
+          Book your appointment today and take the first step towards better
+          health
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a
+            routerLink="/book"
+            (click)="onBookAppointment()"
+            class="bg-white text-teal-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-teal-50 transition-colors"
+          >
+            Book Appointment Online
+          </a>
+          <a
+            href="tel:+919910885929"
+            class="bg-teal-800 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-teal-900 transition-colors"
+          >
+            📞 Call +91 99108 85929
+          </a>
+        </div>
+        <p class="mt-6 text-teal-100">
+          <a routerLink="/services" class="hover:underline"
+            >← Back to All Services</a
+          >
+        </p>
+      </div>
+    </div>
+  </section>
+</div>

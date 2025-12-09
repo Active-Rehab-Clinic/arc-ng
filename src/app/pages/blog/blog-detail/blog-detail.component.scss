@@ -1,0 +1,331 @@
+// Blog detail styles with professional typography
+.prose {
+  color: #1f2937 !important;
+  font-size: 1.125rem;
+  line-height: 1.75;
+  max-width: 100%;
+
+  // Headings
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 700;
+    color: #111827 !important;
+    line-height: 1.3;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+
+    @media (min-width: 768px) {
+      font-size: 3rem;
+    }
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #99f6e4;
+
+    @media (min-width: 768px) {
+      font-size: 2.5rem;
+    }
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #0f766e !important;
+
+    @media (min-width: 768px) {
+      font-size: 1.875rem;
+    }
+  }
+
+  h4 {
+    font-size: 1.25rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+
+    @media (min-width: 768px) {
+      font-size: 1.5rem;
+    }
+  }
+
+  h5 {
+    font-size: 1.125rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+
+    @media (min-width: 768px) {
+      font-size: 1.25rem;
+    }
+  }
+
+  h6 {
+    font-size: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    color: #374151 !important;
+
+    @media (min-width: 768px) {
+      font-size: 1.125rem;
+    }
+  }
+
+  // Paragraphs
+  p {
+    margin-bottom: 1.5rem;
+    line-height: 1.75;
+    color: #1f2937 !important;
+  }
+
+  // Lists
+  ul,
+  ol {
+    margin-bottom: 1.5rem;
+    margin-left: 2rem;
+
+    li {
+      margin-bottom: 0.75rem;
+      line-height: 1.75;
+      color: #1f2937 !important;
+    }
+  }
+
+  ul {
+    list-style-type: disc;
+
+    li::marker {
+      color: #14b8a6;
+      font-weight: 700;
+    }
+  }
+
+  ol {
+    list-style-type: decimal;
+
+    li::marker {
+      color: #14b8a6;
+      font-weight: 700;
+    }
+  }
+
+  // Nested lists
+  ul ul,
+  ol ol,
+  ul ol,
+  ol ul {
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  // Strong and emphasis
+  strong {
+    font-weight: 700;
+    color: #111827 !important;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  // Links
+  a {
+    color: #14b8a6 !important;
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
+    transition: all 0.2s;
+
+    &:hover {
+      color: #0f766e !important;
+    }
+  }
+
+  // Blockquotes
+  blockquote {
+    border-left: 4px solid #14b8a6;
+    padding-left: 1.5rem;
+    padding-right: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    background-color: #f0fdfa;
+    border-radius: 0 0.5rem 0.5rem 0;
+    font-style: italic;
+
+    p {
+      margin-bottom: 0;
+      color: #1f2937 !important;
+    }
+  }
+
+  // Code
+  code {
+    background-color: #f3f4f6;
+    padding: 0.125rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    font-family: "Courier New", monospace;
+    color: #0f766e !important;
+  }
+
+  pre {
+    background-color: #111827;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+
+    code {
+      background-color: transparent;
+      color: #f3f4f6 !important;
+      padding: 0;
+    }
+  }
+
+  // Horizontal rule
+  hr {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-top: 2px solid #d1d5db;
+  }
+
+  // Tables
+  table {
+    width: 100%;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-collapse: collapse;
+  }
+
+  th {
+    background-color: #ccfbf1;
+    font-weight: 700;
+    text-align: left;
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+  }
+
+  td {
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+  }
+
+  // Images
+  img {
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+// Dark mode overrides
+.dark .prose {
+  color: #d1d5db !important;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #f9fafb !important;
+  }
+
+  h2 {
+    border-bottom-color: #134e4a;
+  }
+
+  h3 {
+    color: #5eead4 !important;
+  }
+
+  h6 {
+    color: #d1d5db !important;
+  }
+
+  p {
+    color: #d1d5db !important;
+  }
+
+  ul li,
+  ol li {
+    color: #d1d5db !important;
+  }
+
+  strong {
+    color: #f9fafb !important;
+  }
+
+  a {
+    color: #5eead4 !important;
+
+    &:hover {
+      color: #99f6e4 !important;
+    }
+  }
+
+  blockquote {
+    background-color: rgba(20, 184, 166, 0.1);
+    border-left-color: #5eead4;
+
+    p {
+      color: #e5e7eb !important;
+    }
+  }
+
+  code {
+    background-color: #1f2937;
+    color: #5eead4 !important;
+  }
+
+  pre {
+    background-color: #030712;
+  }
+
+  hr {
+    border-top-color: #374151;
+  }
+
+  th {
+    background-color: rgba(20, 184, 166, 0.2);
+    border-color: #374151;
+  }
+
+  td {
+    border-color: #374151;
+  }
+}
+
+// Line clamp utilities
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

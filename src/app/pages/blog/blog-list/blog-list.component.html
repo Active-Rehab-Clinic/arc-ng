@@ -1,0 +1,212 @@
+<div class="min-h-screen bg-gray-50 dark:bg-gray-900">
+  <!-- Hero Section -->
+  <section
+    class="bg-gradient-to-r from-teal-600 to-cyan-700 dark:from-teal-800 dark:to-cyan-900 text-white py-16"
+  >
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Physiotherapy Blog</h1>
+        <p class="text-xl text-teal-100 mb-6">
+          Expert tips, exercises, and recovery guides from experienced
+          physiotherapists
+        </p>
+        <p class="text-teal-200">
+          Evidence-based advice to help you recover faster and live pain-free
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Post -->
+  <section class="py-12 bg-white dark:bg-gray-800" *ngIf="featuredPost">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <div
+          class="bg-gradient-to-br from-teal-50 to-cyan-50 dark:from-teal-900/20 dark:to-cyan-900/20 rounded-2xl overflow-hidden shadow-xl"
+        >
+          <div class="md:flex">
+            <div class="md:w-2/3 p-8 md:p-12">
+              <div class="flex items-center gap-3 mb-4">
+                <span
+                  class="px-3 py-1 bg-teal-600 text-white text-sm font-semibold rounded-full"
+                >
+                  Featured
+                </span>
+                <span
+                  class="px-3 py-1 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-sm rounded-full"
+                >
+                  {{ featuredPost.readTime }} min read
+                </span>
+              </div>
+              <h2
+                class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
+              >
+                <a
+                  [routerLink]="['/blog', featuredPost.slug]"
+                  class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors"
+                >
+                  {{ featuredPost.title }}
+                </a>
+              </h2>
+              <p class="text-lg text-gray-700 dark:text-gray-300 mb-6">
+                {{ featuredPost.excerpt }}
+              </p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-12 h-12 bg-teal-600 rounded-full flex items-center justify-center text-white font-bold"
+                  >
+                    RP
+                  </div>
+                  <div>
+                    <div class="font-semibold text-gray-900 dark:text-white">
+                      {{ featuredPost.author }}
+                    </div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">
+                      {{ formatDate(featuredPost.publishDate) }}
+                    </div>
+                  </div>
+                </div>
+                <a
+                  [routerLink]="['/blog', featuredPost.slug]"
+                  class="bg-teal-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-teal-700 transition-colors"
+                >
+                  Read Article →
+                </a>
+              </div>
+            </div>
+            <div
+              class="md:w-1/3 bg-gradient-to-br from-teal-600 to-cyan-700 flex items-center justify-center p-8"
+            >
+              <div class="text-center text-white">
+                <div class="text-6xl mb-4">📚</div>
+                <div class="text-xl font-semibold">Most Popular</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- All Posts -->
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8">
+          Latest Articles
+        </h2>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <article
+            *ngFor="let post of posts"
+            class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow"
+          >
+            <div
+              class="h-48 bg-gradient-to-br from-teal-500 to-cyan-600 flex items-center justify-center"
+            >
+              <div class="text-6xl">
+                {{
+                  post.category === "pain-relief"
+                    ? "💊"
+                    : post.category === "sports-injury"
+                    ? "⚽"
+                    : post.category === "home-care"
+                    ? "🏡"
+                    : post.category === "exercises"
+                    ? "💪"
+                    : post.category === "wellness"
+                    ? "🌟"
+                    : "📖"
+                }}
+              </div>
+            </div>
+
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-3">
+                <span
+                  [class]="
+                    'px-3 py-1 text-xs font-semibold rounded-full bg-' +
+                    getCategoryColor(post.category) +
+                    '-100 text-' +
+                    getCategoryColor(post.category) +
+                    '-700 dark:bg-' +
+                    getCategoryColor(post.category) +
+                    '-900/30 dark:text-' +
+                    getCategoryColor(post.category) +
+                    '-400'
+                  "
+                >
+                  {{ post.category }}
+                </span>
+                <span class="text-sm text-gray-500 dark:text-gray-400">
+                  {{ post.readTime }} min read
+                </span>
+              </div>
+
+              <h3
+                class="text-xl font-bold text-gray-900 dark:text-white mb-3 line-clamp-2"
+              >
+                <a
+                  [routerLink]="['/blog', post.slug]"
+                  class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors"
+                >
+                  {{ post.title }}
+                </a>
+              </h3>
+
+              <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
+                {{ post.excerpt }}
+              </p>
+
+              <div
+                class="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700"
+              >
+                <div class="text-sm text-gray-500 dark:text-gray-400">
+                  {{ formatDate(post.publishDate) }}
+                </div>
+                <a
+                  [routerLink]="['/blog', post.slug]"
+                  class="text-teal-600 dark:text-teal-400 font-semibold hover:underline"
+                >
+                  Read More →
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section
+    class="py-16 bg-gradient-to-r from-teal-600 to-cyan-700 dark:from-teal-800 dark:to-cyan-900 text-white"
+  >
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          Need Professional Help?
+        </h2>
+        <p class="text-xl text-teal-100 mb-8">
+          While our blog provides valuable information, personalized treatment
+          delivers the best results
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a
+            routerLink="/book"
+            class="bg-white text-teal-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-teal-50 transition-colors"
+          >
+            Book Appointment
+          </a>
+          <a
+            routerLink="/services"
+            class="bg-teal-800 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-teal-900 transition-colors"
+          >
+            View Services
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
