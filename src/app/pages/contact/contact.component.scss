@@ -104,43 +104,77 @@
 
 // Contact Form
 .contact-form {
-  @apply bg-gray-50 rounded-lg sm:rounded-xl p-6 sm:p-8 dark:bg-gray-800;
+  @apply bg-gradient-to-br from-gray-50 to-teal-50 dark:from-gray-800 dark:to-gray-800 
+         rounded-lg sm:rounded-xl p-6 sm:p-8 border-2 border-teal-100 dark:border-teal-900;
 }
 
 .form-title {
-  @apply text-xl sm:text-2xl md:text-3xl font-bold mb-6 sm:mb-8 text-gray-900 dark:text-gray-100;
+  @apply text-xl sm:text-2xl md:text-3xl font-bold mb-2 text-gray-900 dark:text-gray-100;
 }
 
-.form-placeholder {
-  @apply text-center;
+.form-subtitle {
+  @apply text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-6 sm:mb-8;
 }
 
-.placeholder-icon {
-  @apply w-16 h-16 sm:w-20 sm:h-20 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 dark:bg-teal-900/30;
+.quick-actions {
+  @apply grid grid-cols-1 sm:grid-cols-2 gap-4;
+}
 
-  span {
-    @apply text-2xl sm:text-3xl;
+.action-card {
+  @apply bg-white dark:bg-gray-700 rounded-xl p-6 
+         border-2 border-gray-200 dark:border-gray-600
+         hover:border-teal-500 dark:hover:border-teal-400
+         transition-all duration-300 cursor-pointer
+         hover:shadow-lg hover:scale-105
+         flex flex-col items-center text-center;
+}
+
+.action-icon {
+  @apply text-4xl mb-3;
+}
+
+.action-title {
+  @apply text-lg font-bold text-gray-900 dark:text-gray-100 mb-2;
+}
+
+.action-description {
+  @apply text-sm text-gray-600 dark:text-gray-400 mb-3;
+}
+
+.action-label {
+  @apply text-xs font-semibold text-teal-600 dark:text-teal-400 uppercase tracking-wide;
+}
+
+.action-card-phone:hover {
+  @apply border-green-500 dark:border-green-400;
+
+  .action-label {
+    @apply text-green-600 dark:text-green-400;
   }
 }
 
-.placeholder-title {
-  @apply text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900 dark:text-gray-100;
+.action-card-email:hover {
+  @apply border-blue-500 dark:border-blue-400;
+
+  .action-label {
+    @apply text-blue-600 dark:text-blue-400;
+  }
 }
 
-.placeholder-text {
-  @apply text-sm sm:text-base text-gray-600 mb-6 sm:mb-8 dark:text-gray-300;
+.action-card-map:hover {
+  @apply border-red-500 dark:border-red-400;
+
+  .action-label {
+    @apply text-red-600 dark:text-red-400;
+  }
 }
 
-.placeholder-buttons {
-  @apply flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center;
-}
+.action-card-book:hover {
+  @apply border-purple-500 dark:border-purple-400;
 
-.placeholder-btn-primary {
-  @apply bg-teal-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg font-semibold text-sm sm:text-base transition-colors hover:bg-teal-700;
-}
-
-.placeholder-btn-secondary {
-  @apply border-2 border-teal-600 text-teal-600 px-4 py-2 sm:px-6 sm:py-3 rounded-lg font-semibold text-sm sm:text-base transition-colors hover:bg-teal-600 hover:text-white dark:border-teal-400 dark:text-teal-400 dark:hover:bg-teal-400 dark:hover:text-gray-900;
+  .action-label {
+    @apply text-purple-600 dark:text-purple-400;
+  }
 }
 
 // Hours Section

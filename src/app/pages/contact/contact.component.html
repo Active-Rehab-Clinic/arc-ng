@@ -74,40 +74,49 @@
           </div> -->
         </div>
 
-        <!-- Contact Form Placeholder -->
+        <!-- Quick Contact Actions -->
         <div class="contact-form">
-          <h2 class="form-title">Send Us a Message</h2>
-          <div class="form-placeholder">
-            <div class="placeholder-icon">
-              <span>📝</span>
-            </div>
-            <h3 class="placeholder-title">Contact Form Coming Soon</h3>
-            <p class="placeholder-text">
-              We're working on an interactive contact form. For now, please call
-              us directly or send an email.
-            </p>
-            <div class="placeholder-buttons">
-              <a
-                [href]="'tel:' + contactInfo.phone"
-                class="placeholder-btn-primary"
-              >
-                📞 Call Now
-              </a>
-              <a
-                [href]="'mailto:' + contactInfo.email"
-                class="placeholder-btn-secondary"
-              >
-                ✉️ Send Email
-              </a>
-              <a
-                [href]="contactInfo.mapsUrl"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="placeholder-btn-secondary"
-              >
-                🗺️ Get Directions
-              </a>
-            </div>
+          <h2 class="form-title">Quick Contact</h2>
+          <p class="form-subtitle">Choose your preferred way to reach us</p>
+          <div class="quick-actions">
+            <a
+              [href]="'tel:' + contactInfo.phone"
+              class="action-card action-card-phone"
+            >
+              <div class="action-icon">📞</div>
+              <h3 class="action-title">Call Us</h3>
+              <p class="action-description">{{ contactInfo.phone }}</p>
+              <span class="action-label">Tap to call</span>
+            </a>
+
+            <a
+              [href]="'mailto:' + contactInfo.email"
+              class="action-card action-card-email"
+            >
+              <div class="action-icon">✉️</div>
+              <h3 class="action-title">Email Us</h3>
+              <p class="action-description">{{ contactInfo.email }}</p>
+              <span class="action-label">Send email</span>
+            </a>
+
+            <a
+              [href]="contactInfo.mapsUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="action-card action-card-map"
+            >
+              <div class="action-icon">🗺️</div>
+              <h3 class="action-title">Visit Us</h3>
+              <p class="action-description">Get directions</p>
+              <span class="action-label">Open maps</span>
+            </a>
+
+            <a routerLink="/book" class="action-card action-card-book">
+              <div class="action-icon">📅</div>
+              <h3 class="action-title">Book Online</h3>
+              <p class="action-description">Schedule appointment</p>
+              <span class="action-label">Book now</span>
+            </a>
           </div>
         </div>
       </div>
