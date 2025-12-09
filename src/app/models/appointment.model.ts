@@ -3,6 +3,8 @@ export interface Appointment {
   name: string;
   email: string;
   phone: string;
+  age?: number;
+  gender?: 'male' | 'female' | 'other';
   service: string;
   preferredDate: string;
   preferredTime: string;
@@ -11,4 +13,5 @@ export interface Appointment {
   message?: string;
   status?: 'pending' | 'confirmed' | 'cancelled' | 'completed';
   createdAt?: Date;
+  createdBy?: string; // Track who created the appointment (user ID or 'patient')
 }

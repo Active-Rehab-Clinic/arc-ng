@@ -65,6 +65,226 @@
           <h2 class="section-title">Appointment History</h2>
           <p class="section-subtitle">Manage all patient appointments</p>
         </div>
+        <button (click)="toggleCreateAppointment()" class="create-btn">
+          <span *ngIf="!showCreateAppointment()" class="btn-icon">+</span>
+          <span *ngIf="!showCreateAppointment()">Add Appointment</span>
+          <span *ngIf="showCreateAppointment()" class="btn-icon">×</span>
+          <span *ngIf="showCreateAppointment()">Close</span>
+        </button>
+      </div>
+
+      <!-- Create Appointment Form -->
+      <div *ngIf="showCreateAppointment()" class="create-appointment-form">
+        <h3 class="form-title">Create New Appointment</h3>
+        <form
+          [formGroup]="appointmentForm"
+          (ngSubmit)="createAppointment()"
+          class="appointment-form"
+        >
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="name" class="form-label">Full Name *</label>
+              <input
+                type="text"
+                id="name"
+                formControlName="name"
+                class="form-input"
+                placeholder="Enter patient name"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="email" class="form-label">Email (Optional)</label>
+              <input
+                type="email"
+                id="email"
+                formControlName="email"
+                class="form-input"
+                placeholder="patient@example.com"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="phone" class="form-label">Phone Number *</label>
+              <input
+                type="tel"
+                id="phone"
+                formControlName="phone"
+                class="form-input"
+                placeholder="+91 99999-99999"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="age" class="form-label">Age (Optional)</label>
+              <input
+                type="number"
+                id="age"
+                formControlName="age"
+                class="form-input"
+                placeholder="Enter age"
+                min="1"
+                max="120"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="gender" class="form-label">Gender (Optional)</label>
+              <select id="gender" formControlName="gender" class="form-select">
+                <option value="">Select gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="service" class="form-label">Service *</label>
+              <select
+                id="service"
+                formControlName="service"
+                class="form-select"
+              >
+                <option value="">Select a service</option>
+                <option *ngFor="let service of services" [value]="service.id">
+                  {{ service.title }}
+                </option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="visitType" class="form-label">Visit Type *</label>
+              <select
+                id="visitType"
+                formControlName="visitType"
+                class="form-select"
+              >
+                <option value="clinic">Clinic Visit</option>
+                <option value="home">Home Visit (Delhi NCR)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="preferredDate" class="form-label">Date *</label>
+              <input
+                type="date"
+                id="preferredDate"
+                formControlName="preferredDate"
+                class="form-input"
+                [min]="minDate()"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="preferredTime" class="form-label">Time *</label>
+              <select
+                id="preferredTime"
+                formControlName="preferredTime"
+                class="form-select"
+              >
+                <option value="">Select time</option>
+                <option *ngFor="let slot of timeSlots" [value]="slot.value">
+                  {{ slot.label }}
+                </option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="status" class="form-label">Status *</label>
+              <select id="status" formControlName="status" class="form-select">
+                <option value="pending">Pending</option>
+                <option value="confirmed">Confirmed</option>
+                <option value="completed">Completed</option>
+                <option value="cancelled">Cancelled</option>
+              </select>
+            </div>
+          </div>
+
+          <div
+            class="form-group full-width"
+            *ngIf="appointmentForm.get('visitType')?.value === 'home'"
+          >
+            <label for="address" class="form-label"
+              >Address (Delhi NCR) *</label
+            >
+            <textarea
+              id="address"
+              formControlName="address"
+              class="form-textarea"
+              rows="2"
+              placeholder="Enter complete address..."
+            ></textarea>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="message" class="form-label">Additional Notes</label>
+            <textarea
+              id="message"
+              formControlName="message"
+              class="form-textarea"
+              rows="3"
+              placeholder="Any specific concerns or requirements..."
+            ></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button
+              type="submit"
+              [disabled]="appointmentForm.invalid || isCreatingAppointment()"
+              class="submit-btn"
+            >
+              <span *ngIf="!isCreatingAppointment()"
+                >✅ Create Appointment</span
+              >
+              <span *ngIf="isCreatingAppointment()">⏳ Creating...</span>
+            </button>
+          </div>
+
+          <div
+            *ngIf="appointmentMessage()"
+            class="submit-message"
+            [class.success]="appointmentSuccess()"
+            [class.error]="!appointmentSuccess()"
+          >
+            {{ appointmentMessage() }}
+          </div>
+        </form>
+      </div>
+
+      <!-- Search and Filter Controls -->
+      <div *ngIf="!loading && appointments.length > 0" class="filter-controls">
+        <div class="search-box">
+          <input
+            type="text"
+            placeholder="🔍 Search by name, email, phone, or service..."
+            (input)="onSearchChange($event)"
+            class="search-input"
+          />
+        </div>
+        <div class="filter-box">
+          <select (change)="onDateFilterChange($event)" class="filter-select">
+            <option value="all">📅 All Dates</option>
+            <option value="today">Today</option>
+            <option value="tomorrow">Tomorrow</option>
+            <option value="this-week">This Week</option>
+            <option value="this-month">This Month</option>
+            <option value="next-month">Next Month</option>
+            <option value="past">Past Appointments</option>
+          </select>
+        </div>
+        <div class="filter-box">
+          <select (change)="onStatusFilterChange($event)" class="filter-select">
+            <option value="all">All Status</option>
+            <option value="pending">Pending</option>
+            <option value="confirmed">Confirmed</option>
+            <option value="completed">Completed</option>
+            <option value="cancelled">Cancelled</option>
+          </select>
+        </div>
+        <div class="results-info">
+          Showing {{ paginatedAppointments.length }} of
+          {{ filteredAppointments.length }} appointments
+        </div>
       </div>
 
       <!-- Loading State -->
@@ -84,12 +304,16 @@
       </div>
 
       <!-- Desktop Table View -->
-      <div *ngIf="!loading && appointments.length > 0" class="table-container">
+      <div
+        *ngIf="!loading && filteredAppointments.length > 0"
+        class="table-container"
+      >
         <div class="table-wrapper">
           <table class="appointments-table">
             <thead class="table-head">
               <tr>
                 <th class="table-header">Patient</th>
+                <th class="table-header">Age/Gender</th>
                 <th class="table-header">Contact</th>
                 <th class="table-header">Service</th>
                 <th class="table-header">Date & Time</th>
@@ -100,13 +324,27 @@
             </thead>
             <tbody class="table-body">
               <tr
-                *ngFor="let appointment of appointments; let i = index"
+                *ngFor="let appointment of paginatedAppointments; let i = index"
                 class="table-row"
               >
                 <td class="table-cell">
                   <div class="cell-patient-no-avatar">
                     <div class="patient-name-sm">{{ appointment.name }}</div>
                     <div class="patient-email-sm">{{ appointment.email }}</div>
+                  </div>
+                </td>
+                <td class="table-cell">
+                  <div class="cell-age-gender">
+                    <span *ngIf="appointment.age">{{ appointment.age }}y</span>
+                    <span *ngIf="appointment.age && appointment.gender">
+                      /
+                    </span>
+                    <span *ngIf="appointment.gender" class="capitalize">{{
+                      appointment.gender
+                    }}</span>
+                    <span *ngIf="!appointment.age && !appointment.gender"
+                      >—</span
+                    >
                   </div>
                 </td>
                 <td class="table-cell">
@@ -162,8 +400,14 @@
       </div>
 
       <!-- Mobile Card View -->
-      <div *ngIf="!loading && appointments.length > 0" class="mobile-cards">
-        <div *ngFor="let appointment of appointments" class="appointment-card">
+      <div
+        *ngIf="!loading && filteredAppointments.length > 0"
+        class="mobile-cards"
+      >
+        <div
+          *ngFor="let appointment of paginatedAppointments"
+          class="appointment-card"
+        >
           <div class="appointment-header">
             <div class="appointment-patient-no-avatar">
               <h3 class="patient-name">{{ appointment.name }}</h3>
@@ -189,6 +433,21 @@
               <span class="detail-icon">📞</span>
               <span class="detail-label">Phone:</span>
               <span class="detail-value">{{ appointment.phone }}</span>
+            </div>
+
+            <div
+              class="detail-row"
+              *ngIf="appointment.age || appointment.gender"
+            >
+              <span class="detail-icon">👤</span>
+              <span class="detail-label">Age/Gender:</span>
+              <span class="detail-value">
+                <span *ngIf="appointment.age">{{ appointment.age }} years</span>
+                <span *ngIf="appointment.age && appointment.gender"> / </span>
+                <span *ngIf="appointment.gender" class="capitalize">{{
+                  appointment.gender
+                }}</span>
+              </span>
             </div>
 
             <div class="detail-row">
@@ -227,6 +486,44 @@
               }}</span>
             </div>
           </div>
+        </div>
+      </div>
+
+      <!-- Pagination Controls -->
+      <div
+        *ngIf="!loading && filteredAppointments.length > 0"
+        class="pagination-container"
+      >
+        <div class="pagination-info">
+          Page {{ currentPage() }} of {{ totalPages() }}
+        </div>
+        <div class="pagination-controls">
+          <button
+            (click)="previousPage()"
+            [disabled]="currentPage() === 1"
+            class="pagination-btn"
+          >
+            ← Previous
+          </button>
+
+          <button
+            *ngFor="let page of getPageNumbers()"
+            (click)="page > 0 ? goToPage(page) : null"
+            [class.active]="page === currentPage()"
+            [class.ellipsis]="page === -1"
+            [disabled]="page === -1"
+            class="pagination-btn page-number"
+          >
+            {{ page === -1 ? "..." : page }}
+          </button>
+
+          <button
+            (click)="nextPage()"
+            [disabled]="currentPage() === totalPages()"
+            class="pagination-btn"
+          >
+            Next →
+          </button>
         </div>
       </div>
     </div>
