@@ -25,11 +25,17 @@
             </div>
             <div class="contact-details">
               <h3 class="contact-label">Address</h3>
-              <p class="contact-text">
+              <a
+                [href]="contactInfo.mapsUrl"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact-text contact-link"
+              >
                 {{ contactInfo.address.street }}<br />
                 {{ contactInfo.address.city }}, {{ contactInfo.address.state }}
                 {{ contactInfo.address.zip }}
-              </p>
+                <span class="link-icon">🗺️</span>
+              </a>
             </div>
           </div>
 
@@ -93,6 +99,14 @@
               >
                 ✉️ Send Email
               </a>
+              <a
+                [href]="contactInfo.mapsUrl"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="placeholder-btn-secondary"
+              >
+                🗺️ Get Directions
+              </a>
             </div>
           </div>
         </div>
@@ -119,6 +133,37 @@
             {{ hour.hours }}
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="map-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Find Us on Map</h2>
+        <p class="section-subtitle">
+          Located in Dwarka, easily accessible from all parts of Delhi NCR
+        </p>
+      </div>
+      <div class="map-container">
+        <a
+          [href]="contactInfo.mapsUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="map-link"
+        >
+          <div class="map-placeholder">
+            <div class="map-icon">📍</div>
+            <h3 class="map-title">View on Google Maps</h3>
+            <p class="map-address">
+              {{ contactInfo.address.street }}<br />
+              {{ contactInfo.address.city }}, {{ contactInfo.address.state }}
+              {{ contactInfo.address.zip }}
+            </p>
+            <div class="map-button">🗺️ Open in Google Maps</div>
+          </div>
+        </a>
       </div>
     </div>
   </section>
