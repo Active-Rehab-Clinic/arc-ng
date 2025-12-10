@@ -16,7 +16,9 @@ export class ContactStore {
       },
       phone: '+91 99108 85929',
       alternatePhone: '+91 85058 51951',
-      email: 'activerehabc@gmail.com',
+      email: 'support@activerehabclinic.com',
+      alternateEmail: 'hi@activerehabclinic.com',
+      mapsUrl: 'https://maps.app.goo.gl/wVqmmFvyrFufyAYq7',
       hours: [
         { day: 'Monday', hours: '8:00 AM - 6:00 PM', isOpen: true },
         { day: 'Tuesday', hours: '8:00 AM - 6:00 PM', isOpen: true },

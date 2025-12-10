@@ -8,6 +8,8 @@ export interface ContactInfo {
   phone: string;
   alternatePhone: string;
   email: string;
+  alternateEmail?: string;
+  mapsUrl?: string;
   whatsapp: string;
   hours: BusinessHours[];
   socialMedia: SocialMedia[];

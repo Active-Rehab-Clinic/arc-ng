@@ -27,7 +27,14 @@
                 clip-rule="evenodd"
               ></path>
             </svg>
-            {{ contactInfo.address.street }}
+            <a
+              [href]="contactInfo.mapsUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:text-primary-600 dark:hover:text-primary-400 hover:underline"
+            >
+              {{ contactInfo.address.street }}
+            </a>
           </p>
           <p class="flex items-center">
             <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
@@ -35,7 +42,11 @@
                 d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"
               ></path>
             </svg>
-            <a href="tel:{{ contactInfo.phone }}" (click)="onCallClick()" class="hover:text-primary-600 dark:hover:text-primary-400">
+            <a
+              href="tel:{{ contactInfo.phone }}"
+              (click)="onCallClick()"
+              class="hover:text-primary-600 dark:hover:text-primary-400"
+            >
               {{ contactInfo.phone }}
             </a>
           </p>
@@ -159,7 +170,10 @@
               >
                 {{ status.status }}
               </span>
-              <div *ngIf="status.nextChange" class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+              <div
+                *ngIf="status.nextChange"
+                class="text-xs text-gray-500 dark:text-gray-400 mt-1"
+              >
                 {{ status.nextChange }}
               </div>
             </li>
@@ -172,8 +186,9 @@
     <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
     <div class="sm:flex sm:items-center sm:justify-between">
       <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">
-        © 2025 <a routerLink="/" class="hover:underline">Active Rehab Clinic™</a>.
-        All Rights Reserved.
+        © 2025
+        <a routerLink="/" class="hover:underline">Active Rehab Clinic™</a>. All
+        Rights Reserved.
       </span>
       <!-- <div class="flex mt-4 space-x-5 sm:justify-center sm:mt-0">
         <a

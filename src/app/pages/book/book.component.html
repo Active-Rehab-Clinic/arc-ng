@@ -94,6 +94,33 @@
               </div>
 
               <div class="form-group">
+                <label for="age" class="form-label">Age (Optional)</label>
+                <input
+                  type="number"
+                  id="age"
+                  formControlName="age"
+                  class="form-input placeholder-gray-400"
+                  placeholder="Enter age"
+                  min="1"
+                  max="100"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="gender" class="form-label">Gender (Optional)</label>
+                <select
+                  id="gender"
+                  formControlName="gender"
+                  class="form-select placeholder-gray-400"
+                >
+                  <option value="">Select gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
                 <label for="service" class="form-label"
                   >Service Required *</label
                 >
