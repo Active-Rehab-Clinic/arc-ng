@@ -52,6 +52,8 @@ export class BookComponent implements OnInit {
       name: ['', [Validators.required]],
       email: ['', [Validators.email]],
       phone: ['', [Validators.required]],
+      age: ['', [Validators.min(1), Validators.max(100)]],
+      gender: [''],
       service: ['', [Validators.required]],
       visitType: ['clinic', [Validators.required]],
       address: [''],

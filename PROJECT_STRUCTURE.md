@@ -49,7 +49,7 @@ A modern Angular 20.3.1 web application for Active Rehab Clinic featuring compre
 - Contact form placeholder (coming soon)
 - Complete clinic location and hours
 - Phone: +91 85058 51951
-- Email: activerehabc@gmail.com
+- Email: support@activerehabclinic.com
 - Address: C-8, opp. Delhi International School, Pocket-8, Sector 17 Dwarka, New Delhi 110078
 - Business hours: Mon-Fri 8AM-6PM, Sat 9AM-4PM, Sun Closed
 
@@ -265,7 +265,7 @@ const APP_CONFIG = {
   name: "Active Rehab Clinic",
   contact: {
     phone: "+91 85058 51951",
-    email: "activerehabc@gmail.com",
+    email: "support@activerehabclinic.com",
     address: "C-8, opp. Delhi International School, Pocket-8, Sector 17 Dwarka, New Delhi 110078",
   },
   businessHours: {

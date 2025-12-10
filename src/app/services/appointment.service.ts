@@ -8,6 +8,7 @@ import {
   orderBy,
   doc,
   updateDoc,
+  addDoc,
 } from 'firebase/firestore';
 import { environment } from '../../environments/environment';
 import { Appointment } from '@models/appointment.model';
@@ -60,6 +61,26 @@ export class AppointmentService {
       console.log('Appointment status updated successfully');
     } catch (error) {
       console.error('Error updating appointment status:', error);
+      throw error;
+    }
+  }
+
+  async createAppointment(appointment: Appointment): Promise<string> {
+    try {
+      console.log('Creating new appointment:', appointment);
+      const appointmentData = {
+        ...appointment,
+        status: appointment.status || 'pending',
+        createdAt: new Date(),
+      };
+      const docRef = await addDoc(
+        collection(this.db, 'appointments'),
+        appointmentData
+      );
+      console.log('Appointment created successfully with ID:', docRef.id);
+      return docRef.id;
+    } catch (error) {
+      console.error('Error creating appointment:', error);
       throw error;
     }
   }
