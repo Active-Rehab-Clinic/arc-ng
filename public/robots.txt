@@ -9,8 +9,9 @@ Disallow: /admin/
 Disallow: /dashboard/
 Disallow: /api/
 
-# Sitemap location
+# Sitemap locations
 Sitemap: https://www.activerehabclinic.com/sitemap.xml
+Sitemap: https://www.activerehabclinic.com/sitemap.html
 
 # Crawl-delay for polite crawling
 Crawl-delay: 1
