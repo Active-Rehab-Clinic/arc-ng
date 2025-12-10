@@ -27,7 +27,14 @@
           <ul class="service-features">
             <li *ngFor="let feature of service.features">{{ feature }}</li>
           </ul>
-          <a routerLink="/book" class="service-btn">Book Now</a>
+          <div class="flex gap-3 mt-4">
+            <a
+              [routerLink]="['/services', service.id]"
+              class="service-btn-secondary"
+              >Learn More</a
+            >
+            <a routerLink="/book" class="service-btn">Book Now</a>
+          </div>
         </div>
       </div>
     </div>

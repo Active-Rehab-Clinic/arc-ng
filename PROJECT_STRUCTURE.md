@@ -36,6 +36,47 @@ A modern Angular 20.3.1 web application for Active Rehab Clinic featuring compre
   - Home Visit Services (NEW)
 - Service cards with features
 - Direct booking integration with home visit option
+- "Learn More" links to individual service detail pages
+
+#### Service Detail Pages (`/services/:id`) - ✅ Implemented
+
+Individual SEO-optimized pages for each service specialty:
+
+- **Musculoskeletal Therapy** (`/services/musculoskeletal-therapy`)
+  - Back pain, knee pain, shoulder pain treatment
+  - Manual therapy, exercise programs, pain relief
+  - 10+ conditions treated, 8+ treatment approaches
+- **Neurological Therapy** (`/services/neurological-therapy`)
+  - Stroke recovery, Parkinson's disease treatment
+  - Balance training, gait training, spasticity management
+  - 10+ neurological conditions, specialized neuro rehab
+- **Sports Medicine** (`/services/sports-medicine`)
+  - Cricket injuries, football injuries, ACL tears
+  - Sports-specific rehabilitation, performance enhancement
+  - 10+ sports injuries, return-to-sport programs
+- **Pediatric Therapy** (`/services/pediatric-therapy`)
+  - Cerebral palsy, developmental delays, autism
+  - Play-based therapy, milestone training
+  - 10+ pediatric conditions, family-centered care
+- **Pain Management** (`/services/pain-management`)
+  - Chronic pain relief without heavy medication
+  - Manual therapy, dry needling, pain education
+  - 10+ chronic pain conditions, holistic approach
+- **Home Visit Services** (`/services/home-visit`)
+  - At-home physiotherapy across Delhi NCR
+  - Elderly care, post-surgery recovery
+  - All treatments available at home
+
+Each service page includes:
+
+- Comprehensive SEO meta tags and structured data
+- Detailed overview and benefits
+- Conditions treated (10+ per service)
+- Treatment approaches (8+ per service)
+- Why choose us section
+- FAQ section (4+ questions per service)
+- Related services with internal linking
+- Multiple CTAs (Book Appointment, WhatsApp, Call)
 
 #### About (`/about`) - ✅ Implemented
 
@@ -59,6 +100,32 @@ A modern Angular 20.3.1 web application for Active Rehab Clinic featuring compre
 - Date and time slot picker (9AM-4PM slots)
 - Patient information form
 - Firebase integration for appointment storage
+
+#### Blog (`/blog`) - ✅ Implemented
+
+- Blog listing page with featured post
+- Individual blog post pages with markdown rendering
+- SEO-optimized articles targeting common search queries
+- Social sharing (WhatsApp, Facebook, Twitter)
+- Related posts and services linking
+- Author bio and credentials
+- 5+ comprehensive articles:
+  - 10 Exercises for Lower Back Pain Relief (8 min read)
+  - When to See a Physiotherapist (10 min read)
+  - Benefits of Home Visit Physiotherapy for Elderly (12 min read)
+  - Sports Injury Recovery Guide (15 min read)
+  - Stroke Recovery at Home Guide (14 min read)
+
+Each blog post includes:
+
+- Comprehensive SEO meta tags and structured data
+- Markdown content with proper formatting
+- Author information and credentials
+- Related services with internal linking
+- Related blog posts
+- Multiple CTAs (Book, WhatsApp, Contact)
+- Social sharing buttons
+- Tags and categories
 
 ### Authentication System (`/auth/*`) - ✅ Implemented
 

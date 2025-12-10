@@ -8,7 +8,7 @@ export class ServicesStore {
   getServices(): Service[] {
     return [
       {
-        id: 'musculoskeletal',
+        id: 'musculoskeletal-therapy',
         title: 'Musculoskeletal Therapy',
         description:
           'Expert treatment for bone, joint and muscle problems. Helping you recover from injuries with modern techniques.',
@@ -22,7 +22,7 @@ export class ServicesStore {
         ],
       },
       {
-        id: 'neurological',
+        id: 'neurological-therapy',
         title: 'Neurological Therapy',
         description:
           'Specialized care for brain and nerve related conditions. Our experienced therapists help restore your movement and independence.',
@@ -36,7 +36,7 @@ export class ServicesStore {
         ],
       },
       {
-        id: 'sports',
+        id: 'sports-medicine',
         title: 'Sports Medicine',
         description:
           'Get back to your favorite sports safely. Whether cricket, football or gym - we help athletes of all levels recover and perform better.',
@@ -50,7 +50,7 @@ export class ServicesStore {
         ],
       },
       {
-        id: 'pediatric',
+        id: 'pediatric-therapy',
         title: 'Pediatric Therapy',
         description:
           'Gentle, caring treatment for children. Our child-friendly approach helps kids develop properly and reach their milestones.',
@@ -64,7 +64,7 @@ export class ServicesStore {
         ],
       },
       {
-        id: 'pain',
+        id: 'pain-management',
         title: 'Pain Management',
         description:
           'Effective relief from chronic pain without heavy medicines. Natural healing methods to help you live comfortably again.',

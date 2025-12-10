@@ -1,0 +1,266 @@
+<div class="min-h-screen bg-white dark:bg-gray-900" *ngIf="post">
+  <!-- Hero Section -->
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <!-- Breadcrumb -->
+    <nav class="mb-8">
+      <ol
+        class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400"
+      >
+        <li>
+          <a routerLink="/" class="hover:text-teal-600 dark:hover:text-teal-400"
+            >Home</a
+          >
+        </li>
+        <li>/</li>
+        <li>
+          <a
+            routerLink="/blog"
+            class="hover:text-teal-600 dark:hover:text-teal-400"
+            >Blog</a
+          >
+        </li>
+        <li>/</li>
+        <li class="text-gray-900 dark:text-white font-medium">
+          {{ post.title }}
+        </li>
+      </ol>
+    </nav>
+
+    <!-- Article Header -->
+    <header class="mb-12">
+      <div class="flex flex-wrap items-center gap-3 mb-6">
+        <span
+          class="px-4 py-2 bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-400 text-sm font-semibold rounded-full"
+        >
+          {{ post.category }}
+        </span>
+        <span class="text-gray-600 dark:text-gray-400"
+          >{{ post.readTime }} min read</span
+        >
+        <span class="text-gray-600 dark:text-gray-400">•</span>
+        <span class="text-gray-600 dark:text-gray-400">{{
+          formatDate(post.publishDate)
+        }}</span>
+      </div>
+
+      <h1
+        class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight"
+      >
+        {{ post.title }}
+      </h1>
+
+      <p class="text-xl text-gray-700 dark:text-gray-300 mb-8">
+        {{ post.excerpt }}
+      </p>
+
+      <!-- Author Info -->
+      <div
+        class="flex items-center justify-between py-6 border-y border-gray-200 dark:border-gray-700"
+      >
+        <div class="flex items-center gap-4">
+          <div
+            class="w-16 h-16 bg-teal-600 rounded-full flex items-center justify-center text-white font-bold text-xl"
+          >
+            RP
+          </div>
+          <div>
+            <div class="font-semibold text-gray-900 dark:text-white text-lg">
+              {{ post.author }}
+            </div>
+            <div class="text-gray-600 dark:text-gray-400">
+              {{ post.authorRole }}
+            </div>
+          </div>
+        </div>
+
+        <!-- Share Buttons -->
+        <div class="flex items-center gap-3">
+          <button
+            (click)="shareOnWhatsApp()"
+            class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+            title="Share on WhatsApp"
+          >
+            <span class="text-2xl">💬</span>
+          </button>
+          <button
+            (click)="shareOnFacebook()"
+            class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+            title="Share on Facebook"
+          >
+            <span class="text-2xl">📘</span>
+          </button>
+          <button
+            (click)="shareOnTwitter()"
+            class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+            title="Share on Twitter"
+          >
+            <span class="text-2xl">🐦</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Article Content -->
+    <div class="prose max-w-none mb-12" [innerHTML]="contentHtml"></div>
+
+    <!-- Tags -->
+    <div class="mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+        Tags:
+      </h3>
+      <div class="flex flex-wrap gap-2">
+        <span
+          *ngFor="let tag of post.tags"
+          class="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-sm"
+        >
+          #{{ tag }}
+        </span>
+      </div>
+    </div>
+
+    <!-- Related Services CTA -->
+    <div
+      class="bg-gradient-to-r from-teal-50 to-cyan-50 dark:from-teal-900/20 dark:to-cyan-900/20 rounded-xl p-8 mb-12"
+    >
+      <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+        Need Professional Help?
+      </h3>
+      <p class="text-gray-700 dark:text-gray-300 mb-6">
+        While this article provides valuable information, personalized treatment
+        from our experienced physiotherapists delivers the best results.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a
+          routerLink="/book"
+          class="bg-teal-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-teal-700 transition-colors"
+        >
+          Book Appointment
+        </a>
+        <a
+          href="https://wa.me/919910885929?text=Hi, I read your article about {{
+            post.title
+          }} and would like to know more"
+          target="_blank"
+          class="bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors"
+        >
+          WhatsApp Us
+        </a>
+        <a
+          routerLink="/contact"
+          class="border-2 border-teal-600 text-teal-600 dark:text-teal-400 px-6 py-3 rounded-lg font-semibold hover:bg-teal-50 dark:hover:bg-teal-900/20 transition-colors"
+        >
+          Contact Us
+        </a>
+      </div>
+    </div>
+
+    <!-- Author Bio -->
+    <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 mb-12">
+      <div class="flex items-start gap-6">
+        <div
+          class="w-24 h-24 bg-teal-600 rounded-full flex items-center justify-center text-white font-bold text-3xl flex-shrink-0"
+        >
+          RP
+        </div>
+        <div>
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+            About {{ post.author }}
+          </h3>
+          <p class="text-gray-700 dark:text-gray-300 mb-4">
+            {{ post.authorRole }} at Active Rehab Clinic, Dwarka. With over 13
+            years of experience in physiotherapy, Dr. Raju specializes in sports
+            rehabilitation, pain management, and musculoskeletal therapy. He is
+            passionate about helping patients achieve their health goals through
+            evidence-based treatment and education.
+          </p>
+          <a
+            routerLink="/about"
+            class="text-teal-600 dark:text-teal-400 font-semibold hover:underline"
+          >
+            Learn more about our team →
+          </a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Related Posts -->
+  <section
+    class="bg-gray-50 dark:bg-gray-800 py-16"
+    *ngIf="relatedPosts.length > 0"
+  >
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8">
+        Related Articles
+      </h2>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <article
+          *ngFor="let relatedPost of relatedPosts"
+          class="bg-white dark:bg-gray-900 rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow"
+        >
+          <div
+            class="h-40 bg-gradient-to-br from-teal-500 to-cyan-600 flex items-center justify-center"
+          >
+            <div class="text-5xl">📖</div>
+          </div>
+
+          <div class="p-6">
+            <h3
+              class="text-lg font-bold text-gray-900 dark:text-white mb-3 line-clamp-2"
+            >
+              <a
+                [routerLink]="['/blog', relatedPost.slug]"
+                class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors"
+              >
+                {{ relatedPost.title }}
+              </a>
+            </h3>
+
+            <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
+              {{ relatedPost.excerpt }}
+            </p>
+
+            <a
+              [routerLink]="['/blog', relatedPost.slug]"
+              class="text-teal-600 dark:text-teal-400 font-semibold hover:underline"
+            >
+              Read More →
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section
+    class="py-16 bg-gradient-to-r from-teal-600 to-cyan-700 dark:from-teal-800 dark:to-cyan-900 text-white"
+  >
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">
+        Ready to Start Your Recovery?
+      </h2>
+      <p class="text-xl text-teal-100 mb-8">
+        Book an appointment with our expert physiotherapists today
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a
+          routerLink="/book"
+          class="bg-white text-teal-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-teal-50 transition-colors"
+        >
+          Book Appointment
+        </a>
+        <a
+          routerLink="/services"
+          class="bg-teal-800 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-teal-900 transition-colors"
+        >
+          View All Services
+        </a>
+      </div>
+      <p class="mt-6 text-teal-100">
+        <a routerLink="/blog" class="hover:underline">← Back to Blog</a>
+      </p>
+    </div>
+  </section>
+</div>

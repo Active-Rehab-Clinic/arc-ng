@@ -309,3 +309,12 @@
 .cta-btn-secondary {
   @apply border-2 border-white text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all hover:bg-white hover:text-teal-700;
 }
+
+// Inline Links
+.inline-link {
+  @apply text-teal-600 dark:text-teal-400 hover:underline font-medium;
+}
+
+.feature-link {
+  @apply text-gray-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400 transition-colors;
+}

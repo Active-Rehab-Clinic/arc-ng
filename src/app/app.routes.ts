@@ -16,6 +16,13 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'services/:id',
+    loadComponent: () =>
+      import('./pages/services/service-detail/service-detail.component').then(
+        (m) => m.ServiceDetailComponent
+      ),
+  },
+  {
     path: 'about',
     loadComponent: () =>
       import('./pages/about/about.component').then((m) => m.AboutComponent),
@@ -31,6 +38,20 @@ export const routes: Routes = [
     path: 'book',
     loadComponent: () =>
       import('./pages/book/book.component').then((m) => m.BookComponent),
+  },
+  {
+    path: 'blog',
+    loadComponent: () =>
+      import('./pages/blog/blog-list/blog-list.component').then(
+        (m) => m.BlogListComponent
+      ),
+  },
+  {
+    path: 'blog/:slug',
+    loadComponent: () =>
+      import('./pages/blog/blog-detail/blog-detail.component').then(
+        (m) => m.BlogDetailComponent
+      ),
   },
 
   // Auth routes

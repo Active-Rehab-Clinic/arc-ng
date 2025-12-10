@@ -12,7 +12,7 @@ import { MetaService } from '@services/meta.service';
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './about.component.html',
-  styleUrl: './about.component.scss'
+  styleUrl: './about.component.scss',
 })
 export class AboutComponent implements OnInit {
   aboutInfo: AboutInfo;
@@ -29,13 +29,19 @@ export class AboutComponent implements OnInit {
 
   ngOnInit(): void {
     this.metaService.setPageMeta(
-      'About Us',
-      'Learn about our experienced physiotherapy team, clinic history, and commitment to providing exceptional patient care and rehabilitation services.'
+      'About Us - Expert Physiotherapists in Dwarka | 13+ Years Experience',
+      'Meet Dr. Raju Pal and the expert team at Active Rehab Clinic. With over 13 years of experience in sports rehabilitation and pain management, we provide compassionate, evidence-based physiotherapy care in Dwarka, Delhi.',
+      'physiotherapist Dwarka, Dr Raju Pal physiotherapist, best physiotherapy clinic Dwarka, experienced physiotherapist Delhi, sports rehabilitation expert, pain management specialist, certified physiotherapist Delhi, physical therapist Dwarka, rehabilitation specialist, manual therapy expert Delhi',
+      '/assets/raju-pal.jpg',
+      '/about'
     );
   }
 
   getInitials(name: string): string {
-    return name.split(' ').map(n => n[0]).join('');
+    return name
+      .split(' ')
+      .map((n) => n[0])
+      .join('');
   }
 
   getValueColor(index: number): string {
